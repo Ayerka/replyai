@@ -611,3 +611,37 @@ initAuth();
 </script>
 </body>
 </html>
+@media (max-width: 768px) {
+  .main-body { flex-direction: column; height: auto; overflow: visible; }
+  .left-panel { border-right: none; border-bottom: 1px solid var(--gray-200); padding: 1rem; }
+  .right-panel { width: 100%; padding: 1rem; }
+  .tone-grid { grid-template-columns: 1fr 1fr 1fr; }
+  .app-grid { grid-template-columns: repeat(4, 1fr); }
+  .topbar { padding: 0 1rem; }
+  .topbar-name { font-size: 17px; }
+  .usage-pill { padding: 5px 10px; font-size: 12px; }
+  .auth-card { padding: 2rem 1.5rem; }
+  .pro-card { padding: 2rem 1.5rem; }
+  .pro-title { font-size: 26px; }
+  .price-amount { font-size: 40px; }
+  .profile-overlay { padding: 64px 0.75rem 0; }
+  .profile-panel { width: 100%; }
+  .right-panel .pro-cta { order: -1; }
+  textarea { min-height: 110px; }
+  .card { border-radius: 12px; }
+  .btn-generate { padding: 13px; font-size: 14px; }
+  .empty-state { padding: 2rem 1rem; }
+  .empty-icon { font-size: 36px; }
+}
+
+@media (max-width: 480px) {
+  .tone-grid { grid-template-columns: 1fr 1fr; }
+  .app-grid { grid-template-columns: repeat(4, 1fr); }
+  .app-btn { font-size: 10px; padding: 8px 4px; }
+  .app-icon { font-size: 18px; }
+  .topbar-name { font-size: 16px; }
+  .brand-name { font-size: 20px; }
+  .auth-title { font-size: 20px; }
+  .result-text { font-size: 14px; }
+  .profile-panel { border-radius: 16px 16px 0 0; }
+}
