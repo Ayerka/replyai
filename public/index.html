@@ -52,7 +52,8 @@ body { font-family: var(--font); background: var(--gray-50); color: var(--gray-8
 .usage-dot.warn { background: #F59E0B; }
 .usage-dot.danger { background: #EF4444; }
 .avatar-btn { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--blue-mid), var(--violet-mid)); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: var(--violet-dark); cursor: pointer; border: 2px solid var(--violet-mid); transition: transform 0.15s; }
-.avatar-btn:hover { transform: scale(1.05); }#screen-main { flex-direction: column; }
+.avatar-btn:hover { transform: scale(1.05); }
+#screen-main { flex-direction: column; }
 .main-body { flex: 1; display: flex; overflow: hidden; height: calc(100vh - 64px); }
 .left-panel { flex: 1; padding: 1.5rem; overflow-y: auto; border-right: 1px solid var(--gray-200); display: flex; flex-direction: column; gap: 1.25rem; }
 .right-panel { width: 320px; padding: 1.5rem; overflow-y: auto; background: var(--white); display: flex; flex-direction: column; gap: 1.25rem; }
@@ -98,6 +99,12 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
 .action-btn { padding: 5px 12px; border-radius: 8px; border: 1px solid var(--violet-mid); background: var(--white); color: var(--violet); font-family: var(--font); font-size: 12px; font-weight: 600; cursor: pointer; transition: background 0.15s; }
 .action-btn:hover { background: var(--violet-light); }
 .result-text { font-size: 15px; line-height: 1.75; color: var(--gray-800); }
+.continue-card { background: var(--white); border: 1.5px solid var(--violet-mid); border-radius: 16px; padding: 1.25rem; margin-top: 1rem; }
+.continue-label { font-size: 13px; font-weight: 700; color: var(--violet); margin-bottom: 4px; }
+.continue-sub { font-size: 12px; color: var(--gray-400); margin-bottom: 10px; }
+.continue-card textarea { min-height: 80px; margin-bottom: 10px; }
+.btn-continue { width: 100%; padding: 11px; background: linear-gradient(135deg, var(--blue), var(--violet)); color: white; border: none; border-radius: 10px; font-family: var(--font); font-size: 14px; font-weight: 700; cursor: pointer; }
+.btn-continue:hover { opacity: 0.9; }
 .empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 3rem 1rem; text-align: center; }
 .empty-icon { font-size: 48px; margin-bottom: 1rem; }
 .empty-title { font-size: 16px; font-weight: 700; color: var(--gray-600); margin-bottom: 8px; }
@@ -154,6 +161,37 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
 @keyframes blink { 0%,80%,100% { opacity: 0.2; } 40% { opacity: 1; } }
 .notification { position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--gray-800); color: white; padding: 12px 20px; border-radius: 12px; font-size: 14px; font-weight: 500; opacity: 0; transform: translateY(8px); transition: all 0.25s; z-index: 999; pointer-events: none; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
 .notification.show { opacity: 1; transform: translateY(0); }
+@media (max-width: 768px) {
+  .main-body { flex-direction: column; height: auto; overflow: visible; }
+  .left-panel { border-right: none; border-bottom: 1px solid var(--gray-200); padding: 1rem; }
+  .right-panel { width: 100%; padding: 1rem; }
+  .tone-grid { grid-template-columns: 1fr 1fr 1fr; }
+  .topbar { padding: 0 1rem; }
+  .topbar-name { font-size: 17px; }
+  .usage-pill { padding: 5px 10px; font-size: 12px; }
+  .auth-card { padding: 2rem 1.5rem; }
+  .pro-card { padding: 2rem 1.5rem; }
+  .pro-title { font-size: 26px; }
+  .price-amount { font-size: 40px; }
+  .profile-overlay { padding: 64px 0.75rem 0; }
+  .profile-panel { width: 100%; }
+  textarea { min-height: 110px; }
+  .card { border-radius: 12px; }
+  .btn-generate { padding: 13px; font-size: 14px; }
+  .empty-state { padding: 2rem 1rem; }
+  .empty-icon { font-size: 36px; }
+}
+@media (max-width: 480px) {
+  .tone-grid { grid-template-columns: 1fr 1fr; }
+  .app-grid { grid-template-columns: repeat(4, 1fr); }
+  .app-btn { font-size: 10px; padding: 8px 4px; }
+  .app-icon { font-size: 18px; }
+  .topbar-name { font-size: 16px; }
+  .brand-name { font-size: 20px; }
+  .auth-title { font-size: 20px; }
+  .result-text { font-size: 14px; }
+  .profile-panel { border-radius: 16px 16px 0 0; }
+}
 </style>
 </head>
 <body><div class="notification" id="notif"></div>
@@ -419,9 +457,7 @@ async function changePassword() {
   else { showNotif('Hasło zmienione ✓'); document.getElementById('new-password').value = ''; }
 }
 
-async function logout() { await sb.auth.signOut(); closeProfile(); }
-
-async function loadUsageCount() {
+async function logout() { await sb.auth.signOut(); closeProfile(); }async function loadUsageCount() {
   const today = new Date().toISOString().split('T')[0];
   const { data } = await sb.from('usage').select('count').eq('user_id', currentUser.id).eq('date', today).maybeSingle();
   usedCount = data?.count || 0;
@@ -468,7 +504,10 @@ async function loadConversation(id) {
   closeProfile();
   document.getElementById('convo-input').value = conv.conversation || '';
   document.getElementById('context-input').value = conv.context || '';
-  if (conv.tone) { document.querySelectorAll('.tone-btn').forEach(b => b.classList.toggle('selected', b.dataset.tone === conv.tone)); selectedTone = conv.tone; }
+  if (conv.tone) {
+    document.querySelectorAll('.tone-btn').forEach(b => b.classList.toggle('selected', b.dataset.tone === conv.tone));
+    selectedTone = conv.tone;
+  }
   if (conv.app) { const btn = document.querySelector(`.app-btn[data-app="${conv.app}"]`); if (btn) selectApp(btn); }
   if (conv.reply) {
     document.getElementById('result-area').innerHTML = `
@@ -481,6 +520,12 @@ async function loadConversation(id) {
           </div>
         </div>
         <div class="result-text" id="result-text">${conv.reply.replace(/\n/g,'<br>')}</div>
+      </div>
+      <div class="continue-card">
+        <div class="continue-label">💬 Kontynuuj rozmowę</div>
+        <div class="continue-sub">Co odpisał rozmówca? Wklej jego kolejną wiadomość:</div>
+        <textarea id="continue-input" placeholder="Np: No dobra, ale ja dalej uważam że..."></textarea>
+        <button class="btn-continue" onclick="continueConversation()">➕ Dodaj i generuj odpowiedź</button>
       </div>`;
   }
   showNotif('Rozmowa wczytana ✓');
@@ -544,9 +589,7 @@ function removeImage() {
 function selectTone(btn) {
   document.querySelectorAll('.tone-btn').forEach(b => b.classList.remove('selected'));
   btn.classList.add('selected'); selectedTone = btn.dataset.tone;
-}
-
-async function generateReply() {
+}async function generateReply() {
   if (isLoading) return;
   if (usedCount >= DAILY_LIMIT) { showScreen('screen-pro'); return; }
   const convo = document.getElementById('convo-input').value.trim();
@@ -580,6 +623,12 @@ async function generateReply() {
           </div>
         </div>
         <div class="result-text" id="result-text">${data.reply.replace(/\n/g,'<br>')}</div>
+      </div>
+      <div class="continue-card">
+        <div class="continue-label">💬 Kontynuuj rozmowę</div>
+        <div class="continue-sub">Co odpisał rozmówca? Wklej jego kolejną wiadomość:</div>
+        <textarea id="continue-input" placeholder="Np: No dobra, ale ja dalej uważam że..."></textarea>
+        <button class="btn-continue" onclick="continueConversation()">➕ Dodaj i generuj odpowiedź</button>
       </div>`;
   } catch(e) {
     document.getElementById('result-area').innerHTML = `<div class="result-card" style="border-color:#FCA5A5;"><div class="result-text" style="color:#DC2626;">Błąd: ${e.message}</div></div>`;
@@ -589,59 +638,47 @@ async function generateReply() {
   document.getElementById('gen-btn-text').textContent = '✨ Generuj odpowiedź';
 }
 
+function continueConversation() {
+  const nextMsg = document.getElementById('continue-input').value.trim();
+  if (!nextMsg) {
+    document.getElementById('continue-input').style.borderColor = '#EF4444';
+    setTimeout(() => document.getElementById('continue-input').style.borderColor = '', 2000);
+    return;
+  }
+  const currentConvo = document.getElementById('convo-input').value.trim();
+  const currentReply = document.getElementById('result-text')?.innerText || '';
+  document.getElementById('convo-input').value = currentConvo + '\n\nTy: ' + currentReply + '\nOni: ' + nextMsg;
+  document.getElementById('continue-input').value = '';
+  generateReply();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
 function copyResult() {
   const txt = document.getElementById('result-text');
   if (txt) navigator.clipboard.writeText(txt.innerText).then(() => showNotif('Skopiowano! ✓'));
 }
+
 function showNotif(msg) {
   const n = document.getElementById('notif');
   n.textContent = msg; n.classList.add('show');
   setTimeout(() => n.classList.remove('show'), 2500);
 }
+
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
+
 function toggleProfile() { document.getElementById('profile-overlay').classList.toggle('open'); }
 function closeProfile() { document.getElementById('profile-overlay').classList.remove('open'); }
 function closeProfileIfOutside(e) { if (e.target === document.getElementById('profile-overlay')) closeProfile(); }
-function buyPro() { showNotif('Przekierowanie do płatności...'); setTimeout(() => { showNotif('Konto Pro aktywowane! 🎉'); showScreen('screen-main'); }, 2000); }
+
+function buyPro() {
+  showNotif('Przekierowanie do płatności...');
+  setTimeout(() => { showNotif('Konto Pro aktywowane! 🎉'); showScreen('screen-main'); }, 2000);
+}
 
 initAuth();
 </script>
 </body>
 </html>
-@media (max-width: 768px) {
-  .main-body { flex-direction: column; height: auto; overflow: visible; }
-  .left-panel { border-right: none; border-bottom: 1px solid var(--gray-200); padding: 1rem; }
-  .right-panel { width: 100%; padding: 1rem; }
-  .tone-grid { grid-template-columns: 1fr 1fr 1fr; }
-  .app-grid { grid-template-columns: repeat(4, 1fr); }
-  .topbar { padding: 0 1rem; }
-  .topbar-name { font-size: 17px; }
-  .usage-pill { padding: 5px 10px; font-size: 12px; }
-  .auth-card { padding: 2rem 1.5rem; }
-  .pro-card { padding: 2rem 1.5rem; }
-  .pro-title { font-size: 26px; }
-  .price-amount { font-size: 40px; }
-  .profile-overlay { padding: 64px 0.75rem 0; }
-  .profile-panel { width: 100%; }
-  .right-panel .pro-cta { order: -1; }
-  textarea { min-height: 110px; }
-  .card { border-radius: 12px; }
-  .btn-generate { padding: 13px; font-size: 14px; }
-  .empty-state { padding: 2rem 1rem; }
-  .empty-icon { font-size: 36px; }
-}
-
-@media (max-width: 480px) {
-  .tone-grid { grid-template-columns: 1fr 1fr; }
-  .app-grid { grid-template-columns: repeat(4, 1fr); }
-  .app-btn { font-size: 10px; padding: 8px 4px; }
-  .app-icon { font-size: 18px; }
-  .topbar-name { font-size: 16px; }
-  .brand-name { font-size: 20px; }
-  .auth-title { font-size: 20px; }
-  .result-text { font-size: 14px; }
-  .profile-panel { border-radius: 16px 16px 0 0; }
-}
