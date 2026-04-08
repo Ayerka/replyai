@@ -2,56 +2,43 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  const { conversation, context, tone } = req.body;
-
-  if (!conversation || conversation.trim() === '') {
-    return res.status(400).json({ error: 'Brak treści rozmowy' });
-  }
-
+  const { conversation, context, tone, app, image } = req.body;
   const apiKey = process.env.OPENAI_API_KEY;
-  if (!apiKey) {
-    return res.status(500).json({ error: 'Brak klucza API na serwerze' });
+  if (!apiKey) return res.status(500).json({ error: 'Brak klucza API' });
+
+  const appContext = app ? `Rozmowa odbywa się na: ${app}.` : '';
+  const systemPrompt = `Jesteś ekspertem od komunikacji i relacji interpersonalnych. ${appContext} Piszesz w języku polskim. Odpowiadasz TYLKO gotową wiadomością do wysłania, bez żadnych wyjaśnień, wstępów ani komentarzy.`;
+
+  const userContent = [];
+
+  if (image) {
+    userContent.push({ type: 'image_url', image_url: { url: `data:image/jpeg;base64,${image}` } });
+    userContent.push({ type: 'text', text: `Przeanalizuj tę rozmowę ze screenshota i napisz odpowiedź w tonie: ${tone || 'profesjonalny'}.${context ? ' Kontekst: ' + context : ''}` });
+  } else {
+    userContent.push({ type: 'text', text: `Rozmowa:\n${conversation}\n\n${context ? 'Kontekst: ' + context + '\n\n' : ''}Napisz odpowiedź w tonie: ${tone || 'profesjonalny'}.` });
   }
-
-  const prompt = `Jesteś ekspertem od komunikacji i relacji interpersonalnych.
-Użytkownik wkleił rozmowę i chce dostać propozycję odpowiedzi.
-
-Rozmowa:
-${conversation}
-
-${context ? 'Kontekst sytuacji: ' + context : ''}
-
-Ton odpowiedzi: ${tone || 'profesjonalny'}
-
-Napisz jedną, gotową do wysłania odpowiedź w podanym tonie.
-Odpowiedź powinna być naturalna, autentyczna i dopasowana do kontekstu rozmowy.
-Napisz TYLKO samą wiadomość do wysłania, bez wyjaśnień ani wstępu.`;
 
   try {
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`
-      },
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${apiKey}` },
       body: JSON.stringify({
-        model: 'gpt-4o-mini',
+        model: image ? 'gpt-4o' : 'gpt-4o-mini',
         max_tokens: 1000,
-        messages: [{ role: 'user', content: prompt }]
+        messages: [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: userContent }
+        ]
       })
     });
-
     const data = await response.json();
     if (data.error) return res.status(500).json({ error: data.error.message });
-
     const reply = data.choices?.[0]?.message?.content || '';
     return res.status(200).json({ reply });
-
   } catch (err) {
-    return res.status(500).json({ error: 'Błąd połączenia z API: ' + err.message });
+    return res.status(500).json({ error: err.message });
   }
 }
