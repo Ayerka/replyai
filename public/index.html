@@ -18,8 +18,8 @@
 }
 html, body { height: 100%; }
 body { font-family: var(--font); background: var(--gray-50); color: var(--gray-800); }
-.screen { display: none; min-height: 100vh; }
-.screen.active { display: flex; flex-direction: column; }
+.screen { display: none; min-height: 100vh; pointer-events: none; }
+.screen.active { display: flex; flex-direction: column; pointer-events: all; }
 .auth-wrap { min-height: 100vh; background: linear-gradient(135deg, #EFF6FF 0%, #F5F3FF 50%, #EDE9FE 100%); display: flex; align-items: center; justify-content: center; padding: 2rem; position: relative; overflow: hidden; }
 .auth-wrap::before { content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%); border-radius: 50%; }
 .auth-wrap::after { content: ''; position: absolute; bottom: -80px; left: -80px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(37,99,235,0.1) 0%, transparent 70%); border-radius: 50%; }
@@ -41,7 +41,7 @@ body { font-family: var(--font); background: var(--gray-50); color: var(--gray-8
 .link-btn { color: var(--violet); cursor: pointer; font-weight: 600; background: none; border: none; font-family: var(--font); font-size: 13px; }
 .auth-error { background: #FEF2F2; border: 1px solid #FECACA; border-radius: 10px; padding: 10px 14px; font-size: 13px; color: #DC2626; margin-bottom: 1rem; display: none; }
 .auth-success { background: #F0FDF4; border: 1px solid #BBF7D0; border-radius: 10px; padding: 10px 14px; font-size: 13px; color: #16A34A; margin-bottom: 1rem; display: none; }
-.landing-wrap { min-height: 100vh; display: flex; flex-direction: column; background: linear-gradient(160deg, #F8FAFC 0%, #F5F3FF 50%, #EFF6FF 100%); }
+.landing-wrap { min-height: 100vh; display: flex; flex-direction: column; background: linear-gradient(160deg, #F8FAFC 0%, #F5F3FF 50%, #EFF6FF 100%); position: relative; z-index: 1; }
 .landing-nav { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 2rem; background: rgba(255,255,255,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid var(--gray-200); position: sticky; top: 0; z-index: 10; }
 .btn-nav-ghost { padding: 8px 18px; border-radius: 10px; border: 1.5px solid var(--gray-200); background: none; font-family: var(--font); font-size: 14px; font-weight: 600; color: var(--gray-600); cursor: pointer; transition: all 0.15s; }
 .btn-nav-ghost:hover { border-color: var(--violet-mid); color: var(--violet); background: var(--violet-light); }
@@ -75,7 +75,8 @@ body { font-family: var(--font); background: var(--gray-50); color: var(--gray-8
 .btn-cta:hover { transform: translateY(-2px); }
 .cta-note { margin-top: 1rem; font-size: 14px; color: rgba(255,255,255,0.7); }
 .cta-note .link-btn { color: white; font-weight: 700; }
-.landing-footer { padding: 1.5rem 2rem; text-align: center; font-size: 13px; color: var(--gray-400); border-top: 1px solid var(--gray-200); background: var(--white); }.topbar { background: var(--white); border-bottom: 1px solid var(--gray-200); padding: 0 1.5rem; height: 64px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; box-shadow: 0 1px 8px rgba(0,0,0,0.04); }
+.landing-footer { padding: 1.5rem 2rem; text-align: center; font-size: 13px; color: var(--gray-400); border-top: 1px solid var(--gray-200); background: var(--white); }
+.topbar { background: var(--white); border-bottom: 1px solid var(--gray-200); padding: 0 1.5rem; height: 64px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; box-shadow: 0 1px 8px rgba(0,0,0,0.04); }
 .topbar-brand { display: flex; align-items: center; gap: 10px; cursor: pointer; }
 .topbar-icon { width: 36px; height: 36px; background: linear-gradient(135deg, var(--blue), var(--violet)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 15px; }
 .topbar-name { font-family: var(--serif); font-size: 20px; color: var(--gray-800); }
@@ -282,7 +283,7 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
           <button class="demo-tone selected" data-tone="profesjonalny" onclick="selectDemoTone(this)">💼 Profesjonalny</button>
           <button class="demo-tone" data-tone="przyjazny" onclick="selectDemoTone(this)">😊 Przyjazny</button>
           <button class="demo-tone" data-tone="bezpośredni" onclick="selectDemoTone(this)">⚡ Bezpośredni</button>
-          <button class="demo-tone" data-tone="humorystyczny" onclick="selectDemoTone(this)">😄 Humorystyczny</button>
+          <button class="demo-tone" data-tone="genz" onclick="selectDemoTone(this)">🔥 Gen Z</button>
         </div>
         <button class="btn-demo" onclick="tryDemo()">✨ Generuj odpowiedź</button>
         <div id="demo-result" style="display:none" class="demo-result"></div>
@@ -297,7 +298,7 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
       <div class="feature-card">
         <div class="feature-icon">🎭</div>
         <div class="feature-title">6 tonów odpowiedzi</div>
-        <div class="feature-sub">Od formalnego po humorystyczny — dopasuj styl do sytuacji</div>
+        <div class="feature-sub">Od formalnego po Gen Z — dopasuj styl do sytuacji</div>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🖼️</div>
@@ -641,9 +642,7 @@ async function loadConversation(id) {
 async function saveConversation(conversation, context, tone, app, reply) {
   await sb.from('conversations').insert({ user_id: currentUser.id, conversation, context, tone, app, reply });
   await loadHistory();
-}
-
-function toggleAppSelector() {
+}function toggleAppSelector() {
   const grid = document.getElementById('app-grid');
   const arrow = document.getElementById('app-arrow');
   const toggle = document.getElementById('app-toggle');
@@ -725,21 +724,8 @@ async function tryDemo() {
       Masz już konto? <button class="link-btn" onclick="showScreen('screen-login')">Zaloguj się</button>
     </div>`;
 }
-  const resultEl = document.getElementById('demo-result');
-  resultEl.style.display = 'block';
-  resultEl.innerHTML = '<div class="demo-result-label">✨ Generowanie...</div><div style="color:var(--gray-400);font-size:13px;">AI przygotowuje odpowiedź...</div>';
-  try {
-    const resp = await fetch('/api/reply', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ conversation: msg, tone: demoTone }) });
-    const data = await resp.json();
-    if (data.error) throw new Error(data.error);
-    resultEl.innerHTML = `<div class="demo-result-label">✨ Proponowana odpowiedź</div>${data.reply.replace(/\n/g,'<br>')}
-      <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--violet-mid);font-size:13px;color:var(--violet);font-weight:600;">
-        Chcesz więcej? <button class="link-btn" onclick="showScreen('screen-register')" style="font-size:13px;">Zarejestruj się za darmo →</button>
-      </div>`;
-  } catch(e) {
-    resultEl.innerHTML = `<div style="color:#DC2626;font-size:13px;">Błąd: ${e.message}</div>`;
-  }
-}async function generateReply() {
+
+async function generateReply() {
   if (isLoading) return;
   if (usedCount >= DAILY_LIMIT) { showScreen('screen-pro'); return; }
   const convo = document.getElementById('convo-input').value.trim();
@@ -786,9 +772,7 @@ async function tryDemo() {
   isLoading = false;
   document.getElementById('gen-btn').disabled = false;
   document.getElementById('gen-btn-text').textContent = '✨ Generuj odpowiedź';
-}
-
-function continueConversation() {
+}function continueConversation() {
   const nextMsg = document.getElementById('continue-input').value.trim();
   if (!nextMsg) {
     document.getElementById('continue-input').style.borderColor = '#EF4444';
@@ -802,7 +786,6 @@ function continueConversation() {
   generateReply();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-
 function copyResult() {
   const txt = document.getElementById('result-text');
   if (txt) navigator.clipboard.writeText(txt.innerText).then(() => showNotif('Skopiowano! ✓'));
