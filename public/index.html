@@ -41,7 +41,41 @@ body { font-family: var(--font); background: var(--gray-50); color: var(--gray-8
 .link-btn { color: var(--violet); cursor: pointer; font-weight: 600; background: none; border: none; font-family: var(--font); font-size: 13px; }
 .auth-error { background: #FEF2F2; border: 1px solid #FECACA; border-radius: 10px; padding: 10px 14px; font-size: 13px; color: #DC2626; margin-bottom: 1rem; display: none; }
 .auth-success { background: #F0FDF4; border: 1px solid #BBF7D0; border-radius: 10px; padding: 10px 14px; font-size: 13px; color: #16A34A; margin-bottom: 1rem; display: none; }
-.topbar { background: var(--white); border-bottom: 1px solid var(--gray-200); padding: 0 1.5rem; height: 64px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; box-shadow: 0 1px 8px rgba(0,0,0,0.04); }
+.landing-wrap { min-height: 100vh; display: flex; flex-direction: column; background: linear-gradient(160deg, #F8FAFC 0%, #F5F3FF 50%, #EFF6FF 100%); }
+.landing-nav { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 2rem; background: rgba(255,255,255,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid var(--gray-200); position: sticky; top: 0; z-index: 10; }
+.btn-nav-ghost { padding: 8px 18px; border-radius: 10px; border: 1.5px solid var(--gray-200); background: none; font-family: var(--font); font-size: 14px; font-weight: 600; color: var(--gray-600); cursor: pointer; transition: all 0.15s; }
+.btn-nav-ghost:hover { border-color: var(--violet-mid); color: var(--violet); background: var(--violet-light); }
+.btn-nav-solid { padding: 8px 18px; border-radius: 10px; border: none; background: linear-gradient(135deg, var(--blue), var(--violet)); font-family: var(--font); font-size: 14px; font-weight: 700; color: white; cursor: pointer; transition: opacity 0.15s; box-shadow: 0 2px 10px rgba(124,58,237,0.3); }
+.btn-nav-solid:hover { opacity: 0.9; }
+.landing-hero { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 4rem 1.5rem 3rem; }
+.landing-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--violet-light); border: 1px solid var(--violet-mid); color: var(--violet); font-size: 13px; font-weight: 600; padding: 6px 16px; border-radius: 99px; margin-bottom: 1.5rem; }
+.landing-title { font-family: var(--serif); font-size: 56px; line-height: 1.1; color: var(--gray-800); margin-bottom: 1rem; }
+.landing-title span { color: var(--violet); font-style: italic; }
+.landing-sub { font-size: 17px; color: var(--gray-400); line-height: 1.7; max-width: 520px; margin-bottom: 2.5rem; }
+.demo-card { background: var(--white); border-radius: 24px; border: 1px solid var(--gray-200); padding: 1.75rem; width: 100%; max-width: 580px; box-shadow: 0 8px 40px rgba(124,58,237,0.1); text-align: left; }
+.demo-label { font-size: 12px; font-weight: 700; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
+.demo-card textarea { min-height: 100px; margin-bottom: 12px; }
+.demo-tone-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+.demo-tone { padding: 7px 12px; border-radius: 8px; border: 1.5px solid var(--gray-200); background: var(--white); font-family: var(--font); font-size: 13px; font-weight: 500; color: var(--gray-600); cursor: pointer; transition: all 0.15s; }
+.demo-tone:hover { border-color: var(--violet-mid); background: var(--violet-light); color: var(--violet); }
+.demo-tone.selected { border-color: var(--violet); background: var(--violet-light); color: var(--violet); font-weight: 700; }
+.btn-demo { width: 100%; padding: 13px; background: linear-gradient(135deg, var(--blue), var(--violet)); color: white; border: none; border-radius: 12px; font-family: var(--font); font-size: 15px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 16px rgba(124,58,237,0.25); transition: opacity 0.15s; }
+.btn-demo:hover { opacity: 0.9; }
+.demo-result { margin-top: 1rem; padding: 1rem; background: linear-gradient(135deg, var(--blue-light), var(--violet-light)); border: 1px solid var(--violet-mid); border-radius: 12px; font-size: 14px; line-height: 1.7; color: var(--gray-800); }
+.demo-result-label { font-size: 11px; font-weight: 700; color: var(--violet); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+.landing-features { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; padding: 0 2rem 4rem; max-width: 1100px; margin: 0 auto; width: 100%; }
+.feature-card { background: var(--white); border-radius: 20px; border: 1px solid var(--gray-200); padding: 1.5rem; text-align: center; }
+.feature-icon { font-size: 32px; margin-bottom: 12px; }
+.feature-title { font-size: 15px; font-weight: 700; color: var(--gray-800); margin-bottom: 6px; }
+.feature-sub { font-size: 13px; color: var(--gray-400); line-height: 1.5; }
+.landing-cta { background: linear-gradient(135deg, var(--blue), var(--violet)); padding: 4rem 2rem; text-align: center; }
+.cta-title { font-family: var(--serif); font-size: 36px; color: white; margin-bottom: 0.75rem; }
+.cta-sub { font-size: 16px; color: rgba(255,255,255,0.8); margin-bottom: 2rem; }
+.btn-cta { padding: 16px 36px; background: white; color: var(--violet); border: none; border-radius: 14px; font-family: var(--font); font-size: 16px; font-weight: 800; cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,0.15); transition: transform 0.15s; }
+.btn-cta:hover { transform: translateY(-2px); }
+.cta-note { margin-top: 1rem; font-size: 14px; color: rgba(255,255,255,0.7); }
+.cta-note .link-btn { color: white; font-weight: 700; }
+.landing-footer { padding: 1.5rem 2rem; text-align: center; font-size: 13px; color: var(--gray-400); border-top: 1px solid var(--gray-200); background: var(--white); }.topbar { background: var(--white); border-bottom: 1px solid var(--gray-200); padding: 0 1.5rem; height: 64px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; box-shadow: 0 1px 8px rgba(0,0,0,0.04); }
 .topbar-brand { display: flex; align-items: center; gap: 10px; cursor: pointer; }
 .topbar-icon { width: 36px; height: 36px; background: linear-gradient(135deg, var(--blue), var(--violet)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 15px; }
 .topbar-name { font-family: var(--serif); font-size: 20px; color: var(--gray-800); }
@@ -179,11 +213,15 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
   .card { border-radius: 12px; }
   .btn-generate { padding: 13px; font-size: 14px; }
   .empty-state { padding: 2rem 1rem; }
-  .empty-icon { font-size: 36px; }
+  .landing-title { font-size: 38px; }
+  .landing-features { grid-template-columns: 1fr 1fr; padding: 0 1rem 3rem; }
+  .landing-nav { padding: 1rem; }
+  .demo-tone-row { gap: 6px; }
+  .demo-tone { font-size: 12px; padding: 6px 10px; }
+  .cta-title { font-size: 28px; }
 }
 @media (max-width: 480px) {
   .tone-grid { grid-template-columns: 1fr 1fr; }
-  .app-grid { grid-template-columns: repeat(4, 1fr); }
   .app-btn { font-size: 10px; padding: 8px 4px; }
   .app-icon { font-size: 18px; }
   .topbar-name { font-size: 16px; }
@@ -191,6 +229,9 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
   .auth-title { font-size: 20px; }
   .result-text { font-size: 14px; }
   .profile-panel { border-radius: 16px 16px 0 0; }
+  .landing-title { font-size: 32px; }
+  .landing-features { grid-template-columns: 1fr; }
+  .landing-sub { font-size: 15px; }
 }
 </style>
 </head>
@@ -217,8 +258,70 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
   </div>
 </div>
 
+<!-- LANDING -->
+<div id="screen-landing" class="screen active">
+  <div class="landing-wrap">
+    <nav class="landing-nav">
+      <div class="brand-logo" style="margin:0">
+        <div class="brand-icon">💬</div>
+        <div class="brand-name">Co<span>odpisać</span>.pl</div>
+      </div>
+      <div style="display:flex;gap:10px;">
+        <button class="btn-nav-ghost" onclick="showScreen('screen-login')">Zaloguj się</button>
+        <button class="btn-nav-solid" onclick="showScreen('screen-register')">Zarejestruj się</button>
+      </div>
+    </nav>
+    <div class="landing-hero">
+      <div class="landing-badge">✨ Asystent odpowiedzi oparty na AI</div>
+      <h1 class="landing-title">Nie wiesz<br><span>co odpisać?</span></h1>
+      <p class="landing-sub">Wklej rozmowę, wybierz ton i dostań gotową odpowiedź w sekundy. Idealne do trudnych rozmów, flirtów, negocjacji i nie tylko.</p>
+      <div class="demo-card">
+        <div class="demo-label">Wypróbuj teraz — wklej wiadomość</div>
+        <textarea id="demo-input" placeholder="Np: Hej, możemy porozmawiać o tym projekcie? Mam kilka uwag..."></textarea>
+        <div class="demo-tone-row">
+          <button class="demo-tone selected" data-tone="profesjonalny" onclick="selectDemoTone(this)">💼 Profesjonalny</button>
+          <button class="demo-tone" data-tone="przyjazny" onclick="selectDemoTone(this)">😊 Przyjazny</button>
+          <button class="demo-tone" data-tone="bezpośredni" onclick="selectDemoTone(this)">⚡ Bezpośredni</button>
+          <button class="demo-tone" data-tone="humorystyczny" onclick="selectDemoTone(this)">😄 Humorystyczny</button>
+        </div>
+        <button class="btn-demo" onclick="tryDemo()">✨ Generuj odpowiedź</button>
+        <div id="demo-result" style="display:none" class="demo-result"></div>
+      </div>
+    </div>
+    <div class="landing-features">
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <div class="feature-title">Każda aplikacja</div>
+        <div class="feature-sub">Instagram, WhatsApp, SMS, Tinder, LinkedIn i więcej</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎭</div>
+        <div class="feature-title">6 tonów odpowiedzi</div>
+        <div class="feature-sub">Od formalnego po humorystyczny — dopasuj styl do sytuacji</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🖼️</div>
+        <div class="feature-title">Wgraj screenshot</div>
+        <div class="feature-sub">AI przeanalizuje zdjęcie rozmowy i zaproponuje odpowiedź</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💬</div>
+        <div class="feature-title">Kontynuuj rozmowę</div>
+        <div class="feature-sub">Ciągnij trudną wymianę wiadomości bez utraty kontekstu</div>
+      </div>
+    </div>
+    <div class="landing-cta">
+      <h2 class="cta-title">Zacznij za darmo</h2>
+      <p class="cta-sub">10 odpowiedzi dziennie bez opłat. Bez karty kredytowej.</p>
+      <button class="btn-cta" onclick="showScreen('screen-register')">Utwórz darmowe konto →</button>
+      <div class="cta-note">Masz już konto? <button class="link-btn" onclick="showScreen('screen-login')">Zaloguj się</button></div>
+    </div>
+    <div class="landing-footer"><span>© 2026 Coodpisać.pl</span></div>
+  </div>
+</div>
+
 <!-- LOGIN -->
-<div id="screen-login" class="screen active">
+<div id="screen-login" class="screen">
   <div class="auth-wrap">
     <div class="auth-card">
       <div class="brand-logo"><div class="brand-icon">💬</div><div class="brand-name">Co<span>odpisać</span>.pl</div></div>
@@ -230,6 +333,7 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
       <button class="btn-primary" id="login-btn" onclick="doLogin()">Zaloguj się</button>
       <div class="auth-footer">Nie masz konta? <button class="link-btn" onclick="showScreen('screen-register')">Zarejestruj się</button></div>
       <div class="auth-footer" style="margin-top:6px;"><button class="link-btn" onclick="showScreen('screen-reset')">Zapomniałam hasła?</button></div>
+      <div class="auth-footer" style="margin-top:6px;"><button class="link-btn" onclick="showScreen('screen-landing')">← Wróć na stronę główną</button></div>
     </div>
   </div>
 </div>
@@ -247,6 +351,7 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
       <div class="field"><label>Hasło</label><input type="password" id="register-pass" placeholder="min. 6 znaków" /></div>
       <button class="btn-primary" id="register-btn" onclick="doRegister()">Zarejestruj się</button>
       <div class="auth-footer">Masz już konto? <button class="link-btn" onclick="showScreen('screen-login')">Zaloguj się</button></div>
+      <div class="auth-footer" style="margin-top:6px;"><button class="link-btn" onclick="showScreen('screen-landing')">← Wróć na stronę główną</button></div>
     </div>
   </div>
 </div>
@@ -265,9 +370,7 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
       <div class="auth-footer"><button class="link-btn" onclick="showScreen('screen-login')">← Wróć</button></div>
     </div>
   </div>
-</div>
-
-<!-- MAIN -->
+</div><!-- MAIN -->
 <div id="screen-main" class="screen">
   <div class="topbar">
     <div class="topbar-brand">
@@ -388,14 +491,15 @@ let uploadedImageBase64 = null;
 let isLoading = false;
 let currentUser = null;
 let conversationHistory = [];
+let demoTone = 'profesjonalny';
 
 async function initAuth() {
   const { data: { session } } = await sb.auth.getSession();
   if (session) { currentUser = session.user; await onLogin(); }
-  else showScreen('screen-login');
+  else showScreen('screen-landing');
   sb.auth.onAuthStateChange(async (event, session) => {
     if (event === 'SIGNED_IN' && session) { currentUser = session.user; await onLogin(); }
-    else if (event === 'SIGNED_OUT') { currentUser = null; showScreen('screen-login'); }
+    else if (event === 'SIGNED_OUT') { currentUser = null; showScreen('screen-landing'); }
   });
 }
 
@@ -436,7 +540,7 @@ async function doRegister() {
   const { error } = await sb.auth.signUp({ email, password: pass });
   btn.disabled = false; btn.textContent = 'Zarejestruj się';
   if (error) { errEl.textContent = error.message; errEl.style.display = 'block'; }
-  else { sucEl.textContent = 'Sprawdź e-mail i potwierdź rejestrację!'; sucEl.style.display = 'block'; }
+  else { sucEl.textContent = 'Konto utworzone! Możesz się teraz zalogować.'; sucEl.style.display = 'block'; setTimeout(() => showScreen('screen-login'), 2000); }
 }
 
 async function doReset() {
@@ -457,7 +561,9 @@ async function changePassword() {
   else { showNotif('Hasło zmienione ✓'); document.getElementById('new-password').value = ''; }
 }
 
-async function logout() { await sb.auth.signOut(); closeProfile(); }async function loadUsageCount() {
+async function logout() { await sb.auth.signOut(); closeProfile(); }
+
+async function loadUsageCount() {
   const today = new Date().toISOString().split('T')[0];
   const { data } = await sb.from('usage').select('count').eq('user_id', currentUser.id).eq('date', today).maybeSingle();
   usedCount = data?.count || 0;
@@ -589,6 +695,35 @@ function removeImage() {
 function selectTone(btn) {
   document.querySelectorAll('.tone-btn').forEach(b => b.classList.remove('selected'));
   btn.classList.add('selected'); selectedTone = btn.dataset.tone;
+}
+
+function selectDemoTone(btn) {
+  document.querySelectorAll('.demo-tone').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  demoTone = btn.dataset.tone;
+}
+
+async function tryDemo() {
+  const msg = document.getElementById('demo-input').value.trim();
+  if (!msg) {
+    document.getElementById('demo-input').style.borderColor = '#EF4444';
+    setTimeout(() => document.getElementById('demo-input').style.borderColor = '', 2000);
+    return;
+  }
+  const resultEl = document.getElementById('demo-result');
+  resultEl.style.display = 'block';
+  resultEl.innerHTML = '<div class="demo-result-label">✨ Generowanie...</div><div style="color:var(--gray-400);font-size:13px;">AI przygotowuje odpowiedź...</div>';
+  try {
+    const resp = await fetch('/api/reply', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ conversation: msg, tone: demoTone }) });
+    const data = await resp.json();
+    if (data.error) throw new Error(data.error);
+    resultEl.innerHTML = `<div class="demo-result-label">✨ Proponowana odpowiedź</div>${data.reply.replace(/\n/g,'<br>')}
+      <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--violet-mid);font-size:13px;color:var(--violet);font-weight:600;">
+        Chcesz więcej? <button class="link-btn" onclick="showScreen('screen-register')" style="font-size:13px;">Zarejestruj się za darmo →</button>
+      </div>`;
+  } catch(e) {
+    resultEl.innerHTML = `<div style="color:#DC2626;font-size:13px;">Błąd: ${e.message}</div>`;
+  }
 }async function generateReply() {
   if (isLoading) return;
   if (usedCount >= DAILY_LIMIT) { showScreen('screen-pro'); return; }
