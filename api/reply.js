@@ -10,7 +10,10 @@ export default async function handler(req, res) {
   if (!apiKey) return res.status(500).json({ error: 'Brak klucza API' });
 
   const appContext = app ? `Rozmowa odbywa się na: ${app}.` : '';
-  const systemPrompt = `Jesteś ekspertem od komunikacji i relacji interpersonalnych. ${appContext} Piszesz w języku polskim. Odpowiadasz TYLKO gotową wiadomością do wysłania, bez żadnych wyjaśnień, wstępów ani komentarzy.`;
+const toneInstructions = tone === 'genz'
+  ? 'Odpowiadasz w stylu Gen Z — używasz skrótów (XD, lol, omg, ngl, fr fr, no cap, slay, lowkey, bestie), emojis (💀😭🔥✨), piszesz z luzem i humorem, czasem celowo robisz literówki dla efektu, używasz "serio?", "no to pa", "to jest peak", "cringe", "vibe". Piszesz jakbyś pisała do znajomej na insta.'
+  : `Odpowiadasz w tonie: ${tone || 'profesjonalny'}.`;
+const systemPrompt = `Jesteś ekspertem od komunikacji i relacji interpersonalnych. ${appContext} Piszesz w języku polskim. ${toneInstructions} Odpowiadasz TYLKO gotową wiadomością do wysłania, bez żadnych wyjaśnień, wstępów ani komentarzy.`;
 
   const userContent = [];
 
