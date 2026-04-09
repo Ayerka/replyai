@@ -915,9 +915,12 @@ async function onLogin() {
   document.getElementById('account-avatar-big').textContent = initials;
   document.getElementById('account-email-display').textContent = email;
   document.getElementById('account-name-display').textContent = email.split('@')[0];
+
+  await loadUserPlan();
   await loadUsageCount();
   await loadHistory();
   updateUsageUI();
+  applyPlanRestrictions();
 }
 
 async function doLogin() {
@@ -968,7 +971,47 @@ async function changePassword() {
 }
 
 async function logout() { await sb.auth.signOut(); }
+let userPlan = 'free';
+const PLAN_LIMITS = {
+  free: { responses: 10, variants: 1, history: 30 },
+  starter: { responses: 100, variants: 2, history: 30 },
+  pro: { responses: 500, variants: 4, history: 9999 },
+  unlimited: { responses: 999999, variants: 4, history: 9999 }
+};
 
+async function loadUserPlan() {
+  const { data } = await sb.from('profiles').select('plan').eq('id', currentUser.id).maybeSingle();
+  if (!data) {
+    await sb.from('profiles').insert({ id: currentUser.id, plan: 'free' });
+    userPlan = 'free';
+  } else {
+    userPlan = data.plan || 'free';
+  }
+}
+
+function applyPlanRestrictions() {
+  const limits = PLAN_LIMITS[userPlan];
+
+  document.querySelectorAll('.count-btn').forEach(btn => {
+    const count = parseInt(btn.dataset.count);
+    if (count > limits.variants) {
+      btn.disabled = true;
+      btn.style.opacity = '0.4';
+      btn.style.cursor = 'not-allowed';
+      btn.title = `Dostępne w planie ${count <= 2 ? 'Starter' : 'Pro'}`;
+      btn.textContent = '🔒 ' + count;
+    } else {
+      btn.disabled = false;
+      btn.style.opacity = '1';
+      btn.style.cursor = 'pointer';
+      btn.textContent = count;
+    }
+  });
+
+  const planNames = { free: 'Darmowy', starter: 'Starter', pro: 'Pro', unlimited: 'Unlimited' };
+  const badge = document.getElementById('account-plan-badge');
+  if (badge) badge.textContent = '✨ Plan ' + (planNames[userPlan] || 'Darmowy');
+}
 async function loadUsageCount() {
   const month = new Date().toISOString().slice(0, 7);
   const { data } = await sb.from('usage').select('count').eq('user_id', currentUser.id).eq('date', month).maybeSingle();
@@ -990,7 +1033,12 @@ function updateUsageUI() {
   document.getElementById('usage-bar').className = 'usage-bar-fill ' + (pct >= 90 ? 'high' : pct >= 60 ? 'med' : 'low');
   document.getElementById('usage-dot').className = 'usage-dot ' + (pct >= 90 ? 'danger' : pct >= 60 ? 'warn' : '');
   document.getElementById('usage-text').textContent = usedCount + ' / ' + DAILY_LIMIT;
-  document.getElementById('usage-info').textContent = 'Pozostało ' + remaining + ' z ' + DAILY_LIMIT + ' w tym miesiącu';
+  const limit = PLAN_LIMITS[userPlan]?.responses || 10;
+const rem = limit - usedCount;
+document.getElementById('usage-text').textContent = usedCount + ' / ' + limit;
+document.getElementById('usage-info').textContent = 'Pozostało ' + rem + ' z ' + limit + ' w tym miesiącu';
+if (document.getElementById('stat-remaining')) document.getElementById('stat-remaining').textContent = rem;
+if (document.getElementById('stat-today')) document.getElementById('stat-today').textContent = usedCount;
   const statToday = document.getElementById('stat-today');
   const statRemaining = document.getElementById('stat-remaining');
   if (statToday) statToday.textContent = usedCount;
@@ -1202,7 +1250,8 @@ async function tryDemo() {
 
 async function generateReply() {
   if (isLoading) return;
-  if (usedCount >= DAILY_LIMIT) { showScreen('screen-pro'); return; }
+  const planLimit = PLAN_LIMITS[userPlan]?.responses || 10;
+if (usedCount >= planLimit) { showScreen('screen-pro'); return; }
   const convo = document.getElementById('convo-input').value.trim();
   const context = document.getElementById('context-input').value.trim();
   const personType = document.getElementById('person-type').value;
