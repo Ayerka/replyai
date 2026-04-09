@@ -735,6 +735,14 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
           </div>
         </div>
       </div>
+     <div class="account-section" id="custom-instructions-section" style="display:none">
+  <div class="account-section-header"><div class="account-section-icon">🤖</div><div class="account-section-title">Własne instrukcje AI</div></div>
+  <div class="account-section-body">
+    <p style="font-size:13px;color:var(--gray-400);margin-bottom:12px;line-height:1.6;">Instrukcje które AI zawsze będzie stosować. Dostępne tylko w planie Unlimited.</p>
+    <div class="account-field"><label>Twoje instrukcje</label><textarea id="custom-instructions" style="min-height:100px;resize:vertical;" placeholder="Np. Zawsze pisz krótko. Używaj angielskiego. Unikaj emojis."></textarea></div>
+    <button class="btn-account-save" onclick="saveCustomInstructions()">Zapisz instrukcje</button>
+  </div>
+</div>
       <div class="account-section">
         <div class="account-section-header"><div class="account-section-icon">🔒</div><div class="account-section-title">Zmień hasło</div></div>
         <div class="account-section-body">
@@ -744,8 +752,7 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
         </div>
       </div>
       <div class="account-section">
-        <div class="account-section-header"><div class="account-section-icon">💬</div><div class="account-section-title">Historia rozmów</div></div>
-        <div class="account-section-body"><div id="account-history-list"><div class="history-empty">Ładowanie...</div></div></div>
+<div class="account-section-header"><div class="account-section-icon">💬</div><div class="account-section-title">Historia rozmów</div><button id="export-btn" onclick="exportHistory()" style="display:none;margin-left:auto;padding:6px 14px;border-radius:8px;border:1.5px solid var(--violet-mid);background:var(--violet-light);color:var(--violet);font-family:var(--font);font-size:12px;font-weight:700;cursor:pointer;">⬇ Eksportuj CSV</button></div>        <div class="account-section-body"><div id="account-history-list"><div class="history-empty">Ładowanie...</div></div></div>
       </div>
       <div class="account-section">
         <div class="account-section-header"><div class="account-section-icon">🚀</div><div class="account-section-title">Ulepsz plan</div></div>
@@ -1181,8 +1188,9 @@ async function tryDemo() {
   document.getElementById('result-area').innerHTML = `<div class="result-card" style="opacity:0.6;"><div class="result-header"><div class="result-label">✨ Generowanie...</div></div><div class="result-text" style="color:var(--gray-400);">AI analizuje rozmowę...</div></div>`;
   try {
     const body = {
-      conversation: convo,
-      context,
+  conversation: convo,
+  context,
+  customInstructions: customInstructions || '',
       tone: selectedTone,
       customTone: selectedTone === 'custom' ? customTone : '',
       app: selectedApp,
@@ -1288,14 +1296,55 @@ function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
-  if (id === 'screen-account') { loadHistory(); updateUsageUI(); }
-}
+if (id === 'screen-account') { loadHistory(); updateUsageUI(); applyUnlimitedFeatures(); }}
 
 function scrollToSection(id) {
   const el = document.getElementById(id);
   if (el) el.scrollIntoView({ behavior: 'smooth' });
 }
+let customInstructions = '';
 
+async function loadCustomInstructions() {
+  const { data } = await sb.from('profiles').select('custom_instructions').eq('id', currentUser.id).maybeSingle();
+  customInstructions = data?.custom_instructions || '';
+  const el = document.getElementById('custom-instructions');
+  if (el) el.value = customInstructions;
+}
+
+async function saveCustomInstructions() {
+  const val = document.getElementById('custom-instructions').value.trim();
+  const { error } = await sb.from('profiles').update({ custom_instructions: val }).eq('id', currentUser.id);
+  if (error) showNotif('Błąd zapisu: ' + error.message);
+  else { customInstructions = val; showNotif('Instrukcje zapisane ✓'); }
+}
+
+function exportHistory() {
+  if (!conversationHistory.length) { showNotif('Brak historii do eksportu'); return; }
+  const headers = ['Data', 'Aplikacja', 'Ton', 'Rozmowa', 'Odpowiedź'];
+  const rows = conversationHistory.map(c => [
+    new Date(c.created_at).toLocaleDateString('pl-PL'),
+    c.app || '',
+    c.tone || '',
+    (c.conversation || '').replace(/"/g, '""'),
+    (c.reply || '').replace(/"/g, '""')
+  ]);
+  const csv = [headers, ...rows].map(r => r.map(v => `"${v}"`).join(',')).join('\n');
+  const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'coodpisac-historia.csv';
+  a.click(); URL.revokeObjectURL(url);
+  showNotif('Eksport gotowy! ✓');
+}
+
+function applyUnlimitedFeatures() {
+  const isUnlimited = userPlan === 'unlimited';
+  const instructionsSection = document.getElementById('custom-instructions-section');
+  const exportBtn = document.getElementById('export-btn');
+  if (instructionsSection) instructionsSection.style.display = isUnlimited ? 'block' : 'none';
+  if (exportBtn) exportBtn.style.display = isUnlimited ? 'inline-block' : 'none';
+  if (isUnlimited) loadCustomInstructions();
+}
 function toggleFaq(el) {
   const answer = el.nextElementSibling;
   const arrow = el.querySelector('.faq-arrow');
