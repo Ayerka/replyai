@@ -215,8 +215,8 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
 .count-btn.selected { border-color: var(--violet); background: var(--violet-light); color: var(--violet); }
 .custom-tone-input { width: 100%; border: 1.5px solid var(--gray-200); border-radius: 10px; padding: 10px 14px; font-family: var(--font); font-size: 14px; color: var(--gray-800); background: var(--gray-50); outline: none; transition: all 0.15s; margin-top: 8px; resize: none; min-height: auto; }
 .custom-tone-input:focus { border-color: var(--violet); background: var(--white); }
-.context-popup-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 200; align-items: center; justify-content: center; padding: 1rem; }
-.context-popup-overlay.open { display: flex; }
+.context-popup-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 200; align-items: center; justify-content: center; padding: 1rem; pointer-events: none; }
+.context-popup-overlay.open { display: flex; pointer-events: all; }.context-popup-overlay.open { display: flex; }
 .context-popup { background: var(--white); border-radius: 24px; padding: 2rem; width: 100%; max-width: 480px; box-shadow: 0 8px 60px rgba(0,0,0,0.2); }
 .context-popup-title { font-size: 18px; font-weight: 700; color: var(--gray-800); margin-bottom: 0.25rem; }
 .context-popup-sub { font-size: 14px; color: var(--gray-400); margin-bottom: 1.5rem; }
