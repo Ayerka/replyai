@@ -119,6 +119,8 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
 .remove-img:hover { color: #DC2626; }
 .context-input { width: 100%; border: 1.5px solid var(--gray-200); border-radius: 12px; padding: 11px 14px; font-family: var(--font); font-size: 14px; color: var(--gray-800); background: var(--gray-50); outline: none; transition: all 0.15s; }
 .context-input:focus { border-color: var(--violet); background: var(--white); }
+.select-input { width: 100%; border: 1.5px solid var(--gray-200); border-radius: 12px; padding: 11px 14px; font-family: var(--font); font-size: 14px; color: var(--gray-800); background: var(--gray-50); outline: none; transition: all 0.15s; cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2394A3B8' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; }
+.select-input:focus { border-color: var(--violet); background-color: var(--white); }
 .section-title { font-size: 13px; font-weight: 700; color: var(--gray-800); margin-bottom: 10px; }
 .tone-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .tone-btn { padding: 10px 8px; border-radius: 10px; border: 1.5px solid var(--gray-200); background: var(--white); font-family: var(--font); font-size: 13px; font-weight: 500; color: var(--gray-600); cursor: pointer; text-align: center; transition: all 0.15s; display: flex; align-items: center; justify-content: center; gap: 5px; }
@@ -154,28 +156,6 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
 .pro-cta-title { font-size: 13px; font-weight: 700; color: var(--violet); margin-bottom: 4px; }
 .pro-cta-sub { font-size: 12px; color: var(--gray-400); margin-bottom: 10px; line-height: 1.5; }
 .btn-pro-small { width: 100%; padding: 9px; background: linear-gradient(135deg, var(--blue), var(--violet)); color: var(--white); border: none; border-radius: 8px; font-family: var(--font); font-size: 13px; font-weight: 700; cursor: pointer; }
-.profile-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 100; align-items: flex-start; justify-content: flex-end; padding: 70px 1rem 0; }
-.profile-overlay.open { display: flex; }
-.profile-panel { background: var(--white); border-radius: 20px; width: 340px; border: 1px solid var(--gray-200); box-shadow: 0 8px 40px rgba(0,0,0,0.15); overflow: hidden; max-height: calc(100vh - 80px); overflow-y: auto; }
-.profile-header { padding: 1.5rem; background: linear-gradient(135deg, var(--blue-light), var(--violet-light)); border-bottom: 1px solid var(--violet-mid); }
-.profile-avatar { width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--violet)); display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; color: white; margin-bottom: 10px; }
-.profile-email { font-size: 13px; color: var(--gray-600); }
-.profile-name { font-size: 16px; font-weight: 700; color: var(--gray-800); }
-.profile-section { padding: 1rem 1.5rem; border-bottom: 1px solid var(--gray-100); }
-.profile-section-title { font-size: 11px; font-weight: 700; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
-.profile-field { margin-bottom: 8px; }
-.profile-field label { display: block; font-size: 12px; font-weight: 600; color: var(--gray-600); margin-bottom: 4px; }
-.profile-field input { width: 100%; padding: 9px 12px; border: 1.5px solid var(--gray-200); border-radius: 8px; font-family: var(--font); font-size: 13px; color: var(--gray-800); background: var(--gray-50); outline: none; transition: border-color 0.15s; }
-.profile-field input:focus { border-color: var(--violet); }
-.btn-save { width: 100%; padding: 10px; background: linear-gradient(135deg, var(--blue), var(--violet)); color: white; border: none; border-radius: 8px; font-family: var(--font); font-size: 13px; font-weight: 700; cursor: pointer; margin-top: 4px; }
-.history-item { padding: 10px 12px; border-radius: 10px; border: 1px solid var(--gray-200); margin-bottom: 8px; cursor: pointer; transition: all 0.15s; }
-.history-item:hover { border-color: var(--violet-mid); background: var(--violet-light); }
-.history-app { font-size: 11px; font-weight: 600; color: var(--violet); margin-bottom: 2px; }
-.history-preview { font-size: 13px; color: var(--gray-600); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.history-date { font-size: 11px; color: var(--gray-400); margin-top: 2px; }
-.history-empty { font-size: 13px; color: var(--gray-400); text-align: center; padding: 1rem 0; }
-.btn-logout { width: calc(100% - 3rem); margin: 1rem 1.5rem; padding: 12px; background: none; border: 1.5px solid var(--gray-200); border-radius: 10px; font-family: var(--font); font-size: 14px; font-weight: 600; color: #DC2626; cursor: pointer; transition: all 0.15s; }
-.btn-logout:hover { background: #FEF2F2; border-color: #FECACA; }
 .pro-card { background: var(--white); border-radius: 28px; padding: 3rem 2.5rem; width: 100%; max-width: 480px; border: 1px solid rgba(124,58,237,0.12); box-shadow: 0 8px 60px rgba(124,58,237,0.12); text-align: center; }
 .pro-badge { display: inline-flex; align-items: center; gap: 6px; background: linear-gradient(135deg, var(--blue), var(--violet)); color: var(--white); font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 16px; border-radius: 99px; margin-bottom: 1.5rem; }
 .pro-title { font-family: var(--serif); font-size: 34px; color: var(--gray-800); margin-bottom: 0.5rem; }
@@ -189,6 +169,37 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
 .check { width: 22px; height: 22px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--violet)); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 11px; color: white; font-weight: 700; }
 .btn-pro-main { width: 100%; padding: 15px; background: linear-gradient(135deg, var(--blue) 0%, var(--violet) 100%); color: var(--white); border: none; border-radius: 14px; font-family: var(--font); font-size: 16px; font-weight: 800; cursor: pointer; margin-bottom: 1rem; box-shadow: 0 4px 20px rgba(124,58,237,0.3); }
 .btn-back { background: none; border: none; font-family: var(--font); font-size: 14px; color: var(--gray-400); cursor: pointer; }
+.account-wrap { min-height: 100vh; background: var(--gray-50); display: flex; flex-direction: column; }
+.account-topbar { background: var(--white); border-bottom: 1px solid var(--gray-200); padding: 0 2rem; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+.account-body { flex: 1; padding: 2rem; max-width: 800px; margin: 0 auto; width: 100%; display: flex; flex-direction: column; gap: 1.5rem; }
+.account-header-card { background: linear-gradient(135deg, var(--blue), var(--violet)); border-radius: 20px; padding: 2rem; color: white; display: flex; align-items: center; gap: 1.5rem; }
+.account-avatar-big { width: 72px; height: 72px; border-radius: 50%; background: rgba(255,255,255,0.25); display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 800; flex-shrink: 0; }
+.account-info-name { font-size: 22px; font-weight: 800; margin-bottom: 4px; }
+.account-info-email { font-size: 14px; opacity: 0.8; margin-bottom: 8px; }
+.account-plan-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.2); border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 700; }
+.account-section { background: var(--white); border-radius: 16px; border: 1px solid var(--gray-200); overflow: hidden; }
+.account-section-header { padding: 1rem 1.5rem; border-bottom: 1px solid var(--gray-100); display: flex; align-items: center; gap: 10px; }
+.account-section-icon { font-size: 18px; }
+.account-section-title { font-size: 15px; font-weight: 700; color: var(--gray-800); }
+.account-section-body { padding: 1.25rem 1.5rem; }
+.account-field { margin-bottom: 1rem; }
+.account-field label { display: block; font-size: 13px; font-weight: 600; color: var(--gray-600); margin-bottom: 6px; }
+.account-field input { width: 100%; padding: 11px 14px; border: 1.5px solid var(--gray-200); border-radius: 10px; font-family: var(--font); font-size: 14px; color: var(--gray-800); background: var(--gray-50); outline: none; transition: all 0.15s; }
+.account-field input:focus { border-color: var(--violet); background: var(--white); }
+.btn-account-save { padding: 10px 24px; background: linear-gradient(135deg, var(--blue), var(--violet)); color: white; border: none; border-radius: 10px; font-family: var(--font); font-size: 14px; font-weight: 700; cursor: pointer; }
+.account-stat-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+.account-stat { background: var(--gray-50); border-radius: 12px; padding: 1rem; text-align: center; }
+.account-stat-num { font-size: 28px; font-weight: 800; color: var(--violet); margin-bottom: 4px; }
+.account-stat-label { font-size: 12px; color: var(--gray-400); font-weight: 500; }
+.history-item { padding: 12px 14px; border-radius: 12px; border: 1px solid var(--gray-200); margin-bottom: 8px; cursor: pointer; transition: all 0.15s; }
+.history-item:hover { border-color: var(--violet-mid); background: var(--violet-light); }
+.history-item-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
+.history-app { font-size: 11px; font-weight: 700; color: var(--violet); }
+.history-date { font-size: 11px; color: var(--gray-400); }
+.history-preview { font-size: 13px; color: var(--gray-600); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.history-empty { font-size: 13px; color: var(--gray-400); text-align: center; padding: 2rem 0; }
+.btn-danger { padding: 10px 24px; background: none; border: 1.5px solid #FECACA; border-radius: 10px; font-family: var(--font); font-size: 14px; font-weight: 600; color: #DC2626; cursor: pointer; transition: all 0.15s; }
+.btn-danger:hover { background: #FEF2F2; }
 .loading-dots { display: inline-flex; gap: 4px; }
 .loading-dots span { width: 6px; height: 6px; border-radius: 50%; background: var(--white); animation: blink 1.2s infinite; }
 .loading-dots span:nth-child(2) { animation-delay: 0.2s; }
@@ -201,63 +212,29 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
   .left-panel { border-right: none; border-bottom: 1px solid var(--gray-200); padding: 1rem; }
   .right-panel { width: 100%; padding: 1rem; }
   .tone-grid { grid-template-columns: 1fr 1fr 1fr; }
-  .topbar { padding: 0 1rem; }
+  .topbar, .account-topbar { padding: 0 1rem; }
   .topbar-name { font-size: 17px; }
   .usage-pill { padding: 5px 10px; font-size: 12px; }
   .auth-card { padding: 2rem 1.5rem; }
   .pro-card { padding: 2rem 1.5rem; }
-  .pro-title { font-size: 26px; }
-  .price-amount { font-size: 40px; }
-  .profile-overlay { padding: 64px 0.75rem 0; }
-  .profile-panel { width: 100%; }
-  textarea { min-height: 110px; }
-  .card { border-radius: 12px; }
-  .btn-generate { padding: 13px; font-size: 14px; }
-  .empty-state { padding: 2rem 1rem; }
   .landing-title { font-size: 38px; }
   .landing-features { grid-template-columns: 1fr 1fr; padding: 0 1rem 3rem; }
   .landing-nav { padding: 1rem; }
-  .demo-tone-row { gap: 6px; }
-  .demo-tone { font-size: 12px; padding: 6px 10px; }
-  .cta-title { font-size: 28px; }
+  .account-body { padding: 1rem; }
+  .account-stat-grid { grid-template-columns: 1fr 1fr; }
+  .account-header-card { flex-direction: column; text-align: center; }
 }
 @media (max-width: 480px) {
   .tone-grid { grid-template-columns: 1fr 1fr; }
   .app-btn { font-size: 10px; padding: 8px 4px; }
   .app-icon { font-size: 18px; }
-  .topbar-name { font-size: 16px; }
-  .brand-name { font-size: 20px; }
-  .auth-title { font-size: 20px; }
-  .result-text { font-size: 14px; }
-  .profile-panel { border-radius: 16px 16px 0 0; }
   .landing-title { font-size: 32px; }
   .landing-features { grid-template-columns: 1fr; }
-  .landing-sub { font-size: 15px; }
+  .account-stat-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 <body><div class="notification" id="notif"></div>
-
-<!-- PROFILE PANEL -->
-<div class="profile-overlay" id="profile-overlay" onclick="closeProfileIfOutside(event)">
-  <div class="profile-panel">
-    <div class="profile-header">
-      <div class="profile-avatar" id="profile-avatar-big">?</div>
-      <div class="profile-name" id="profile-name-display">Użytkownik</div>
-      <div class="profile-email" id="profile-email-display"></div>
-    </div>
-    <div class="profile-section">
-      <div class="profile-section-title">Zmień hasło</div>
-      <div class="profile-field"><label>Nowe hasło</label><input type="password" id="new-password" placeholder="min. 6 znaków" /></div>
-      <button class="btn-save" onclick="changePassword()">Zapisz hasło</button>
-    </div>
-    <div class="profile-section">
-      <div class="profile-section-title">Historia rozmów</div>
-      <div id="history-list"><div class="history-empty">Brak historii</div></div>
-    </div>
-    <button class="btn-logout" onclick="logout()">Wyloguj się</button>
-  </div>
-</div>
 
 <!-- LANDING -->
 <div id="screen-landing" class="screen active">
@@ -282,7 +259,7 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
         <div class="demo-tone-row">
           <button class="demo-tone selected" data-tone="profesjonalny" onclick="selectDemoTone(this)">💼 Profesjonalny</button>
           <button class="demo-tone" data-tone="przyjazny" onclick="selectDemoTone(this)">😊 Przyjazny</button>
-          <button class="demo-tone" data-tone="bezpośredni" onclick="selectDemoTone(this)">⚡ Bezpośredni</button>
+          <button class="demo-tone" data-tone="asertywny" onclick="selectDemoTone(this)">⚡ Asertywny</button>
           <button class="demo-tone" data-tone="genz" onclick="selectDemoTone(this)">🔥 Gen Z</button>
         </div>
         <button class="btn-demo" onclick="tryDemo()">✨ Generuj odpowiedź</button>
@@ -297,8 +274,8 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
       </div>
       <div class="feature-card">
         <div class="feature-icon">🎭</div>
-        <div class="feature-title">6 tonów odpowiedzi</div>
-        <div class="feature-sub">Od formalnego po Gen Z — dopasuj styl do sytuacji</div>
+        <div class="feature-title">8 stylów odpowiedzi</div>
+        <div class="feature-sub">Od akademickiego po Gen Z — dopasuj styl do sytuacji</div>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🖼️</div>
@@ -380,7 +357,7 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
     </div>
     <div class="topbar-right">
       <div class="usage-pill"><div class="usage-dot" id="usage-dot"></div><span id="usage-text">0 / 10</span></div>
-      <div class="avatar-btn" id="avatar-btn" onclick="toggleProfile()">?</div>
+      <div class="avatar-btn" id="avatar-btn" onclick="showScreen('screen-account')">?</div>
     </div>
   </div>
   <div class="main-body">
@@ -403,10 +380,28 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
           <button class="app-btn" data-app="TikTok" data-icon="🎵" onclick="selectApp(this)"><span class="app-icon">🎵</span>TikTok</button>
         </div>
       </div>
+
+      <div class="card">
+        <div class="card-label">Kim jest ta osoba?</div>
+        <select class="select-input" id="person-type">
+          <option value="">Wybierz relację (opcjonalnie)</option>
+          <option value="szef">👔 Szef / przełożony</option>
+          <option value="wykładowca">🎓 Wykładowca / nauczyciel</option>
+          <option value="rodzina">👨‍👩‍👧 Rodzina</option>
+          <option value="partner">❤️ Partner / partnerka</option>
+          <option value="znajomy">😊 Znajomy / znajoma</option>
+          <option value="klient">💼 Klient</option>
+          <option value="rekruter">📋 Rekruter</option>
+          <option value="były">💔 Były / była</option>
+          <option value="inne">✏️ Inne</option>
+        </select>
+      </div>
+
       <div class="card">
         <div class="card-label">Wklej lub wpisz rozmowę</div>
         <textarea id="convo-input" placeholder="Wklej tutaj treść rozmowy..."></textarea>
       </div>
+
       <div class="card">
         <div class="card-label">Dodaj screenshot (opcjonalnie)</div>
         <div class="upload-area" id="upload-area" onclick="document.getElementById('file-input').click()" ondragover="handleDragOver(event)" ondrop="handleDrop(event)" ondragleave="this.classList.remove('dragover')">
@@ -417,10 +412,12 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
         <input type="file" id="file-input" accept="image/*" style="display:none" onchange="handleFileSelect(event)" />
         <button class="remove-img" id="remove-img-btn" onclick="removeImage()">✕ Usuń zdjęcie</button>
       </div>
+
       <div class="card">
-        <div class="card-label">Kontekst sytuacji</div>
-        <input class="context-input" id="context-input" placeholder="Np. to mój szef, zależy mi na profesjonalnym tonie..." />
+        <div class="card-label">Dodatkowy kontekst</div>
+        <input class="context-input" id="context-input" placeholder="Np. kłócimy się od tygodnia, zależy mi na deeskalacji..." />
       </div>
+
       <div id="result-area">
         <div class="empty-state">
           <div class="empty-icon">✨</div>
@@ -429,16 +426,21 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
         </div>
       </div>
     </div>
+
     <div class="right-panel">
       <div>
         <div class="section-title">Ton odpowiedzi</div>
         <div class="tone-grid">
           <button class="tone-btn selected" data-tone="profesjonalny" onclick="selectTone(this)">💼 Profesjonalny</button>
           <button class="tone-btn" data-tone="przyjazny" onclick="selectTone(this)">😊 Przyjazny</button>
-          <button class="tone-btn" data-tone="bezpośredni" onclick="selectTone(this)">⚡ Bezpośredni</button>
-          <button class="tone-btn" data-tone="dyplomatyczny" onclick="selectTone(this)">🤝 Dyplomatyczny</button>
-          <button class="tone-btn" data-tone="humorystyczny" onclick="selectTone(this)">😄 Humorystyczny</button>
-          <button class="tone-btn" data-tone="formalny" onclick="selectTone(this)">📝 Formalny</button>
+          <button class="tone-btn" data-tone="asertywny" onclick="selectTone(this)">⚡ Asertywny</button>
+          <button class="tone-btn" data-tone="empatyczny" onclick="selectTone(this)">🤗 Empatyczny</button>
+          <button class="tone-btn" data-tone="perswazyjny" onclick="selectTone(this)">🎯 Perswazyjny</button>
+          <button class="tone-btn" data-tone="sarkatyczny" onclick="selectTone(this)">😏 Sarkatyczny</button>
+          <button class="tone-btn" data-tone="przepraszający" onclick="selectTone(this)">🙏 Przepraszający</button>
+          <button class="tone-btn" data-tone="stanowczy" onclick="selectTone(this)">💪 Stanowczy</button>
+          <button class="tone-btn" data-tone="akademicki" onclick="selectTone(this)">🎓 Akademicki</button>
+          <button class="tone-btn" data-tone="flirtujący" onclick="selectTone(this)">😘 Flirtujący</button>
           <button class="tone-btn" data-tone="genz" onclick="selectTone(this)">🔥 Gen Z</button>
         </div>
       </div>
@@ -459,6 +461,95 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
   </div>
 </div>
 
+<!-- ACCOUNT -->
+<div id="screen-account" class="screen">
+  <div class="account-wrap">
+    <div class="account-topbar">
+      <div class="topbar-brand" onclick="showScreen('screen-main')">
+        <div class="topbar-icon">💬</div>
+        <div class="topbar-name">Co<span>odpisać</span>.pl</div>
+      </div>
+      <button class="btn-nav-ghost" onclick="showScreen('screen-main')">← Wróć do aplikacji</button>
+    </div>
+    <div class="account-body">
+      <div class="account-header-card">
+        <div class="account-avatar-big" id="account-avatar-big">?</div>
+        <div>
+          <div class="account-info-name" id="account-name-display">Użytkownik</div>
+          <div class="account-info-email" id="account-email-display"></div>
+          <div class="account-plan-badge">✨ Plan darmowy — 10 odpowiedzi/dzień</div>
+        </div>
+      </div>
+
+      <div class="account-section">
+        <div class="account-section-header">
+          <div class="account-section-icon">📊</div>
+          <div class="account-section-title">Twoje statystyki</div>
+        </div>
+        <div class="account-section-body">
+          <div class="account-stat-grid">
+            <div class="account-stat">
+              <div class="account-stat-num" id="stat-today">0</div>
+              <div class="account-stat-label">odpowiedzi dziś</div>
+            </div>
+            <div class="account-stat">
+              <div class="account-stat-num" id="stat-total">0</div>
+              <div class="account-stat-label">wszystkich rozmów</div>
+            </div>
+            <div class="account-stat">
+              <div class="account-stat-num" id="stat-remaining">10</div>
+              <div class="account-stat-label">pozostało dziś</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="account-section">
+        <div class="account-section-header">
+          <div class="account-section-icon">🔒</div>
+          <div class="account-section-title">Zmień hasło</div>
+        </div>
+        <div class="account-section-body">
+          <div class="account-field"><label>Nowe hasło</label><input type="password" id="new-password" placeholder="min. 6 znaków" /></div>
+          <div class="account-field"><label>Powtórz hasło</label><input type="password" id="new-password-confirm" placeholder="min. 6 znaków" /></div>
+          <button class="btn-account-save" onclick="changePassword()">Zapisz nowe hasło</button>
+        </div>
+      </div>
+
+      <div class="account-section">
+        <div class="account-section-header">
+          <div class="account-section-icon">💬</div>
+          <div class="account-section-title">Historia rozmów</div>
+        </div>
+        <div class="account-section-body">
+          <div id="account-history-list"><div class="history-empty">Ładowanie...</div></div>
+        </div>
+      </div>
+
+      <div class="account-section">
+        <div class="account-section-header">
+          <div class="account-section-icon">🚀</div>
+          <div class="account-section-title">Ulepsz plan</div>
+        </div>
+        <div class="account-section-body">
+          <p style="font-size:14px;color:var(--gray-600);margin-bottom:1rem;line-height:1.6;">Przejdź na Pro i odpisuj bez limitów — nieograniczone odpowiedzi, historia na wszystkich urządzeniach i ekskluzywne tryby AI.</p>
+          <button class="btn-pro-main" onclick="showScreen('screen-pro')">🚀 Przejdź na Pro — 29 zł/mies.</button>
+        </div>
+      </div>
+
+      <div class="account-section">
+        <div class="account-section-header">
+          <div class="account-section-icon">⚙️</div>
+          <div class="account-section-title">Konto</div>
+        </div>
+        <div class="account-section-body">
+          <button class="btn-danger" onclick="logout()">Wyloguj się</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- PRO -->
 <div id="screen-pro" class="screen">
   <div style="min-height:100vh;background:linear-gradient(160deg,#EFF6FF 0%,#F5F3FF 60%,#EDE9FE 100%);display:flex;align-items:center;justify-content:center;padding:2rem;">
@@ -470,7 +561,7 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
       <div class="price-period">miesięcznie &bull; anuluj kiedy chcesz</div>
       <div class="pro-features">
         <div class="pro-feature"><div class="check">✓</div> Nieograniczone odpowiedzi każdego dnia</div>
-        <div class="pro-feature"><div class="check">✓</div> Tryb negocjacji i perswazji</div>
+        <div class="pro-feature"><div class="check">✓</div> Wszystkie style i tony odpowiedzi</div>
         <div class="pro-feature"><div class="check">✓</div> Analiza tonu rozmówcy</div>
         <div class="pro-feature"><div class="check">✓</div> Historia na wszystkich urządzeniach</div>
         <div class="pro-feature"><div class="check">✓</div> Priorytetowy dostęp do AI</div>
@@ -510,9 +601,9 @@ async function onLogin() {
   const email = currentUser.email || '';
   const initials = email.substring(0, 2).toUpperCase();
   document.getElementById('avatar-btn').textContent = initials;
-  document.getElementById('profile-avatar-big').textContent = initials;
-  document.getElementById('profile-email-display').textContent = email;
-  document.getElementById('profile-name-display').textContent = email.split('@')[0];
+  document.getElementById('account-avatar-big').textContent = initials;
+  document.getElementById('account-email-display').textContent = email;
+  document.getElementById('account-name-display').textContent = email.split('@')[0];
   await loadUsageCount();
   await loadHistory();
   updateUsageUI();
@@ -557,13 +648,22 @@ async function doReset() {
 
 async function changePassword() {
   const pass = document.getElementById('new-password').value;
+  const confirm = document.getElementById('new-password-confirm').value;
   if (pass.length < 6) { showNotif('Hasło musi mieć min. 6 znaków'); return; }
+  if (pass !== confirm) { showNotif('Hasła się nie zgadzają!'); return; }
   const { error } = await sb.auth.updateUser({ password: pass });
   if (error) showNotif('Błąd: ' + error.message);
-  else { showNotif('Hasło zmienione ✓'); document.getElementById('new-password').value = ''; }
+  else {
+    showNotif('Hasło zmienione ✓');
+    document.getElementById('new-password').value = '';
+    document.getElementById('new-password-confirm').value = '';
+  }
 }
 
-async function logout() { await sb.auth.signOut(); closeProfile(); }
+async function logout() {
+  await sb.auth.signOut();
+  showScreen('screen-landing');
+}
 
 async function loadUsageCount() {
   const today = new Date().toISOString().split('T')[0];
@@ -587,29 +687,38 @@ function updateUsageUI() {
   document.getElementById('usage-dot').className = 'usage-dot ' + (pct >= 90 ? 'danger' : pct >= 60 ? 'warn' : '');
   document.getElementById('usage-text').textContent = usedCount + ' / ' + DAILY_LIMIT;
   document.getElementById('usage-info').textContent = 'Pozostało ' + remaining + ' z ' + DAILY_LIMIT + ' odpowiedzi';
+  const statToday = document.getElementById('stat-today');
+  const statRemaining = document.getElementById('stat-remaining');
+  if (statToday) statToday.textContent = usedCount;
+  if (statRemaining) statRemaining.textContent = remaining;
 }
 
 async function loadHistory() {
   const { data } = await sb.from('conversations').select('*').eq('user_id', currentUser.id).order('created_at', { ascending: false }).limit(20);
   conversationHistory = data || [];
   renderHistory();
+  const statTotal = document.getElementById('stat-total');
+  if (statTotal) statTotal.textContent = conversationHistory.length;
 }
 
 function renderHistory() {
-  const el = document.getElementById('history-list');
-  if (!conversationHistory.length) { el.innerHTML = '<div class="history-empty">Brak historii</div>'; return; }
+  const el = document.getElementById('account-history-list');
+  if (!el) return;
+  if (!conversationHistory.length) { el.innerHTML = '<div class="history-empty">Brak historii rozmów</div>'; return; }
   el.innerHTML = conversationHistory.map(c => `
     <div class="history-item" onclick="loadConversation('${c.id}')">
-      <div class="history-app">${c.app ? c.app + ' · ' : ''}${c.tone || ''}</div>
-      <div class="history-preview">${(c.conversation || '').substring(0, 55)}...</div>
-      <div class="history-date">${new Date(c.created_at).toLocaleDateString('pl-PL')}</div>
+      <div class="history-item-top">
+        <div class="history-app">${c.app ? c.app + ' · ' : ''}${c.tone || ''}</div>
+        <div class="history-date">${new Date(c.created_at).toLocaleDateString('pl-PL')}</div>
+      </div>
+      <div class="history-preview">${(c.conversation || '').substring(0, 70)}...</div>
     </div>`).join('');
 }
 
 async function loadConversation(id) {
   const conv = conversationHistory.find(c => c.id === id);
   if (!conv) return;
-  closeProfile();
+  showScreen('screen-main');
   document.getElementById('convo-input').value = conv.conversation || '';
   document.getElementById('context-input').value = conv.context || '';
   if (conv.tone) {
@@ -714,7 +823,11 @@ async function tryDemo() {
   resultEl.style.display = 'block';
   resultEl.innerHTML = '<div class="demo-result-label">✨ Generowanie...</div><div style="color:var(--gray-400);font-size:13px;">AI przygotowuje odpowiedź...</div>';
   try {
-    const resp = await fetch('/api/reply', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ conversation: msg, tone: demoTone }) });
+    const resp = await fetch('/api/reply', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ conversation: msg, tone: demoTone })
+    });
     const data = await resp.json();
     if (data.error) throw new Error(data.error);
     const fullReply = data.reply;
@@ -727,8 +840,7 @@ async function tryDemo() {
         ${preview}
         <span style="filter:blur(5px);user-select:none;color:var(--gray-800);font-size:15px;">${blurred}</span>
       </div>
-      <div style="background:linear-gradient(to top, white 60%, transparent);margin-top:-30px;padding-top:30px;padding-bottom:4px;"></div>
-      <div style="text-align:center;padding-top:4px;">
+      <div style="text-align:center;padding-top:8px;border-top:1px solid var(--violet-mid);">
         <div style="font-size:13px;font-weight:700;color:var(--gray-800);margin-bottom:8px;">🔒 Zaloguj się żeby zobaczyć całą odpowiedź</div>
         <button onclick="showScreen('screen-register')" style="width:100%;padding:11px;background:linear-gradient(135deg,var(--blue),var(--violet));color:white;border:none;border-radius:10px;font-family:var(--font);font-size:14px;font-weight:700;cursor:pointer;margin-bottom:6px;">
           Utwórz darmowe konto →
@@ -738,13 +850,12 @@ async function tryDemo() {
   } catch(e) {
     resultEl.innerHTML = `<div style="color:#DC2626;font-size:13px;">Błąd: ${e.message}</div>`;
   }
-}
-
-async function generateReply() {
+}async function generateReply() {
   if (isLoading) return;
   if (usedCount >= DAILY_LIMIT) { showScreen('screen-pro'); return; }
   const convo = document.getElementById('convo-input').value.trim();
   const context = document.getElementById('context-input').value.trim();
+  const personType = document.getElementById('person-type').value;
   if (!convo && !uploadedImageBase64) {
     document.getElementById('convo-input').focus();
     document.getElementById('convo-input').style.borderColor = '#EF4444';
@@ -756,9 +867,13 @@ async function generateReply() {
   document.getElementById('gen-btn-text').innerHTML = '<div class="loading-dots"><span></span><span></span><span></span></div>';
   document.getElementById('result-area').innerHTML = `<div class="result-card" style="opacity:0.6;"><div class="result-header"><div class="result-label">✨ Generowanie...</div></div><div class="result-text" style="color:var(--gray-400);">AI analizuje rozmowę...</div></div>`;
   try {
-    const body = { conversation: convo, context, tone: selectedTone, app: selectedApp };
+    const body = { conversation: convo, context, tone: selectedTone, app: selectedApp, personType };
     if (uploadedImageBase64) body.image = uploadedImageBase64;
-    const resp = await fetch('/api/reply', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    const resp = await fetch('/api/reply', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
     const data = await resp.json();
     if (data.error) throw new Error(data.error);
     await incrementUsage();
@@ -787,7 +902,9 @@ async function generateReply() {
   isLoading = false;
   document.getElementById('gen-btn').disabled = false;
   document.getElementById('gen-btn-text').textContent = '✨ Generuj odpowiedź';
-}function continueConversation() {
+}
+
+function continueConversation() {
   const nextMsg = document.getElementById('continue-input').value.trim();
   if (!nextMsg) {
     document.getElementById('continue-input').style.borderColor = '#EF4444';
@@ -801,6 +918,7 @@ async function generateReply() {
   generateReply();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
 function copyResult() {
   const txt = document.getElementById('result-text');
   if (txt) navigator.clipboard.writeText(txt.innerText).then(() => showNotif('Skopiowano! ✓'));
@@ -815,11 +933,11 @@ function showNotif(msg) {
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
+  if (id === 'screen-account') {
+    loadHistory();
+    updateUsageUI();
+  }
 }
-
-function toggleProfile() { document.getElementById('profile-overlay').classList.toggle('open'); }
-function closeProfile() { document.getElementById('profile-overlay').classList.remove('open'); }
-function closeProfileIfOutside(e) { if (e.target === document.getElementById('profile-overlay')) closeProfile(); }
 
 function buyPro() {
   showNotif('Przekierowanie do płatności...');
@@ -827,6 +945,3 @@ function buyPro() {
 }
 
 initAuth();
-</script>
-</body>
-</html>
