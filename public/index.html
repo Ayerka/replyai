@@ -205,7 +205,29 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
 .continue-sub { font-size: 12px; color: var(--gray-400); margin-bottom: 10px; }
 .continue-card textarea { min-height: 80px; margin-bottom: 10px; }
 .btn-continue { width: 100%; padding: 11px; background: linear-gradient(135deg, var(--blue), var(--violet)); color: white; border: none; border-radius: 10px; font-family: var(--font); font-size: 14px; font-weight: 700; cursor: pointer; }
-.btn-continue:hover { opacity: 0.9; }
+.btn-continue:hover { opacity: 0.9; } .variants-row { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+.variant-btn { padding: 8px 16px; border-radius: 8px; border: 1.5px solid var(--gray-200); background: var(--white); font-family: var(--font); font-size: 13px; font-weight: 600; color: var(--gray-600); cursor: pointer; transition: all 0.15s; }
+.variant-btn:hover { border-color: var(--violet-mid); background: var(--violet-light); color: var(--violet); }
+.variant-btn.active { border-color: var(--violet); background: var(--violet-light); color: var(--violet); }
+.count-row { display: flex; gap: 8px; margin-bottom: 12px; }
+.count-btn { flex: 1; padding: 10px; border-radius: 10px; border: 1.5px solid var(--gray-200); background: var(--white); font-family: var(--font); font-size: 14px; font-weight: 600; color: var(--gray-600); cursor: pointer; transition: all 0.15s; text-align: center; }
+.count-btn:hover { border-color: var(--violet-mid); background: var(--violet-light); color: var(--violet); }
+.count-btn.selected { border-color: var(--violet); background: var(--violet-light); color: var(--violet); }
+.custom-tone-input { width: 100%; border: 1.5px solid var(--gray-200); border-radius: 10px; padding: 10px 14px; font-family: var(--font); font-size: 14px; color: var(--gray-800); background: var(--gray-50); outline: none; transition: all 0.15s; margin-top: 8px; resize: none; min-height: auto; }
+.custom-tone-input:focus { border-color: var(--violet); background: var(--white); }
+.context-popup-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 200; align-items: center; justify-content: center; padding: 1rem; }
+.context-popup-overlay.open { display: flex; }
+.context-popup { background: var(--white); border-radius: 24px; padding: 2rem; width: 100%; max-width: 480px; box-shadow: 0 8px 60px rgba(0,0,0,0.2); }
+.context-popup-title { font-size: 18px; font-weight: 700; color: var(--gray-800); margin-bottom: 0.25rem; }
+.context-popup-sub { font-size: 14px; color: var(--gray-400); margin-bottom: 1.5rem; }
+.context-popup-field { margin-bottom: 1rem; }
+.context-popup-field label { display: block; font-size: 13px; font-weight: 600; color: var(--gray-600); margin-bottom: 6px; }
+.context-popup-field input { width: 100%; padding: 10px 14px; border: 1.5px solid var(--gray-200); border-radius: 10px; font-family: var(--font); font-size: 14px; color: var(--gray-800); background: var(--gray-50); outline: none; transition: all 0.15s; }
+.context-popup-field input:focus { border-color: var(--violet); background: var(--white); }
+.context-popup-btns { display: flex; gap: 10px; margin-top: 1.5rem; }
+.btn-popup-cancel { flex: 1; padding: 12px; background: none; border: 1.5px solid var(--gray-200); border-radius: 10px; font-family: var(--font); font-size: 14px; font-weight: 600; color: var(--gray-600); cursor: pointer; }
+.btn-popup-save { flex: 2; padding: 12px; background: linear-gradient(135deg, var(--blue), var(--violet)); color: white; border: none; border-radius: 10px; font-family: var(--font); font-size: 14px; font-weight: 700; cursor: pointer; }
+.context-active-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--violet-light); border: 1px solid var(--violet-mid); border-radius: 20px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: var(--violet); margin-bottom: 8px; cursor: pointer; }
 .empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 3rem 1rem; text-align: center; }
 .empty-icon { font-size: 48px; margin-bottom: 1rem; }
 .empty-title { font-size: 16px; font-weight: 700; color: var(--gray-600); margin-bottom: 8px; }
@@ -296,6 +318,33 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
   .btn-hero-main, .btn-hero-ghost { width: 100%; }
 }
 </style><div class="notification" id="notif"></div>
+  <!-- CONTEXT POPUP -->
+<div class="context-popup-overlay" id="context-popup" onclick="closeContextPopupIfOutside(event)">
+  <div class="context-popup">
+    <div class="context-popup-title">Dodaj kontekst</div>
+    <div class="context-popup-sub">Im więcej powiesz AI, tym lepsza odpowiedź</div>
+    <div class="context-popup-field">
+      <label>Jaka jest Twoja relacja z tą osobą?</label>
+      <input type="text" id="ctx-relationship" placeholder="np. bliski znajomy, współpracownik, rodzina..." />
+    </div>
+    <div class="context-popup-field">
+      <label>Co się dzieje / jaka jest sytuacja?</label>
+      <input type="text" id="ctx-situation" placeholder="np. pokłóciliśmy się, ona mi pomogła..." />
+    </div>
+    <div class="context-popup-field">
+      <label>Jak się czujesz?</label>
+      <input type="text" id="ctx-feeling" placeholder="np. zdenerwowana, wdzięczna, zaniepokojona..." />
+    </div>
+    <div class="context-popup-field">
+      <label>Co chcesz osiągnąć?</label>
+      <input type="text" id="ctx-goal" placeholder="np. przeprosić, postawić granicę, zażartować..." />
+    </div>
+    <div class="context-popup-btns">
+      <button class="btn-popup-cancel" onclick="closeContextPopup()">Anuluj</button>
+      <button class="btn-popup-save" onclick="saveContext()">Zapisz kontekst ✓</button>
+    </div>
+  </div>
+</div>
 
 <!-- LANDING -->
 <div id="screen-landing" class="screen active">
@@ -690,10 +739,14 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
         <button class="remove-img" id="remove-img-btn" onclick="removeImage()">✕ Usuń zdjęcie</button>
       </div>
 
-      <div class="card">
-        <div class="card-label">Dodatkowy kontekst</div>
-        <input class="context-input" id="context-input" placeholder="Np. kłócimy się od tygodnia, zależy mi na deeskalacji..." />
-      </div>
+    <div class="card">
+  <div class="card-label">Dodatkowy kontekst</div>
+  <div id="context-active-badge" style="display:none" class="context-active-badge" onclick="openContextPopup()">✓ Kontekst dodany — kliknij żeby edytować</div>
+  <input class="context-input" id="context-input" placeholder="Np. kłócimy się od tygodnia..." />
+  <button onclick="openContextPopup()" style="margin-top:8px;width:100%;padding:9px;border-radius:8px;border:1.5px solid var(--violet-mid);background:var(--violet-light);color:var(--violet);font-family:var(--font);font-size:13px;font-weight:600;cursor:pointer;">
+    + Dodaj szczegółowy kontekst
+  </button>
+</div>
 
       <div id="result-area">
         <div class="empty-state">
@@ -706,20 +759,33 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
 
     <div class="right-panel">
       <div>
-        <div class="section-title">Ton odpowiedzi</div>
-        <div class="tone-grid">
-          <button class="tone-btn selected" data-tone="profesjonalny" onclick="selectTone(this)">💼 Profesjonalny</button>
-          <button class="tone-btn" data-tone="przyjazny" onclick="selectTone(this)">😊 Przyjazny</button>
-          <button class="tone-btn" data-tone="asertywny" onclick="selectTone(this)">⚡ Asertywny</button>
-          <button class="tone-btn" data-tone="empatyczny" onclick="selectTone(this)">🤗 Empatyczny</button>
-          <button class="tone-btn" data-tone="perswazyjny" onclick="selectTone(this)">🎯 Perswazyjny</button>
-          <button class="tone-btn" data-tone="sarkatyczny" onclick="selectTone(this)">😏 Sarkatyczny</button>
-          <button class="tone-btn" data-tone="przepraszający" onclick="selectTone(this)">🙏 Przepraszający</button>
-          <button class="tone-btn" data-tone="stanowczy" onclick="selectTone(this)">💪 Stanowczy</button>
-          <button class="tone-btn" data-tone="akademicki" onclick="selectTone(this)">🎓 Akademicki</button>
-          <button class="tone-btn" data-tone="flirtujący" onclick="selectTone(this)">😘 Flirtujący</button>
-          <button class="tone-btn" data-tone="genz" onclick="selectTone(this)">🔥 Gen Z</button>
-        </div>
+        <div>
+  <div class="section-title">Ile wariantów?</div>
+  <div class="count-row">
+    <button class="count-btn selected" data-count="1" onclick="selectCount(this)">1</button>
+    <button class="count-btn" data-count="2" onclick="selectCount(this)">2</button>
+    <button class="count-btn" data-count="3" onclick="selectCount(this)">3</button>
+    <button class="count-btn" data-count="4" onclick="selectCount(this)">4</button>
+  </div>
+</div>
+<div>
+  <div class="section-title">Ton odpowiedzi</div>
+  <div class="tone-grid">
+    <button class="tone-btn selected" data-tone="profesjonalny" onclick="selectTone(this)">💼 Profesjonalny</button>
+    <button class="tone-btn" data-tone="przyjazny" onclick="selectTone(this)">😊 Przyjazny</button>
+    <button class="tone-btn" data-tone="asertywny" onclick="selectTone(this)">⚡ Asertywny</button>
+    <button class="tone-btn" data-tone="empatyczny" onclick="selectTone(this)">🤗 Empatyczny</button>
+    <button class="tone-btn" data-tone="perswazyjny" onclick="selectTone(this)">🎯 Perswazyjny</button>
+    <button class="tone-btn" data-tone="sarkatyczny" onclick="selectTone(this)">😏 Sarkatyczny</button>
+    <button class="tone-btn" data-tone="przepraszający" onclick="selectTone(this)">🙏 Przepraszający</button>
+    <button class="tone-btn" data-tone="stanowczy" onclick="selectTone(this)">💪 Stanowczy</button>
+    <button class="tone-btn" data-tone="akademicki" onclick="selectTone(this)">🎓 Akademicki</button>
+    <button class="tone-btn" data-tone="flirtujący" onclick="selectTone(this)">😘 Flirtujący</button>
+    <button class="tone-btn" data-tone="genz" onclick="selectTone(this)">🔥 Gen Z</button>
+    <button class="tone-btn" data-tone="custom" onclick="selectTone(this)">✏️ Własny</button>
+  </div>
+  <textarea class="custom-tone-input" id="custom-tone-input" placeholder="Opisz własny styl... np. 'krótko i z humorem'" style="display:none;" rows="2"></textarea>
+</div>
       </div>
       <div>
         <div class="section-title">Dzienny limit</div>
@@ -1044,9 +1110,50 @@ function removeImage() {
   document.getElementById('upload-text').style.display = 'block';
 }
 
-function selectTone(btn) {
+let selectedCount = 1;
+let contextData = {};
+
+function selectCount(btn) {
+  document.querySelectorAll('.count-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  selectedCount = parseInt(btn.dataset.count);
+}
+
+function openContextPopup() {
+  document.getElementById('ctx-relationship').value = contextData.relationship || '';
+  document.getElementById('ctx-situation').value = contextData.situation || '';
+  document.getElementById('ctx-feeling').value = contextData.feeling || '';
+  document.getElementById('ctx-goal').value = contextData.goal || '';
+  document.getElementById('context-popup').classList.add('open');
+}
+
+function closeContextPopup() {
+  document.getElementById('context-popup').classList.remove('open');
+}
+
+function closeContextPopupIfOutside(e) {
+  if (e.target === document.getElementById('context-popup')) closeContextPopup();
+}
+
+function saveContext() {
+  contextData = {
+    relationship: document.getElementById('ctx-relationship').value.trim(),
+    situation: document.getElementById('ctx-situation').value.trim(),
+    feeling: document.getElementById('ctx-feeling').value.trim(),
+    goal: document.getElementById('ctx-goal').value.trim(),
+  };
+  const hasContext = Object.values(contextData).some(v => v);
+  document.getElementById('context-active-badge').style.display = hasContext ? 'inline-flex' : 'none';
+  closeContextPopup();
+  if (hasContext) showNotif('Kontekst zapisany ✓');
+}
+ function selectTone(btn) {
   document.querySelectorAll('.tone-btn').forEach(b => b.classList.remove('selected'));
-  btn.classList.add('selected'); selectedTone = btn.dataset.tone;
+  btn.classList.add('selected');
+  selectedTone = btn.dataset.tone;
+  const customInput = document.getElementById('custom-tone-input');
+  if (selectedTone === 'custom') { customInput.style.display = 'block'; customInput.focus(); }
+  else { customInput.style.display = 'none'; }
 }
 
 function selectDemoTone(btn) {
@@ -1110,7 +1217,21 @@ async function generateReply() {
   document.getElementById('gen-btn-text').innerHTML = '<div class="loading-dots"><span></span><span></span><span></span></div>';
   document.getElementById('result-area').innerHTML = `<div class="result-card" style="opacity:0.6;"><div class="result-header"><div class="result-label">✨ Generowanie...</div></div><div class="result-text" style="color:var(--gray-400);">AI analizuje rozmowę...</div></div>`;
   try {
-    const body = { conversation: convo, context, tone: selectedTone, app: selectedApp, personType, history: chatHistory };
+    const customTone = document.getElementById('custom-tone-input').value.trim();
+const body = {
+  conversation: convo,
+  context,
+  tone: selectedTone,
+  customTone: selectedTone === 'custom' ? customTone : '',
+  app: selectedApp,
+  personType,
+  history: chatHistory,
+  count: selectedCount,
+  relationship: contextData.relationship || '',
+  situation: contextData.situation || '',
+  feeling: contextData.feeling || '',
+  goal: contextData.goal || '',
+};
     if (uploadedImageBase64) body.image = uploadedImageBase64;
     const resp = await fetch('/api/reply', {
       method: 'POST',
@@ -1120,13 +1241,23 @@ async function generateReply() {
     const data = await resp.json();
     if (data.error) throw new Error(data.error);
 
-    chatHistory.push({ role: 'user', content: `Napisz odpowiedź na tę wiadomość:\n${convo}` });
+  chatHistory.push({ role: 'user', content: `Napisz odpowiedź na tę wiadomość:\n${convo}` });
     chatHistory.push({ role: 'assistant', content: data.reply });
     if (chatHistory.length > 20) chatHistory = chatHistory.slice(-20);
 
     await incrementUsage();
     updateUsageUI();
     await saveConversation(convo, context, selectedTone, selectedApp, data.reply);
+
+    const variants = data.variants || [data.reply];
+    window._lastVariants = variants;
+    let activeVariant = 0;
+
+    const variantTabs = variants.length > 1 ? `
+      <div class="variants-row">
+        ${variants.map((_, i) => `<button class="variant-btn ${i===0?'active':''}" onclick="switchVariant(${i})" id="vtab-${i}">Wariant ${i+1}</button>`).join('')}
+      </div>` : '';
+
     document.getElementById('result-area').innerHTML = `
       <div class="result-card">
         <div class="result-header">
@@ -1136,7 +1267,8 @@ async function generateReply() {
             <button class="action-btn" onclick="regenerateReply()">Odśwież</button>
           </div>
         </div>
-        <div class="result-text" id="result-text">${data.reply.replace(/\n/g,'<br>')}</div>
+        ${variantTabs}
+        <div class="result-text" id="result-text">${variants[0].replace(/\n/g,'<br>')}</div>
       </div>
       <div class="continue-card">
         <div class="continue-label">💬 Kontynuuj rozmowę</div>
@@ -1215,7 +1347,12 @@ function buyPro() {
   showNotif('Przekierowanie do płatności...');
   setTimeout(() => { showNotif('Konto Pro aktywowane! 🎉'); showScreen('screen-main'); }, 2000);
 }
-
+function switchVariant(i) {
+  const variants = window._lastVariants || [];
+  if (!variants[i]) return;
+  document.querySelectorAll('.variant-btn').forEach((b, j) => b.classList.toggle('active', j === i));
+  document.getElementById('result-text').innerHTML = variants[i].replace(/\n/g,'<br>');
+}
 initAuth();
 </script>
 </body>
