@@ -18,8 +18,8 @@
 }
 html, body { height: 100%; }
 body { font-family: var(--font); background: var(--gray-50); color: var(--gray-800); }
-.screen { display: none; min-height: 100vh; pointer-events: none; }
-.screen.active { display: flex; flex-direction: column; pointer-events: all; }
+.screen { display: none; min-height: 100vh; }
+.screen.active { display: flex; flex-direction: column; }
 .auth-wrap { min-height: 100vh; background: linear-gradient(135deg, #EFF6FF 0%, #F5F3FF 50%, #EDE9FE 100%); display: flex; align-items: center; justify-content: center; padding: 2rem; position: relative; overflow: hidden; }
 .auth-wrap::before { content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%); border-radius: 50%; }
 .auth-wrap::after { content: ''; position: absolute; bottom: -80px; left: -80px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(37,99,235,0.1) 0%, transparent 70%); border-radius: 50%; }
@@ -41,7 +41,7 @@ body { font-family: var(--font); background: var(--gray-50); color: var(--gray-8
 .link-btn { color: var(--violet); cursor: pointer; font-weight: 600; background: none; border: none; font-family: var(--font); font-size: 13px; }
 .auth-error { background: #FEF2F2; border: 1px solid #FECACA; border-radius: 10px; padding: 10px 14px; font-size: 13px; color: #DC2626; margin-bottom: 1rem; display: none; }
 .auth-success { background: #F0FDF4; border: 1px solid #BBF7D0; border-radius: 10px; padding: 10px 14px; font-size: 13px; color: #16A34A; margin-bottom: 1rem; display: none; }
-.landing-wrap { min-height: 100vh; display: flex; flex-direction: column; background: var(--white); position: relative; z-index: 1; }
+.landing-wrap { min-height: 100vh; display: flex; flex-direction: column; background: var(--white); }
 .landing-nav { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 2rem; background: rgba(255,255,255,0.9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--gray-200); position: sticky; top: 0; z-index: 10; }
 .landing-nav-links { display: flex; align-items: center; gap: 24px; }
 .landing-nav-links a { font-size: 14px; font-weight: 500; color: var(--gray-600); text-decoration: none; cursor: pointer; transition: color 0.15s; }
@@ -63,6 +63,17 @@ body { font-family: var(--font); background: var(--gray-50); color: var(--gray-8
 .hero-note { font-size: 13px; color: var(--gray-400); }
 .platforms-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: center; margin-top: 2rem; }
 .platform-chip { display: flex; align-items: center; gap: 6px; background: var(--white); border: 1px solid var(--gray-200); border-radius: 20px; padding: 6px 14px; font-size: 13px; font-weight: 500; color: var(--gray-600); }
+.demo-card { background: var(--white); border-radius: 24px; border: 1px solid var(--gray-200); padding: 1.75rem; width: 100%; max-width: 600px; box-shadow: 0 8px 40px rgba(124,58,237,0.1); text-align: left; margin-top: 2rem; }
+.demo-label { font-size: 12px; font-weight: 700; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
+.demo-card textarea { min-height: 90px; margin-bottom: 12px; }
+.demo-tone-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+.demo-tone { padding: 7px 12px; border-radius: 8px; border: 1.5px solid var(--gray-200); background: var(--white); font-family: var(--font); font-size: 13px; font-weight: 500; color: var(--gray-600); cursor: pointer; transition: all 0.15s; }
+.demo-tone:hover { border-color: var(--violet-mid); background: var(--violet-light); color: var(--violet); }
+.demo-tone.selected { border-color: var(--violet); background: var(--violet-light); color: var(--violet); font-weight: 700; }
+.btn-demo { width: 100%; padding: 13px; background: linear-gradient(135deg, var(--blue), var(--violet)); color: white; border: none; border-radius: 12px; font-family: var(--font); font-size: 15px; font-weight: 700; cursor: pointer; transition: opacity 0.15s; }
+.btn-demo:hover { opacity: 0.9; }
+.demo-result { margin-top: 1rem; padding: 1rem; background: linear-gradient(135deg, var(--blue-light), var(--violet-light)); border: 1px solid var(--violet-mid); border-radius: 12px; font-size: 14px; line-height: 1.7; color: var(--gray-800); }
+.demo-result-label { font-size: 11px; font-weight: 700; color: var(--violet); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
 .landing-section { padding: 5rem 2rem; }
 .landing-section-center { text-align: center; }
 .section-eyebrow { font-size: 12px; font-weight: 700; color: var(--violet); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
@@ -88,7 +99,7 @@ body { font-family: var(--font); background: var(--gray-50); color: var(--gray-8
 .use-case-icon { font-size: 40px; margin-bottom: 1rem; }
 .use-case-title { font-size: 17px; font-weight: 700; color: var(--gray-800); margin-bottom: 8px; }
 .use-case-text { font-size: 14px; color: var(--gray-400); line-height: 1.6; }
-.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1000px; margin: 0 auto; }
+.pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1200px; margin: 0 auto; }
 .pricing-card { background: var(--white); border-radius: 20px; border: 1.5px solid var(--gray-200); padding: 2rem; position: relative; }
 .pricing-card.featured { border-color: var(--violet); box-shadow: 0 8px 40px rgba(124,58,237,0.15); }
 .pricing-featured-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, var(--blue), var(--violet)); color: white; font-size: 11px; font-weight: 700; padding: 4px 14px; border-radius: 99px; white-space: nowrap; }
@@ -126,20 +137,6 @@ body { font-family: var(--font); background: var(--gray-50); color: var(--gray-8
 .footer-links a { font-size: 13px; color: var(--gray-400); text-decoration: none; cursor: pointer; }
 .footer-links a:hover { color: white; }
 .footer-copy { font-size: 13px; color: var(--gray-400); }
-.demo-card { background: var(--white); border-radius: 24px; border: 1px solid var(--gray-200); padding: 1.75rem; width: 100%; max-width: 600px; box-shadow: 0 8px 40px rgba(124,58,237,0.1); text-align: left; margin-top: 2rem; }
-.demo-label { font-size: 12px; font-weight: 700; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
-.demo-card textarea { min-height: 90px; margin-bottom: 12px; }
-.demo-tone-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
-.demo-tone { padding: 7px 12px; border-radius: 8px; border: 1.5px solid var(--gray-200); background: var(--white); font-family: var(--font); font-size: 13px; font-weight: 500; color: var(--gray-600); cursor: pointer; transition: all 0.15s; }
-.demo-tone:hover { border-color: var(--violet-mid); background: var(--violet-light); color: var(--violet); }
-.demo-tone.selected { border-color: var(--violet); background: var(--violet-light); color: var(--violet); font-weight: 700; }
-.btn-demo { width: 100%; padding: 13px; background: linear-gradient(135deg, var(--blue), var(--violet)); color: white; border: none; border-radius: 12px; font-family: var(--font); font-size: 15px; font-weight: 700; cursor: pointer; transition: opacity 0.15s; }
-.btn-demo:hover { opacity: 0.9; }
-.demo-result { margin-top: 1rem; padding: 1rem; background: linear-gradient(135deg, var(--blue-light), var(--violet-light)); border: 1px solid var(--violet-mid); border-radius: 12px; }
-.demo-result-label { font-size: 11px; font-weight: 700; color: var(--violet); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
-</style>
-</head>
-<body><style>
 .topbar { background: var(--white); border-bottom: 1px solid var(--gray-200); padding: 0 1.5rem; height: 64px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; box-shadow: 0 1px 8px rgba(0,0,0,0.04); }
 .topbar-brand { display: flex; align-items: center; gap: 10px; cursor: pointer; }
 .topbar-icon { width: 36px; height: 36px; background: linear-gradient(135deg, var(--blue), var(--violet)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 15px; }
@@ -190,6 +187,7 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
 .tone-btn { padding: 10px 8px; border-radius: 10px; border: 1.5px solid var(--gray-200); background: var(--white); font-family: var(--font); font-size: 13px; font-weight: 500; color: var(--gray-600); cursor: pointer; text-align: center; transition: all 0.15s; display: flex; align-items: center; justify-content: center; gap: 5px; }
 .tone-btn:hover { border-color: var(--violet-mid); background: var(--violet-light); color: var(--violet); }
 .tone-btn.selected { border-color: var(--violet); background: var(--violet-light); color: var(--violet); font-weight: 700; }
+.tone-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 .btn-generate { width: 100%; padding: 14px; background: linear-gradient(135deg, var(--blue) 0%, var(--violet) 100%); color: var(--white); border: none; border-radius: 12px; font-family: var(--font); font-size: 15px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: opacity 0.15s, transform 0.1s; box-shadow: 0 4px 16px rgba(124,58,237,0.25); }
 .btn-generate:hover { opacity: 0.92; transform: translateY(-1px); }
 .btn-generate:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
@@ -200,23 +198,26 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
 .action-btn { padding: 5px 12px; border-radius: 8px; border: 1px solid var(--violet-mid); background: var(--white); color: var(--violet); font-family: var(--font); font-size: 12px; font-weight: 600; cursor: pointer; transition: background 0.15s; }
 .action-btn:hover { background: var(--violet-light); }
 .result-text { font-size: 15px; line-height: 1.75; color: var(--gray-800); }
+.variants-row { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+.variant-btn { padding: 8px 16px; border-radius: 8px; border: 1.5px solid var(--gray-200); background: var(--white); font-family: var(--font); font-size: 13px; font-weight: 600; color: var(--gray-600); cursor: pointer; transition: all 0.15s; }
+.variant-btn:hover { border-color: var(--violet-mid); background: var(--violet-light); color: var(--violet); }
+.variant-btn.active { border-color: var(--violet); background: var(--violet-light); color: var(--violet); }
 .continue-card { background: var(--white); border: 1.5px solid var(--violet-mid); border-radius: 16px; padding: 1.25rem; margin-top: 1rem; }
 .continue-label { font-size: 13px; font-weight: 700; color: var(--violet); margin-bottom: 4px; }
 .continue-sub { font-size: 12px; color: var(--gray-400); margin-bottom: 10px; }
 .continue-card textarea { min-height: 80px; margin-bottom: 10px; }
 .btn-continue { width: 100%; padding: 11px; background: linear-gradient(135deg, var(--blue), var(--violet)); color: white; border: none; border-radius: 10px; font-family: var(--font); font-size: 14px; font-weight: 700; cursor: pointer; }
-.btn-continue:hover { opacity: 0.9; } .variants-row { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
-.variant-btn { padding: 8px 16px; border-radius: 8px; border: 1.5px solid var(--gray-200); background: var(--white); font-family: var(--font); font-size: 13px; font-weight: 600; color: var(--gray-600); cursor: pointer; transition: all 0.15s; }
-.variant-btn:hover { border-color: var(--violet-mid); background: var(--violet-light); color: var(--violet); }
-.variant-btn.active { border-color: var(--violet); background: var(--violet-light); color: var(--violet); }
+.btn-continue:hover { opacity: 0.9; }
 .count-row { display: flex; gap: 8px; margin-bottom: 12px; }
 .count-btn { flex: 1; padding: 10px; border-radius: 10px; border: 1.5px solid var(--gray-200); background: var(--white); font-family: var(--font); font-size: 14px; font-weight: 600; color: var(--gray-600); cursor: pointer; transition: all 0.15s; text-align: center; }
 .count-btn:hover { border-color: var(--violet-mid); background: var(--violet-light); color: var(--violet); }
 .count-btn.selected { border-color: var(--violet); background: var(--violet-light); color: var(--violet); }
-.custom-tone-input { width: 100%; border: 1.5px solid var(--gray-200); border-radius: 10px; padding: 10px 14px; font-family: var(--font); font-size: 14px; color: var(--gray-800); background: var(--gray-50); outline: none; transition: all 0.15s; margin-top: 8px; resize: none; min-height: auto; }
+.count-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.custom-tone-wrap { margin-top: 8px; }
+.custom-tone-input { width: 100%; border: 1.5px solid var(--gray-200); border-radius: 10px; padding: 10px 14px; font-family: var(--font); font-size: 14px; color: var(--gray-800); background: var(--gray-50); outline: none; transition: all 0.15s; resize: none; min-height: 60px; }
 .custom-tone-input:focus { border-color: var(--violet); background: var(--white); }
 .context-popup-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 200; align-items: center; justify-content: center; padding: 1rem; pointer-events: none; }
-.context-popup-overlay.open { display: flex; pointer-events: all; }.context-popup-overlay.open { display: flex; }
+.context-popup-overlay.open { display: flex; pointer-events: all; }
 .context-popup { background: var(--white); border-radius: 24px; padding: 2rem; width: 100%; max-width: 480px; box-shadow: 0 8px 60px rgba(0,0,0,0.2); }
 .context-popup-title { font-size: 18px; font-weight: 700; color: var(--gray-800); margin-bottom: 0.25rem; }
 .context-popup-sub { font-size: 14px; color: var(--gray-400); margin-bottom: 1.5rem; }
@@ -227,7 +228,7 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
 .context-popup-btns { display: flex; gap: 10px; margin-top: 1.5rem; }
 .btn-popup-cancel { flex: 1; padding: 12px; background: none; border: 1.5px solid var(--gray-200); border-radius: 10px; font-family: var(--font); font-size: 14px; font-weight: 600; color: var(--gray-600); cursor: pointer; }
 .btn-popup-save { flex: 2; padding: 12px; background: linear-gradient(135deg, var(--blue), var(--violet)); color: white; border: none; border-radius: 10px; font-family: var(--font); font-size: 14px; font-weight: 700; cursor: pointer; }
-.context-active-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--violet-light); border: 1px solid var(--violet-mid); border-radius: 20px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: var(--violet); margin-bottom: 8px; cursor: pointer; }
+.context-active-badge { display: none; align-items: center; gap: 6px; background: var(--violet-light); border: 1px solid var(--violet-mid); border-radius: 20px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: var(--violet); margin-bottom: 8px; cursor: pointer; }
 .empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 3rem 1rem; text-align: center; }
 .empty-icon { font-size: 48px; margin-bottom: 1rem; }
 .empty-title { font-size: 16px; font-weight: 700; color: var(--gray-600); margin-bottom: 8px; }
@@ -273,19 +274,13 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
 .history-empty { font-size: 13px; color: var(--gray-400); text-align: center; padding: 2rem 0; }
 .btn-danger { padding: 10px 24px; background: none; border: 1.5px solid #FECACA; border-radius: 10px; font-family: var(--font); font-size: 14px; font-weight: 600; color: #DC2626; cursor: pointer; transition: all 0.15s; }
 .btn-danger:hover { background: #FEF2F2; }
-.pro-card { background: var(--white); border-radius: 28px; padding: 3rem 2.5rem; width: 100%; max-width: 480px; border: 1px solid rgba(124,58,237,0.12); box-shadow: 0 8px 60px rgba(124,58,237,0.12); text-align: center; }
+.pro-card { background: var(--white); border-radius: 28px; padding: 3rem 2.5rem; width: 100%; max-width: 540px; border: 1px solid rgba(124,58,237,0.12); box-shadow: 0 8px 60px rgba(124,58,237,0.12); text-align: center; }
 .pro-badge { display: inline-flex; align-items: center; gap: 6px; background: linear-gradient(135deg, var(--blue), var(--violet)); color: var(--white); font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 16px; border-radius: 99px; margin-bottom: 1.5rem; }
 .pro-title { font-family: var(--serif); font-size: 34px; color: var(--gray-800); margin-bottom: 0.5rem; }
 .pro-sub { font-size: 15px; color: var(--gray-400); margin-bottom: 2rem; line-height: 1.6; }
-.pro-price { display: flex; align-items: baseline; justify-content: center; gap: 4px; margin-bottom: 0.25rem; }
-.price-amount { font-size: 52px; font-weight: 800; color: var(--gray-800); line-height: 1; }
-.price-currency { font-size: 24px; font-weight: 700; color: var(--gray-600); align-self: flex-start; margin-top: 10px; }
-.price-period { font-size: 14px; color: var(--gray-400); margin-bottom: 2rem; }
-.pro-features { text-align: left; background: var(--gray-50); border-radius: 14px; padding: 1.25rem; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 10px; }
-.pro-feature { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--gray-600); }
-.check { width: 22px; height: 22px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--violet)); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 11px; color: white; font-weight: 700; }
-.btn-pro-main { width: 100%; padding: 15px; background: linear-gradient(135deg, var(--blue) 0%, var(--violet) 100%); color: var(--white); border: none; border-radius: 14px; font-family: var(--font); font-size: 16px; font-weight: 800; cursor: pointer; margin-bottom: 1rem; box-shadow: 0 4px 20px rgba(124,58,237,0.3); }
-.btn-back { background: none; border: none; font-family: var(--font); font-size: 14px; color: var(--gray-400); cursor: pointer; }
+.btn-pro-main { width: 100%; padding: 13px; background: linear-gradient(135deg, var(--blue) 0%, var(--violet) 100%); color: var(--white); border: none; border-radius: 12px; font-family: var(--font); font-size: 15px; font-weight: 700; cursor: pointer; margin-bottom: 0.5rem; box-shadow: 0 4px 16px rgba(124,58,237,0.25); transition: opacity 0.15s; }
+.btn-pro-main:hover { opacity: 0.9; }
+.btn-back { background: none; border: none; font-family: var(--font); font-size: 14px; color: var(--gray-400); cursor: pointer; margin-top: 0.5rem; }
 .loading-dots { display: inline-flex; gap: 4px; }
 .loading-dots span { width: 6px; height: 6px; border-radius: 50%; background: var(--white); animation: blink 1.2s infinite; }
 .loading-dots span:nth-child(2) { animation-delay: 0.2s; }
@@ -300,7 +295,7 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
   .tone-grid { grid-template-columns: 1fr 1fr 1fr; }
   .topbar, .account-topbar { padding: 0 1rem; }
   .landing-title { font-size: 38px; }
-  .landing-features, .benefits-grid, .examples-grid, .use-cases-grid, .pricing-grid { grid-template-columns: 1fr; }
+  .benefits-grid, .examples-grid, .use-cases-grid, .pricing-grid { grid-template-columns: 1fr; }
   .landing-nav { padding: 1rem; }
   .landing-nav-links { display: none; }
   .account-body { padding: 1rem; }
@@ -308,37 +303,28 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
   .account-header-card { flex-direction: column; text-align: center; }
   .cta-title { font-size: 30px; }
   .section-heading { font-size: 30px; }
+  .hero-btns { flex-direction: column; }
+  .btn-hero-main, .btn-hero-ghost { width: 100%; }
 }
 @media (max-width: 480px) {
   .tone-grid { grid-template-columns: 1fr 1fr; }
   .app-btn { font-size: 10px; padding: 8px 4px; }
   .landing-title { font-size: 32px; }
   .account-stat-grid { grid-template-columns: 1fr; }
-  .hero-btns { flex-direction: column; }
-  .btn-hero-main, .btn-hero-ghost { width: 100%; }
 }
-</style><div class="notification" id="notif"></div>
-  <!-- CONTEXT POPUP -->
+</style>
+</head>
+<body><div class="notification" id="notif"></div>
+
+<!-- CONTEXT POPUP -->
 <div class="context-popup-overlay" id="context-popup" onclick="closeContextPopupIfOutside(event)">
   <div class="context-popup">
     <div class="context-popup-title">Dodaj kontekst</div>
     <div class="context-popup-sub">Im więcej powiesz AI, tym lepsza odpowiedź</div>
-    <div class="context-popup-field">
-      <label>Jaka jest Twoja relacja z tą osobą?</label>
-      <input type="text" id="ctx-relationship" placeholder="np. bliski znajomy, współpracownik, rodzina..." />
-    </div>
-    <div class="context-popup-field">
-      <label>Co się dzieje / jaka jest sytuacja?</label>
-      <input type="text" id="ctx-situation" placeholder="np. pokłóciliśmy się, ona mi pomogła..." />
-    </div>
-    <div class="context-popup-field">
-      <label>Jak się czujesz?</label>
-      <input type="text" id="ctx-feeling" placeholder="np. zdenerwowana, wdzięczna, zaniepokojona..." />
-    </div>
-    <div class="context-popup-field">
-      <label>Co chcesz osiągnąć?</label>
-      <input type="text" id="ctx-goal" placeholder="np. przeprosić, postawić granicę, zażartować..." />
-    </div>
+    <div class="context-popup-field"><label>Jaka jest Twoja relacja z tą osobą?</label><input type="text" id="ctx-relationship" placeholder="np. bliski znajomy, współpracownik, rodzina..." /></div>
+    <div class="context-popup-field"><label>Co się dzieje / jaka jest sytuacja?</label><input type="text" id="ctx-situation" placeholder="np. pokłóciliśmy się, ona mi pomogła..." /></div>
+    <div class="context-popup-field"><label>Jak się czujesz?</label><input type="text" id="ctx-feeling" placeholder="np. zdenerwowana, wdzięczna, zaniepokojona..." /></div>
+    <div class="context-popup-field"><label>Co chcesz osiągnąć?</label><input type="text" id="ctx-goal" placeholder="np. przeprosić, postawić granicę, zażartować..." /></div>
     <div class="context-popup-btns">
       <button class="btn-popup-cancel" onclick="closeContextPopup()">Anuluj</button>
       <button class="btn-popup-save" onclick="saveContext()">Zapisz kontekst ✓</button>
@@ -349,7 +335,6 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
 <!-- LANDING -->
 <div id="screen-landing" class="screen active">
   <div class="landing-wrap">
-
     <nav class="landing-nav">
       <div class="brand-logo" style="margin:0">
         <div class="brand-icon">💬</div>
@@ -367,7 +352,6 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
       </div>
     </nav>
 
-    <!-- HERO -->
     <div class="landing-hero">
       <div class="landing-badge">✨ AI dla Twoich wiadomości</div>
       <h1 class="landing-title">Nie wiesz<br><span>co odpisać?</span></h1>
@@ -376,7 +360,7 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
         <button class="btn-hero-main" onclick="showScreen('screen-register')">Zacznij za darmo →</button>
         <button class="btn-hero-ghost" onclick="showScreen('screen-login')">Mam już konto</button>
       </div>
-      <div class="hero-note">10 odpowiedzi za darmo • Bez karty kredytowej</div>
+      <div class="hero-note">10 odpowiedzi miesięcznie za darmo • Bez karty kredytowej</div>
       <div class="platforms-row">
         <span style="font-size:13px;color:var(--gray-400);font-weight:500;">Działa na:</span>
         <div class="platform-chip">📸 Instagram</div>
@@ -386,7 +370,6 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
         <div class="platform-chip">💼 LinkedIn</div>
         <div class="platform-chip">📱 SMS</div>
       </div>
-
       <div class="demo-card">
         <div class="demo-label">Wypróbuj teraz</div>
         <textarea id="demo-input" placeholder="Np: Hej, możemy porozmawiać o tym projekcie? Mam kilka uwag..."></textarea>
@@ -402,220 +385,137 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
       </div>
     </div>
 
-    <!-- BENEFITS -->
     <div class="landing-section landing-section-center" id="benefits">
       <div class="section-eyebrow">Dlaczego Coodpisać?</div>
       <div class="section-heading">Odpisuj lepiej, szybciej, bez stresu</div>
       <div class="section-sub">Przestań gapić się w ekran i zastanawiać co napisać. AI zrobi to za Ciebie.</div>
       <div class="benefits-grid">
-        <div class="benefit-card">
-          <div class="benefit-icon">⚡</div>
-          <div class="benefit-title">Odpowiedź w 3 sekundy</div>
-          <div class="benefit-text">Żadnego myślenia, żadnego stresu. Wklej wiadomość i dostań gotową odpowiedź natychmiast.</div>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon">🎭</div>
-          <div class="benefit-title">Twój styl, nie robota</div>
-          <div class="benefit-text">11 tonów odpowiedzi — od profesjonalnego po Gen Z. AI dopasowuje się do sytuacji, nie odwrotnie.</div>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon">🔒</div>
-          <div class="benefit-title">Prywatność przede wszystkim</div>
-          <div class="benefit-text">Twoje wiadomości nie są sprzedawane ani używane do trenowania AI. Twoje rozmowy to Twoja sprawa.</div>
-        </div>
+        <div class="benefit-card"><div class="benefit-icon">⚡</div><div class="benefit-title">Odpowiedź w 3 sekundy</div><div class="benefit-text">Żadnego myślenia, żadnego stresu. Wklej wiadomość i dostań gotową odpowiedź natychmiast.</div></div>
+        <div class="benefit-card"><div class="benefit-icon">🎭</div><div class="benefit-title">Twój styl, nie robota</div><div class="benefit-text">11 tonów odpowiedzi — od profesjonalnego po Gen Z. AI dopasowuje się do sytuacji, nie odwrotnie.</div></div>
+        <div class="benefit-card"><div class="benefit-icon">🔒</div><div class="benefit-title">Prywatność przede wszystkim</div><div class="benefit-text">Twoje wiadomości nie są sprzedawane ani używane do trenowania AI. Twoje rozmowy to Twoja sprawa.</div></div>
       </div>
     </div>
 
-    <!-- EXAMPLES -->
     <div class="landing-section examples-section landing-section-center" id="examples">
       <div class="section-eyebrow">Przykłady</div>
       <div class="section-heading">Zobacz jak to działa</div>
       <div class="section-sub">Prawdziwe sytuacje, prawdziwe odpowiedzi — w różnych tonach.</div>
       <div class="examples-grid">
         <div class="example-card">
-          <div class="example-header">
-            <div class="example-msg-label">📱 Wiadomość od znajomego</div>
-            <div class="example-msg">"Hej, możemy pogadać? Coś się stało między nami ostatnio..."</div>
-          </div>
+          <div class="example-header"><div class="example-msg-label">📱 Wiadomość od znajomego</div><div class="example-msg">"Hej, możemy pogadać? Coś się stało między nami ostatnio..."</div></div>
           <div class="example-replies">
-            <div class="example-reply">
-              <div class="example-reply-tone">🤗 Empatyczny</div>
-              <div class="example-reply-text">Jasne, chętnie pogadam. Powiedz co się dzieje, słucham.</div>
-            </div>
-            <div class="example-reply">
-              <div class="example-reply-tone">💪 Stanowczy</div>
-              <div class="example-reply-text">Ok, możemy porozmawiać. Kiedy masz czas?</div>
-            </div>
-            <div class="example-reply">
-              <div class="example-reply-tone">🔥 Gen Z</div>
-              <div class="example-reply-text">no dobra, powiedz o co chodzi bo też to czuję ngl 💀</div>
-            </div>
+            <div class="example-reply"><div class="example-reply-tone">🤗 Empatyczny</div><div class="example-reply-text">Jasne, chętnie pogadam. Powiedz co się dzieje, słucham.</div></div>
+            <div class="example-reply"><div class="example-reply-tone">💪 Stanowczy</div><div class="example-reply-text">Ok, możemy porozmawiać. Kiedy masz czas?</div></div>
+            <div class="example-reply"><div class="example-reply-tone">🔥 Gen Z</div><div class="example-reply-text">no dobra, powiedz o co chodzi bo też to czuję ngl 💀</div></div>
           </div>
         </div>
         <div class="example-card">
-          <div class="example-header">
-            <div class="example-msg-label">💼 Wiadomość od szefa</div>
-            <div class="example-msg">"Czy mógłbyś zostać dziś po godzinach? Mamy pilny projekt."</div>
-          </div>
+          <div class="example-header"><div class="example-msg-label">💼 Wiadomość od szefa</div><div class="example-msg">"Czy mógłbyś zostać dziś po godzinach? Mamy pilny projekt."</div></div>
           <div class="example-replies">
-            <div class="example-reply">
-              <div class="example-reply-tone">💼 Profesjonalny</div>
-              <div class="example-reply-text">Rozumiem, zostanę. Do której planujecie pracować?</div>
-            </div>
-            <div class="example-reply">
-              <div class="example-reply-tone">⚡ Asertywny</div>
-              <div class="example-reply-text">Mogę zostać do 19, potem mam zobowiązania. Wystarczy?</div>
-            </div>
-            <div class="example-reply">
-              <div class="example-reply-tone">🎯 Perswazyjny</div>
-              <div class="example-reply-text">Chętnie pomogę, ale żebym mógł się skupić — czy możemy ustalić konkretny zakres na dziś?</div>
-            </div>
+            <div class="example-reply"><div class="example-reply-tone">💼 Profesjonalny</div><div class="example-reply-text">Rozumiem, zostanę. Do której planujecie pracować?</div></div>
+            <div class="example-reply"><div class="example-reply-tone">⚡ Asertywny</div><div class="example-reply-text">Mogę zostać do 19, potem mam zobowiązania. Wystarczy?</div></div>
+            <div class="example-reply"><div class="example-reply-tone">🎯 Perswazyjny</div><div class="example-reply-text">Chętnie pomogę, ale żebym mógł się skupić — czy możemy ustalić konkretny zakres na dziś?</div></div>
           </div>
         </div>
         <div class="example-card">
-          <div class="example-header">
-            <div class="example-msg-label">🔥 Wiadomość na Tinderze</div>
-            <div class="example-msg">"Hej, co u ciebie słychać?"</div>
-          </div>
+          <div class="example-header"><div class="example-msg-label">🔥 Wiadomość na Tinderze</div><div class="example-msg">"Hej, co u ciebie słychać?"</div></div>
           <div class="example-replies">
-            <div class="example-reply">
-              <div class="example-reply-tone">😘 Flirtujący</div>
-              <div class="example-reply-text">Lepiej teraz niż chwilę temu 😏 A u ciebie?</div>
-            </div>
-            <div class="example-reply">
-              <div class="example-reply-tone">😄 Humorystyczny</div>
-              <div class="example-reply-text">Właśnie zastanawiałam się co odpisać na "co słychać". Życie pełne wyzwań 😂</div>
-            </div>
-            <div class="example-reply">
-              <div class="example-reply-tone">😊 Przyjazny</div>
-              <div class="example-reply-text">Całkiem nieźle! Właśnie wróciłam z treningu. A u ciebie co nowego?</div>
-            </div>
+            <div class="example-reply"><div class="example-reply-tone">😘 Flirtujący</div><div class="example-reply-text">Lepiej teraz niż chwilę temu 😏 A u ciebie?</div></div>
+            <div class="example-reply"><div class="example-reply-tone">😄 Humorystyczny</div><div class="example-reply-text">Właśnie zastanawiałam się co odpisać na "co słychać". Życie pełne wyzwań 😂</div></div>
+            <div class="example-reply"><div class="example-reply-tone">😊 Przyjazny</div><div class="example-reply-text">Całkiem nieźle! Właśnie wróciłam z treningu. A u ciebie co nowego?</div></div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- USE CASES -->
     <div class="landing-section landing-section-center">
       <div class="section-eyebrow">Dla kogo?</div>
       <div class="section-heading">Każda rozmowa, każda sytuacja</div>
       <div class="section-sub">Niezależnie czy to flirt, kłótnia czy trudny e-mail — mamy odpowiedź.</div>
       <div class="use-cases-grid">
-        <div class="use-case-card">
-          <div class="use-case-icon">💔</div>
-          <div class="use-case-title">Trudne rozmowy</div>
-          <div class="use-case-text">Kłótnie, wyjaśnienia, przeprosiny — AI pomaga znaleźć słowa kiedy emocje biorą górę.</div>
+        <div class="use-case-card"><div class="use-case-icon">💔</div><div class="use-case-title">Trudne rozmowy</div><div class="use-case-text">Kłótnie, wyjaśnienia, przeprosiny — AI pomaga znaleźć słowa kiedy emocje biorą górę.</div></div>
+        <div class="use-case-card"><div class="use-case-icon">😍</div><div class="use-case-title">Randki i flirt</div><div class="use-case-text">Tinder, Hinge, Instagram DMs — nigdy więcej "hej, co słychać" bez pomysłu co dalej.</div></div>
+        <div class="use-case-card"><div class="use-case-icon">💼</div><div class="use-case-title">Praca i biznes</div><div class="use-case-text">E-maile do klientów, odpowiedzi szefowi, wiadomości do rekrutera — profesjonalnie i skutecznie.</div></div>
+      </div>
+    </div>
+
+    <div class="landing-section landing-section-center examples-section" id="pricing">
+      <div class="section-eyebrow">Cennik</div>
+      <div class="section-heading">Prosty, uczciwy cennik</div>
+      <div class="section-sub">Zacznij za darmo. Przejdź na płatny plan kiedy będziesz gotowa.</div>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="pricing-name">Darmowy</div>
+          <div class="pricing-price">0 <span>zł</span></div>
+          <div class="pricing-period">na zawsze</div>
+          <ul class="pricing-features">
+            <li>10 odpowiedzi miesięcznie</li>
+            <li>1 wariant odpowiedzi</li>
+            <li>Wszystkie tony i style</li>
+            <li>Wszystkie platformy</li>
+            <li>Historia rozmów</li>
+          </ul>
+          <button class="btn-pricing btn-pricing-outline" onclick="showScreen('screen-register')">Zacznij za darmo</button>
         </div>
-        <div class="use-case-card">
-          <div class="use-case-icon">😍</div>
-          <div class="use-case-title">Randki i flirt</div>
-          <div class="use-case-text">Tinder, Hinge, Instagram DMs — nigdy więcej "hej, co słychać" bez pomysłu co dalej.</div>
+        <div class="pricing-card">
+          <div class="pricing-name">Starter</div>
+          <div class="pricing-price">9 <span>zł</span></div>
+          <div class="pricing-period">miesięcznie • anuluj kiedy chcesz</div>
+          <ul class="pricing-features">
+            <li>100 odpowiedzi miesięcznie</li>
+            <li>Do 2 wariantów naraz</li>
+            <li>Wszystkie tony i style</li>
+            <li>Historia rozmów 30 dni</li>
+            <li>Wsparcie email</li>
+          </ul>
+          <button class="btn-pricing btn-pricing-outline" onclick="showScreen('screen-register')">Wybierz Starter</button>
         </div>
-        <div class="use-case-card">
-          <div class="use-case-icon">💼</div>
-          <div class="use-case-title">Praca i biznes</div>
-          <div class="use-case-text">E-maile do klientów, odpowiedzi szefowi, wiadomości do rekrutera — profesjonalnie i skutecznie.</div>
+        <div class="pricing-card featured">
+          <div class="pricing-featured-badge">⭐ Najpopularniejszy</div>
+          <div class="pricing-name">Pro</div>
+          <div class="pricing-price">19 <span>zł</span></div>
+          <div class="pricing-period">miesięcznie • anuluj kiedy chcesz</div>
+          <ul class="pricing-features">
+            <li>500 odpowiedzi miesięcznie</li>
+            <li>Do 4 wariantów naraz</li>
+            <li>Historia rozmów bez limitu</li>
+            <li>Analiza tonu rozmówcy</li>
+            <li>Kontynuacja rozmowy</li>
+            <li>Wsparcie priorytetowe</li>
+          </ul>
+          <button class="btn-pricing btn-pricing-filled" onclick="showScreen('screen-register')">Wybierz Pro</button>
+        </div>
+        <div class="pricing-card">
+          <div class="pricing-name">Unlimited</div>
+          <div class="pricing-price">39 <span>zł</span></div>
+          <div class="pricing-period">miesięcznie • anuluj kiedy chcesz</div>
+          <ul class="pricing-features">
+            <li>Nieograniczone odpowiedzi</li>
+            <li>Do 4 wariantów naraz</li>
+            <li>Historia rozmów bez limitu</li>
+            <li>Własne instrukcje AI</li>
+            <li>Eksport historii</li>
+            <li>Dedykowane wsparcie</li>
+          </ul>
+          <button class="btn-pricing btn-pricing-outline" onclick="showScreen('screen-register')">Wybierz Unlimited</button>
         </div>
       </div>
     </div>
 
-    <!-- PRICING -->
-    <div class="landing-section landing-section-center examples-section" id="pricing">
-      <div class="section-eyebrow">Cennik</div>
-      <div class="section-heading">Prosty, uczciwy cennik</div>
-      <div class="section-sub">Zacznij za darmo. Przejdź na płatny plan kiedy będziesz gotowy/a.</div>
-      <div class="pricing-grid" style="max-width:1200px;margin:0 auto;grid-template-columns:repeat(4,1fr);">
-  <div class="pricing-card">
-    <div class="pricing-name">Darmowy</div>
-    <div class="pricing-price">0 <span>zł</span></div>
-    <div class="pricing-period">na zawsze</div>
-    <ul class="pricing-features">
-      <li>10 odpowiedzi miesięcznie</li>
-      <li>1 wariant odpowiedzi</li>
-      <li>Wszystkie tony i style</li>
-      <li>Wszystkie platformy</li>
-      <li>Historia rozmów</li>
-    </ul>
-    <button class="btn-pricing btn-pricing-outline" onclick="showScreen('screen-register')">Zacznij za darmo</button>
-  </div>
-  <div class="pricing-card">
-    <div class="pricing-name">Starter</div>
-    <div class="pricing-price">9 <span>zł</span></div>
-    <div class="pricing-period">miesięcznie • anuluj kiedy chcesz</div>
-    <ul class="pricing-features">
-      <li>100 odpowiedzi miesięcznie</li>
-      <li>Do 2 wariantów naraz</li>
-      <li>Wszystkie tony i style</li>
-      <li>Historia rozmów 30 dni</li>
-      <li>Wsparcie email</li>
-    </ul>
-    <button class="btn-pricing btn-pricing-outline" onclick="showScreen('screen-register')">Wybierz Starter</button>
-  </div>
-  <div class="pricing-card featured">
-    <div class="pricing-featured-badge">⭐ Najpopularniejszy</div>
-    <div class="pricing-name">Pro</div>
-    <div class="pricing-price">19 <span>zł</span></div>
-    <div class="pricing-period">miesięcznie • anuluj kiedy chcesz</div>
-    <ul class="pricing-features">
-      <li>500 odpowiedzi miesięcznie</li>
-      <li>Do 4 wariantów naraz</li>
-      <li>Historia rozmów bez limitu</li>
-      <li>Analiza tonu rozmówcy</li>
-      <li>Kontynuacja rozmowy</li>
-      <li>Wsparcie priorytetowe</li>
-    </ul>
-    <button class="btn-pricing btn-pricing-filled" onclick="showScreen('screen-register')">Wybierz Pro</button>
-  </div>
-  <div class="pricing-card">
-    <div class="pricing-name">Unlimited</div>
-    <div class="pricing-price">39 <span>zł</span></div>
-    <div class="pricing-period">miesięcznie • anuluj kiedy chcesz</div>
-    <ul class="pricing-features">
-      <li>Nieograniczone odpowiedzi</li>
-      <li>Do 4 wariantów naraz</li>
-      <li>Historia rozmów bez limitu</li>
-      <li>Własne instrukcje AI</li>
-      <li>Eksport historii</li>
-      <li>Dedykowane wsparcie</li>
-    </ul>
-    <button class="btn-pricing btn-pricing-outline" onclick="showScreen('screen-register')">Wybierz Unlimited</button>
-  </div>
-</div>
-
-    <!-- FAQ -->
     <div class="landing-section landing-section-center" id="faq">
       <div class="section-eyebrow">FAQ</div>
       <div class="section-heading">Często zadawane pytania</div>
       <div class="section-sub" style="margin-bottom:2rem;">Masz pytanie? Pewnie już tu jest odpowiedź.</div>
       <div class="faq-list">
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)">🤔 Czy to tylko do randkowania? <span class="faq-arrow">▼</span></div>
-          <div class="faq-answer">Nie! Coodpisać działa do każdego rodzaju wiadomości — praca, rodzina, znajomi, klienci, szef. Masz do wyboru 11 różnych tonów odpowiedzi dopasowanych do każdej sytuacji.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)">📱 Czy mogę wgrać screenshot rozmowy? <span class="faq-arrow">▼</span></div>
-          <div class="faq-answer">Tak! Możesz wgrać zdjęcie rozmowy (PNG, JPG do 5MB) i AI automatycznie ją przeanalizuje i zaproponuje odpowiedź.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)">🔒 Czy moje wiadomości są bezpieczne? <span class="faq-arrow">▼</span></div>
-          <div class="faq-answer">Twoje prywatność jest dla nas priorytetem. Wiadomości nie są sprzedawane ani używane do trenowania modeli AI. Historia rozmów jest dostępna tylko dla Ciebie.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)">💬 Ile odpowiedzi mogę dostać za darmo? <span class="faq-arrow">▼</span></div>
-          <div class="faq-answer">Na darmowym planie masz 10 odpowiedzi miesięcznie — bez karty kredytowej.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)">🌐 Na jakich platformach działa? <span class="faq-arrow">▼</span></div>
-          <div class="faq-answer">Coodpisać działa z każdą platformą — Instagram, WhatsApp, SMS, E-mail, Tinder/Hinge, LinkedIn, Facebook, TikTok i innymi. Po prostu wklej treść rozmowy.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)">💰 Czy mogę anulować subskrypcję? <span class="faq-arrow">▼</span></div>
-          <div class="faq-answer">Oczywiście — anuluj kiedy chcesz, bez żadnych ukrytych opłat ani okresu wypowiedzenia.</div>
-        </div>
+        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">🤔 Czy to tylko do randkowania? <span class="faq-arrow">▼</span></div><div class="faq-answer">Nie! Coodpisać działa do każdego rodzaju wiadomości — praca, rodzina, znajomi, klienci, szef. Masz do wyboru 11 różnych tonów odpowiedzi dopasowanych do każdej sytuacji.</div></div>
+        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">📱 Czy mogę wgrać screenshot rozmowy? <span class="faq-arrow">▼</span></div><div class="faq-answer">Tak! Możesz wgrać zdjęcie rozmowy (PNG, JPG do 5MB) i AI automatycznie ją przeanalizuje i zaproponuje odpowiedź.</div></div>
+        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">🔒 Czy moje wiadomości są bezpieczne? <span class="faq-arrow">▼</span></div><div class="faq-answer">Twoja prywatność jest dla nas priorytetem. Wiadomości nie są sprzedawane ani używane do trenowania modeli AI.</div></div>
+        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">💬 Ile odpowiedzi mogę dostać za darmo? <span class="faq-arrow">▼</span></div><div class="faq-answer">Na darmowym planie masz 10 odpowiedzi miesięcznie — bez karty kredytowej. Limit resetuje się co miesiąc.</div></div>
+        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">🌐 Na jakich platformach działa? <span class="faq-arrow">▼</span></div><div class="faq-answer">Coodpisać działa z każdą platformą — Instagram, WhatsApp, SMS, E-mail, Tinder/Hinge, LinkedIn, Facebook, TikTok i innymi.</div></div>
+        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">💰 Czy mogę anulować subskrypcję? <span class="faq-arrow">▼</span></div><div class="faq-answer">Oczywiście — anuluj kiedy chcesz, bez żadnych ukrytych opłat ani okresu wypowiedzenia.</div></div>
       </div>
     </div>
 
-    <!-- CTA -->
     <div class="landing-cta-section">
       <h2 class="cta-title">Przestań się zastanawiać.<br>Zacznij odpisywać.</h2>
       <p class="cta-sub">Dołącz do tysięcy osób które już odpisują lepiej dzięki AI.</p>
@@ -628,14 +528,9 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
         <div class="brand-icon" style="width:32px;height:32px;font-size:14px;">💬</div>
         <div class="footer-brand-name">Co<span>odpisać</span>.pl</div>
       </div>
-      <div class="footer-links">
-        <a>Polityka prywatności</a>
-        <a>Regulamin</a>
-        <a href="mailto:kontakt@coodpisac.pl">Kontakt</a>
-      </div>
+      <div class="footer-links"><a>Polityka prywatności</a><a>Regulamin</a><a href="mailto:kontakt@coodpisac.pl">Kontakt</a></div>
       <div class="footer-copy">© 2026 Coodpisać.pl</div>
     </div>
-
   </div>
 </div><!-- LOGIN -->
 <div id="screen-login" class="screen">
@@ -661,7 +556,7 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
     <div class="auth-card">
       <div class="brand-logo"><div class="brand-icon">💬</div><div class="brand-name">Co<span>odpisać</span>.pl</div></div>
       <div class="auth-title">Utwórz konto</div>
-      <div class="auth-sub">10 odpowiedzi za darmo 🎉</div>
+      <div class="auth-sub">10 odpowiedzi miesięcznie za darmo 🎉</div>
       <div class="auth-error" id="register-error"></div>
       <div class="auth-success" id="register-success"></div>
       <div class="field"><label>E-mail</label><input type="email" id="register-email" placeholder="ty@example.com" /></div>
@@ -703,7 +598,6 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
   </div>
   <div class="main-body">
     <div class="left-panel">
-
       <div class="card">
         <div class="card-label">Aplikacja rozmowy</div>
         <div class="selected-app-badge" id="selected-app-badge"></div>
@@ -722,7 +616,6 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
           <button class="app-btn" data-app="TikTok" data-icon="🎵" onclick="selectApp(this)"><span class="app-icon">🎵</span>TikTok</button>
         </div>
       </div>
-
       <div class="card">
         <div class="card-label">Kim jest ta osoba?</div>
         <select class="select-input" id="person-type">
@@ -738,12 +631,10 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
           <option value="inne">✏️ Inne</option>
         </select>
       </div>
-
       <div class="card">
         <div class="card-label">Wklej lub wpisz rozmowę</div>
-        <textarea id="convo-input" placeholder="Wklej tutaj treść rozmowy...&#10;&#10;Np.:&#10;Kasia: Możemy pogadać? Ostatnio coś między nami nie gra...&#10;Ty: Jasne, powiedz co się dzieje"></textarea>
+        <textarea id="convo-input" placeholder="Wklej tutaj treść rozmowy..."></textarea>
       </div>
-
       <div class="card">
         <div class="card-label">Dodaj screenshot (opcjonalnie)</div>
         <div class="upload-area" id="upload-area" onclick="document.getElementById('file-input').click()" ondragover="handleDragOver(event)" ondrop="handleDrop(event)" ondragleave="this.classList.remove('dragover')">
@@ -754,16 +645,12 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
         <input type="file" id="file-input" accept="image/*" style="display:none" onchange="handleFileSelect(event)" />
         <button class="remove-img" id="remove-img-btn" onclick="removeImage()">✕ Usuń zdjęcie</button>
       </div>
-
-    <div class="card">
-  <div class="card-label">Dodatkowy kontekst</div>
-  <div id="context-active-badge" style="display:none" class="context-active-badge" onclick="openContextPopup()">✓ Kontekst dodany — kliknij żeby edytować</div>
-  <input class="context-input" id="context-input" placeholder="Np. kłócimy się od tygodnia..." />
-  <button onclick="openContextPopup()" style="margin-top:8px;width:100%;padding:9px;border-radius:8px;border:1.5px solid var(--violet-mid);background:var(--violet-light);color:var(--violet);font-family:var(--font);font-size:13px;font-weight:600;cursor:pointer;">
-    + Dodaj szczegółowy kontekst
-  </button>
-</div>
-
+      <div class="card">
+        <div class="card-label">Dodatkowy kontekst</div>
+        <div class="context-active-badge" id="context-active-badge" onclick="openContextPopup()">✓ Kontekst dodany — kliknij żeby edytować</div>
+        <input class="context-input" id="context-input" placeholder="Np. kłócimy się od tygodnia..." />
+        <button onclick="openContextPopup()" style="margin-top:8px;width:100%;padding:9px;border-radius:8px;border:1.5px solid var(--violet-mid);background:var(--violet-light);color:var(--violet);font-family:var(--font);font-size:13px;font-weight:600;cursor:pointer;">+ Dodaj szczegółowy kontekst</button>
+      </div>
       <div id="result-area">
         <div class="empty-state">
           <div class="empty-icon">✨</div>
@@ -772,41 +659,40 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
         </div>
       </div>
     </div>
-
     <div class="right-panel">
       <div>
-        <div>
-  <div class="section-title">Ile wariantów?</div>
-  <div class="count-row">
-    <button class="count-btn selected" data-count="1" onclick="selectCount(this)">1</button>
-    <button class="count-btn" data-count="2" onclick="selectCount(this)">2</button>
-    <button class="count-btn" data-count="3" onclick="selectCount(this)">3</button>
-    <button class="count-btn" data-count="4" onclick="selectCount(this)">4</button>
-  </div>
-</div>
-<div>
-  <div class="section-title">Ton odpowiedzi</div>
-  <div class="tone-grid">
-    <button class="tone-btn selected" data-tone="profesjonalny" onclick="selectTone(this)">💼 Profesjonalny</button>
-    <button class="tone-btn" data-tone="przyjazny" onclick="selectTone(this)">😊 Przyjazny</button>
-    <button class="tone-btn" data-tone="asertywny" onclick="selectTone(this)">⚡ Asertywny</button>
-    <button class="tone-btn" data-tone="empatyczny" onclick="selectTone(this)">🤗 Empatyczny</button>
-    <button class="tone-btn" data-tone="perswazyjny" onclick="selectTone(this)">🎯 Perswazyjny</button>
-    <button class="tone-btn" data-tone="sarkatyczny" onclick="selectTone(this)">😏 Sarkatyczny</button>
-    <button class="tone-btn" data-tone="przepraszający" onclick="selectTone(this)">🙏 Przepraszający</button>
-    <button class="tone-btn" data-tone="stanowczy" onclick="selectTone(this)">💪 Stanowczy</button>
-    <button class="tone-btn" data-tone="akademicki" onclick="selectTone(this)">🎓 Akademicki</button>
-    <button class="tone-btn" data-tone="flirtujący" onclick="selectTone(this)">😘 Flirtujący</button>
-    <button class="tone-btn" data-tone="genz" onclick="selectTone(this)">🔥 Gen Z</button>
-    <button class="tone-btn" data-tone="custom" onclick="selectTone(this)">✏️ Własny</button>
-  </div>
-  <textarea class="custom-tone-input" id="custom-tone-input" placeholder="Opisz własny styl... np. 'krótko i z humorem'" style="display:none;" rows="2"></textarea>
-</div>
+        <div class="section-title">Ile wariantów?</div>
+        <div class="count-row">
+          <button class="count-btn selected" data-count="1" onclick="selectCount(this)">1</button>
+          <button class="count-btn" data-count="2" onclick="selectCount(this)">2</button>
+          <button class="count-btn" data-count="3" onclick="selectCount(this)">3</button>
+          <button class="count-btn" data-count="4" onclick="selectCount(this)">4</button>
+        </div>
+      </div>
+      <div>
+        <div class="section-title">Ton odpowiedzi</div>
+        <div class="tone-grid">
+          <button class="tone-btn selected" data-tone="profesjonalny" onclick="selectTone(this)">💼 Profesjonalny</button>
+          <button class="tone-btn" data-tone="przyjazny" onclick="selectTone(this)">😊 Przyjazny</button>
+          <button class="tone-btn" data-tone="asertywny" onclick="selectTone(this)">⚡ Asertywny</button>
+          <button class="tone-btn" data-tone="empatyczny" onclick="selectTone(this)">🤗 Empatyczny</button>
+          <button class="tone-btn" data-tone="perswazyjny" onclick="selectTone(this)">🎯 Perswazyjny</button>
+          <button class="tone-btn" data-tone="sarkatyczny" onclick="selectTone(this)">😏 Sarkatyczny</button>
+          <button class="tone-btn" data-tone="przepraszający" onclick="selectTone(this)">🙏 Przepraszający</button>
+          <button class="tone-btn" data-tone="stanowczy" onclick="selectTone(this)">💪 Stanowczy</button>
+          <button class="tone-btn" data-tone="akademicki" onclick="selectTone(this)">🎓 Akademicki</button>
+          <button class="tone-btn" data-tone="flirtujący" onclick="selectTone(this)">😘 Flirtujący</button>
+          <button class="tone-btn" data-tone="genz" onclick="selectTone(this)">🔥 Gen Z</button>
+          <button class="tone-btn" data-tone="custom" onclick="selectTone(this)">✏️ Własny</button>
+        </div>
+        <div class="custom-tone-wrap">
+          <textarea class="custom-tone-input" id="custom-tone-input" placeholder="Opisz własny styl... np. 'krótko i z humorem'" style="display:none;" rows="2"></textarea>
+        </div>
       </div>
       <div>
         <div class="section-title">Dzienny limit</div>
         <div class="usage-bar-bg"><div class="usage-bar-fill low" id="usage-bar" style="width:0%"></div></div>
-        <div class="usage-info" id="usage-info">Pozostało 10 z 10 odpowiedzi</div>
+        <div class="usage-info" id="usage-info">Pozostało 10 z 10 w tym miesiącu</div>
       </div>
       <button class="btn-generate" id="gen-btn" onclick="generateReply()">
         <span id="gen-btn-text">✨ Generuj odpowiedź</span>
@@ -814,7 +700,7 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
       <div class="pro-cta">
         <div class="pro-cta-title">🚀 Coodpisać Pro</div>
         <div class="pro-cta-sub">Bez limitów, analiza tonu rozmówcy i więcej</div>
-        <button class="btn-pro-small" onclick="showScreen('screen-pro')">Odblokuj Pro — 29 zł/mies.</button>
+        <button class="btn-pro-small" onclick="showScreen('screen-pro')">Odblokuj Pro — od 9 zł/mies.</button>
       </div>
     </div>
   </div>
@@ -836,16 +722,16 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
         <div>
           <div class="account-info-name" id="account-name-display">Użytkownik</div>
           <div class="account-info-email" id="account-email-display"></div>
-          <div class="account-plan-badge">✨ Plan darmowy — 10 odpowiedzi/miesiąc</div>
+          <div class="account-plan-badge" id="account-plan-badge">✨ Plan Darmowy</div>
         </div>
       </div>
       <div class="account-section">
         <div class="account-section-header"><div class="account-section-icon">📊</div><div class="account-section-title">Twoje statystyki</div></div>
         <div class="account-section-body">
           <div class="account-stat-grid">
-            <div class="account-stat"><div class="account-stat-num" id="stat-today">0</div><div class="account-stat-label">odpowiedzi dziś</div></div>
+            <div class="account-stat"><div class="account-stat-num" id="stat-today">0</div><div class="account-stat-label">użyte w tym miesiącu</div></div>
             <div class="account-stat"><div class="account-stat-num" id="stat-total">0</div><div class="account-stat-label">wszystkich rozmów</div></div>
-            <div class="account-stat"><div class="account-stat-num" id="stat-remaining">10</div><div class="account-stat-label">pozostało dziś</div></div>
+            <div class="account-stat"><div class="account-stat-num" id="stat-remaining">10</div><div class="account-stat-label">pozostało</div></div>
           </div>
         </div>
       </div>
@@ -864,13 +750,13 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
       <div class="account-section">
         <div class="account-section-header"><div class="account-section-icon">🚀</div><div class="account-section-title">Ulepsz plan</div></div>
         <div class="account-section-body">
-  <p style="font-size:14px;color:var(--gray-600);margin-bottom:1rem;line-height:1.6;">Twój obecny plan: <strong id="current-plan-name">Darmowy</strong></p>
-  <div style="display:flex;flex-direction:column;gap:10px;">
-    <button class="btn-pro-main" style="padding:10px;font-size:14px;" onclick="buyPro('starter')">Starter — 9 zł/mies. (100 odpowiedzi)</button>
-    <button class="btn-pro-main" style="padding:10px;font-size:14px;" onclick="buyPro('pro')">Pro — 19 zł/mies. (500 odpowiedzi)</button>
-    <button class="btn-pro-main" style="padding:10px;font-size:14px;" onclick="buyPro('unlimited')">Unlimited — 39 zł/mies. (∞ odpowiedzi)</button>
-  </div>
-</div>
+          <p style="font-size:14px;color:var(--gray-600);margin-bottom:1rem;line-height:1.6;">Twój obecny plan: <strong id="current-plan-name">Darmowy</strong></p>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <button class="btn-pro-main" onclick="buyPro('starter')">Starter — 9 zł/mies. (100 odpowiedzi, 2 warianty)</button>
+            <button class="btn-pro-main" onclick="buyPro('pro')">Pro — 19 zł/mies. (500 odpowiedzi, 4 warianty)</button>
+            <button class="btn-pro-main" onclick="buyPro('unlimited')">Unlimited — 39 zł/mies. (∞ odpowiedzi)</button>
+          </div>
+        </div>
       </div>
       <div class="account-section">
         <div class="account-section-header"><div class="account-section-icon">⚙️</div><div class="account-section-title">Konto</div></div>
@@ -884,35 +770,44 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
 <div id="screen-pro" class="screen">
   <div style="min-height:100vh;background:linear-gradient(160deg,#EFF6FF 0%,#F5F3FF 60%,#EDE9FE 100%);display:flex;align-items:center;justify-content:center;padding:2rem;">
     <div class="pro-card">
-  <div class="pro-badge">🚀 Ulepsz plan</div>
-  <div class="pro-title">Potrzebujesz więcej?</div>
-  <div class="pro-sub">Wybierz plan dopasowany do Twoich potrzeb.</div>
-  <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:1.5rem;">
-    <div style="background:var(--gray-50);border-radius:14px;padding:1rem;border:1px solid var(--gray-200);">
-      <div style="font-size:15px;font-weight:700;color:var(--gray-800);margin-bottom:4px;">Starter — 9 zł/mies.</div>
-      <div style="font-size:13px;color:var(--gray-400);margin-bottom:10px;">100 odpowiedzi • 2 warianty • historia 30 dni</div>
-      <button class="btn-pro-main" style="padding:10px;font-size:14px;" onclick="buyPro('starter')">Wybierz Starter</button>
-    </div>
-    <div style="background:linear-gradient(135deg,var(--blue-light),var(--violet-light));border-radius:14px;padding:1rem;border:1.5px solid var(--violet-mid);">
-      <div style="font-size:15px;font-weight:700;color:var(--violet);margin-bottom:4px;">⭐ Pro — 19 zł/mies.</div>
-      <div style="font-size:13px;color:var(--gray-600);margin-bottom:10px;">500 odpowiedzi • 4 warianty • historia bez limitu • analiza tonu</div>
-      <button class="btn-pro-main" style="padding:10px;font-size:14px;" onclick="buyPro('pro')">Wybierz Pro</button>
-    </div>
-    <div style="background:var(--gray-50);border-radius:14px;padding:1rem;border:1px solid var(--gray-200);">
-      <div style="font-size:15px;font-weight:700;color:var(--gray-800);margin-bottom:4px;">Unlimited — 39 zł/mies.</div>
-      <div style="font-size:13px;color:var(--gray-400);margin-bottom:10px;">Nieograniczone odpowiedzi • wszystkie funkcje</div>
-      <button class="btn-pro-main" style="padding:10px;font-size:14px;" onclick="buyPro('unlimited')">Wybierz Unlimited</button>
+      <div class="pro-badge">🚀 Ulepsz plan</div>
+      <div class="pro-title">Potrzebujesz więcej?</div>
+      <div class="pro-sub">Wybierz plan dopasowany do Twoich potrzeb.</div>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:1.5rem;">
+        <div style="background:var(--gray-50);border-radius:14px;padding:1rem;border:1px solid var(--gray-200);">
+          <div style="font-size:15px;font-weight:700;color:var(--gray-800);margin-bottom:4px;">Starter — 9 zł/mies.</div>
+          <div style="font-size:13px;color:var(--gray-400);margin-bottom:10px;">100 odpowiedzi • 2 warianty • historia 30 dni</div>
+          <button class="btn-pro-main" onclick="buyPro('starter')">Wybierz Starter</button>
+        </div>
+        <div style="background:linear-gradient(135deg,var(--blue-light),var(--violet-light));border-radius:14px;padding:1rem;border:1.5px solid var(--violet-mid);">
+          <div style="font-size:15px;font-weight:700;color:var(--violet);margin-bottom:4px;">⭐ Pro — 19 zł/mies.</div>
+          <div style="font-size:13px;color:var(--gray-600);margin-bottom:10px;">500 odpowiedzi • 4 warianty • historia bez limitu</div>
+          <button class="btn-pro-main" onclick="buyPro('pro')">Wybierz Pro</button>
+        </div>
+        <div style="background:var(--gray-50);border-radius:14px;padding:1rem;border:1px solid var(--gray-200);">
+          <div style="font-size:15px;font-weight:700;color:var(--gray-800);margin-bottom:4px;">Unlimited — 39 zł/mies.</div>
+          <div style="font-size:13px;color:var(--gray-400);margin-bottom:10px;">Nieograniczone odpowiedzi • wszystkie funkcje</div>
+          <button class="btn-pro-main" onclick="buyPro('unlimited')">Wybierz Unlimited</button>
+        </div>
+      </div>
+      <button class="btn-back" onclick="showScreen('screen-main')">← Wróć do aplikacji</button>
     </div>
   </div>
-  <button class="btn-back" onclick="showScreen('screen-main')">← Wróć do aplikacji</button>
-</div>
 </div><script>
 const SUPABASE_URL = 'https://gwiscqnifinovlvznadw.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_sFTtmmIm8rdF-JvwMBjU_w_55qCsJUO';
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 const DAILY_LIMIT = 10;
+const PLAN_LIMITS = {
+  free:      { responses: 10,     variants: 1, label: 'Darmowy' },
+  starter:   { responses: 100,    variants: 2, label: 'Starter' },
+  pro:       { responses: 500,    variants: 4, label: 'Pro' },
+  unlimited: { responses: 999999, variants: 4, label: 'Unlimited' }
+};
+
 let usedCount = 0;
+let userPlan = 'free';
 let selectedTone = 'profesjonalny';
 let selectedApp = null;
 let selectedAppIcon = null;
@@ -922,6 +817,8 @@ let currentUser = null;
 let conversationHistory = [];
 let demoTone = 'profesjonalny';
 let chatHistory = [];
+let selectedCount = 1;
+let contextData = {};
 
 async function initAuth() {
   const { data: { session } } = await sb.auth.getSession();
@@ -941,12 +838,46 @@ async function onLogin() {
   document.getElementById('account-avatar-big').textContent = initials;
   document.getElementById('account-email-display').textContent = email;
   document.getElementById('account-name-display').textContent = email.split('@')[0];
-
   await loadUserPlan();
   await loadUsageCount();
   await loadHistory();
   updateUsageUI();
   applyPlanRestrictions();
+}
+
+async function loadUserPlan() {
+  const { data } = await sb.from('profiles').select('plan').eq('id', currentUser.id).maybeSingle();
+  if (!data) {
+    await sb.from('profiles').insert({ id: currentUser.id, plan: 'free' });
+    userPlan = 'free';
+  } else {
+    userPlan = data.plan || 'free';
+  }
+  const planLabel = PLAN_LIMITS[userPlan]?.label || 'Darmowy';
+  const badge = document.getElementById('account-plan-badge');
+  if (badge) badge.textContent = '✨ Plan ' + planLabel;
+  const currentPlanName = document.getElementById('current-plan-name');
+  if (currentPlanName) currentPlanName.textContent = planLabel;
+}
+
+function applyPlanRestrictions() {
+  const limits = PLAN_LIMITS[userPlan];
+  document.querySelectorAll('.count-btn').forEach(btn => {
+    const count = parseInt(btn.dataset.count);
+    if (count > limits.variants) {
+      btn.disabled = true;
+      btn.title = `Dostępne w planie ${count <= 2 ? 'Starter' : 'Pro'}`;
+      btn.textContent = '🔒' + count;
+    } else {
+      btn.disabled = false;
+      btn.textContent = count;
+    }
+  });
+  if (selectedCount > limits.variants) {
+    selectedCount = 1;
+    document.querySelectorAll('.count-btn').forEach(b => b.classList.remove('selected'));
+    document.querySelector('.count-btn[data-count="1"]').classList.add('selected');
+  }
 }
 
 async function doLogin() {
@@ -997,47 +928,7 @@ async function changePassword() {
 }
 
 async function logout() { await sb.auth.signOut(); }
-let userPlan = 'free';
-const PLAN_LIMITS = {
-  free: { responses: 10, variants: 1, history: 30 },
-  starter: { responses: 100, variants: 2, history: 30 },
-  pro: { responses: 500, variants: 4, history: 9999 },
-  unlimited: { responses: 999999, variants: 4, history: 9999 }
-};
 
-async function loadUserPlan() {
-  const { data } = await sb.from('profiles').select('plan').eq('id', currentUser.id).maybeSingle();
-  if (!data) {
-    await sb.from('profiles').insert({ id: currentUser.id, plan: 'free' });
-    userPlan = 'free';
-  } else {
-    userPlan = data.plan || 'free';
-  }
-}
-
-function applyPlanRestrictions() {
-  const limits = PLAN_LIMITS[userPlan];
-
-  document.querySelectorAll('.count-btn').forEach(btn => {
-    const count = parseInt(btn.dataset.count);
-    if (count > limits.variants) {
-      btn.disabled = true;
-      btn.style.opacity = '0.4';
-      btn.style.cursor = 'not-allowed';
-      btn.title = `Dostępne w planie ${count <= 2 ? 'Starter' : 'Pro'}`;
-      btn.textContent = '🔒 ' + count;
-    } else {
-      btn.disabled = false;
-      btn.style.opacity = '1';
-      btn.style.cursor = 'pointer';
-      btn.textContent = count;
-    }
-  });
-
-  const planNames = { free: 'Darmowy', starter: 'Starter', pro: 'Pro', unlimited: 'Unlimited' };
-  const badge = document.getElementById('account-plan-badge');
-  if (badge) badge.textContent = '✨ Plan ' + (planNames[userPlan] || 'Darmowy');
-}
 async function loadUsageCount() {
   const month = new Date().toISOString().slice(0, 7);
   const { data } = await sb.from('usage').select('count').eq('user_id', currentUser.id).eq('date', month).maybeSingle();
@@ -1053,25 +944,19 @@ async function incrementUsage() {
 }
 
 function updateUsageUI() {
-  const pct = (usedCount / DAILY_LIMIT) * 100;
-  const remaining = DAILY_LIMIT - usedCount;
+  const limit = PLAN_LIMITS[userPlan]?.responses || 10;
+  const pct = Math.min((usedCount / limit) * 100, 100);
+  const remaining = Math.max(limit - usedCount, 0);
   document.getElementById('usage-bar').style.width = pct + '%';
   document.getElementById('usage-bar').className = 'usage-bar-fill ' + (pct >= 90 ? 'high' : pct >= 60 ? 'med' : 'low');
   document.getElementById('usage-dot').className = 'usage-dot ' + (pct >= 90 ? 'danger' : pct >= 60 ? 'warn' : '');
-  document.getElementById('usage-text').textContent = usedCount + ' / ' + DAILY_LIMIT;
-  const limit = PLAN_LIMITS[userPlan]?.responses || 10;
-const rem = limit - usedCount;
-document.getElementById('usage-text').textContent = usedCount + ' / ' + limit;
-document.getElementById('usage-info').textContent = 'Pozostało ' + rem + ' z ' + limit + ' w tym miesiącu';
-if (document.getElementById('stat-remaining')) document.getElementById('stat-remaining').textContent = rem;
-if (document.getElementById('stat-today')) document.getElementById('stat-today').textContent = usedCount;
+  document.getElementById('usage-text').textContent = usedCount + ' / ' + limit;
+  document.getElementById('usage-info').textContent = 'Pozostało ' + remaining + ' z ' + limit + ' w tym miesiącu';
   const statToday = document.getElementById('stat-today');
   const statRemaining = document.getElementById('stat-remaining');
   if (statToday) statToday.textContent = usedCount;
   if (statRemaining) statRemaining.textContent = remaining;
-}
-
-async function loadHistory() {
+}async function loadHistory() {
   const { data } = await sb.from('conversations').select('*').eq('user_id', currentUser.id).order('created_at', { ascending: false }).limit(20);
   conversationHistory = data || [];
   renderHistory();
@@ -1134,7 +1019,9 @@ async function loadConversation(id) {
 async function saveConversation(conversation, context, tone, app, reply) {
   await sb.from('conversations').insert({ user_id: currentUser.id, conversation, context, tone, app, reply });
   await loadHistory();
-}function toggleAppSelector() {
+}
+
+function toggleAppSelector() {
   const grid = document.getElementById('app-grid');
   const arrow = document.getElementById('app-arrow');
   const toggle = document.getElementById('app-toggle');
@@ -1184,13 +1071,30 @@ function removeImage() {
   document.getElementById('upload-text').style.display = 'block';
 }
 
-let selectedCount = 1;
-let contextData = {};
+function selectTone(btn) {
+  document.querySelectorAll('.tone-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  selectedTone = btn.dataset.tone;
+  const customInput = document.getElementById('custom-tone-input');
+  if (selectedTone === 'custom') { customInput.style.display = 'block'; customInput.focus(); }
+  else { customInput.style.display = 'none'; }
+}
 
 function selectCount(btn) {
+  if (btn.disabled) {
+    showNotif('🔒 Ta opcja dostępna w planie ' + (parseInt(btn.dataset.count) <= 2 ? 'Starter' : 'Pro'));
+    showScreen('screen-pro');
+    return;
+  }
   document.querySelectorAll('.count-btn').forEach(b => b.classList.remove('selected'));
   btn.classList.add('selected');
   selectedCount = parseInt(btn.dataset.count);
+}
+
+function selectDemoTone(btn) {
+  document.querySelectorAll('.demo-tone').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  demoTone = btn.dataset.tone;
 }
 
 function openContextPopup() {
@@ -1217,23 +1121,10 @@ function saveContext() {
     goal: document.getElementById('ctx-goal').value.trim(),
   };
   const hasContext = Object.values(contextData).some(v => v);
-  document.getElementById('context-active-badge').style.display = hasContext ? 'inline-flex' : 'none';
+  const badge = document.getElementById('context-active-badge');
+  if (badge) badge.style.display = hasContext ? 'inline-flex' : 'none';
   closeContextPopup();
   if (hasContext) showNotif('Kontekst zapisany ✓');
-}
- function selectTone(btn) {
-  document.querySelectorAll('.tone-btn').forEach(b => b.classList.remove('selected'));
-  btn.classList.add('selected');
-  selectedTone = btn.dataset.tone;
-  const customInput = document.getElementById('custom-tone-input');
-  if (selectedTone === 'custom') { customInput.style.display = 'block'; customInput.focus(); }
-  else { customInput.style.display = 'none'; }
-}
-
-function selectDemoTone(btn) {
-  document.querySelectorAll('.demo-tone').forEach(b => b.classList.remove('selected'));
-  btn.classList.add('selected');
-  demoTone = btn.dataset.tone;
 }
 
 async function tryDemo() {
@@ -1264,23 +1155,20 @@ async function tryDemo() {
       </div>
       <div style="text-align:center;padding-top:10px;border-top:1px solid var(--violet-mid);">
         <div style="font-size:13px;font-weight:700;color:var(--gray-800);margin-bottom:8px;">🔒 Zaloguj się żeby zobaczyć całą odpowiedź</div>
-        <button onclick="showScreen('screen-register')" style="width:100%;padding:11px;background:linear-gradient(135deg,var(--blue),var(--violet));color:white;border:none;border-radius:10px;font-family:var(--font);font-size:14px;font-weight:700;cursor:pointer;margin-bottom:6px;">
-          Utwórz darmowe konto →
-        </button>
+        <button onclick="showScreen('screen-register')" style="width:100%;padding:11px;background:linear-gradient(135deg,var(--blue),var(--violet));color:white;border:none;border-radius:10px;font-family:var(--font);font-size:14px;font-weight:700;cursor:pointer;margin-bottom:6px;">Utwórz darmowe konto →</button>
         <button class="link-btn" onclick="showScreen('screen-login')" style="font-size:13px;">Masz już konto? Zaloguj się</button>
       </div>`;
   } catch(e) {
     resultEl.innerHTML = `<div style="color:#DC2626;font-size:13px;">Błąd: ${e.message}</div>`;
   }
-}
-
-async function generateReply() {
+}async function generateReply() {
   if (isLoading) return;
   const planLimit = PLAN_LIMITS[userPlan]?.responses || 10;
-if (usedCount >= planLimit) { showScreen('screen-pro'); return; }
+  if (usedCount >= planLimit) { showScreen('screen-pro'); return; }
   const convo = document.getElementById('convo-input').value.trim();
   const context = document.getElementById('context-input').value.trim();
   const personType = document.getElementById('person-type').value;
+  const customTone = document.getElementById('custom-tone-input').value.trim();
   if (!convo && !uploadedImageBase64) {
     document.getElementById('convo-input').focus();
     document.getElementById('convo-input').style.borderColor = '#EF4444';
@@ -1292,21 +1180,20 @@ if (usedCount >= planLimit) { showScreen('screen-pro'); return; }
   document.getElementById('gen-btn-text').innerHTML = '<div class="loading-dots"><span></span><span></span><span></span></div>';
   document.getElementById('result-area').innerHTML = `<div class="result-card" style="opacity:0.6;"><div class="result-header"><div class="result-label">✨ Generowanie...</div></div><div class="result-text" style="color:var(--gray-400);">AI analizuje rozmowę...</div></div>`;
   try {
-    const customTone = document.getElementById('custom-tone-input').value.trim();
-const body = {
-  conversation: convo,
-  context,
-  tone: selectedTone,
-  customTone: selectedTone === 'custom' ? customTone : '',
-  app: selectedApp,
-  personType,
-  history: chatHistory,
-  count: selectedCount,
-  relationship: contextData.relationship || '',
-  situation: contextData.situation || '',
-  feeling: contextData.feeling || '',
-  goal: contextData.goal || '',
-};
+    const body = {
+      conversation: convo,
+      context,
+      tone: selectedTone,
+      customTone: selectedTone === 'custom' ? customTone : '',
+      app: selectedApp,
+      personType,
+      history: chatHistory,
+      count: selectedCount,
+      relationship: contextData.relationship || '',
+      situation: contextData.situation || '',
+      feeling: contextData.feeling || '',
+      goal: contextData.goal || '',
+    };
     if (uploadedImageBase64) body.image = uploadedImageBase64;
     const resp = await fetch('/api/reply', {
       method: 'POST',
@@ -1316,17 +1203,16 @@ const body = {
     const data = await resp.json();
     if (data.error) throw new Error(data.error);
 
-  chatHistory.push({ role: 'user', content: `Napisz odpowiedź na tę wiadomość:\n${convo}` });
-    chatHistory.push({ role: 'assistant', content: data.reply });
+    const variants = data.variants || [data.reply];
+    window._lastVariants = variants;
+
+    chatHistory.push({ role: 'user', content: `Napisz odpowiedź na tę wiadomość:\n${convo}` });
+    chatHistory.push({ role: 'assistant', content: variants[0] });
     if (chatHistory.length > 20) chatHistory = chatHistory.slice(-20);
 
     await incrementUsage();
     updateUsageUI();
-    await saveConversation(convo, context, selectedTone, selectedApp, data.reply);
-
-    const variants = data.variants || [data.reply];
-    window._lastVariants = variants;
-    let activeVariant = 0;
+    await saveConversation(convo, context, selectedTone, selectedApp, variants[0]);
 
     const variantTabs = variants.length > 1 ? `
       <div class="variants-row">
@@ -1360,9 +1246,7 @@ const body = {
 }
 
 async function regenerateReply() {
-  if (chatHistory.length >= 2) {
-    chatHistory = chatHistory.slice(0, -2);
-  }
+  if (chatHistory.length >= 2) chatHistory = chatHistory.slice(0, -2);
   await generateReply();
 }
 
@@ -1380,7 +1264,16 @@ async function continueConversation() {
   document.getElementById('continue-input').value = '';
   await generateReply();
   window.scrollTo({ top: 0, behavior: 'smooth' });
-}function copyResult() {
+}
+
+function switchVariant(i) {
+  const variants = window._lastVariants || [];
+  if (!variants[i]) return;
+  document.querySelectorAll('.variant-btn').forEach((b, j) => b.classList.toggle('active', j === i));
+  document.getElementById('result-text').innerHTML = variants[i].replace(/\n/g,'<br>');
+}
+
+function copyResult() {
   const txt = document.getElementById('result-text');
   if (txt) navigator.clipboard.writeText(txt.innerText).then(() => showNotif('Skopiowano! ✓'));
 }
@@ -1395,10 +1288,7 @@ function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
-  if (id === 'screen-account') {
-    loadHistory();
-    updateUsageUI();
-  }
+  if (id === 'screen-account') { loadHistory(); updateUsageUI(); }
 }
 
 function scrollToSection(id) {
@@ -1412,30 +1302,22 @@ function toggleFaq(el) {
   const isOpen = answer.classList.contains('open');
   document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
   document.querySelectorAll('.faq-arrow').forEach(a => a.classList.remove('open'));
-  if (!isOpen) {
-    answer.classList.add('open');
-    arrow.classList.add('open');
-  }
+  if (!isOpen) { answer.classList.add('open'); arrow.classList.add('open'); }
 }
 
-function buyPro(plan) {
+async function buyPro(plan) {
   showNotif('Przekierowanie do płatności...');
   setTimeout(async () => {
     await sb.from('profiles').upsert({ id: currentUser.id, plan: plan || 'pro' });
     userPlan = plan || 'pro';
+    await loadUserPlan();
     applyPlanRestrictions();
-    showNotif('Plan aktywowany! 🎉');
-    showScreen('screen-main');
     updateUsageUI();
+    showNotif('Plan ' + (PLAN_LIMITS[plan]?.label || 'Pro') + ' aktywowany! 🎉');
+    showScreen('screen-main');
   }, 1500);
 }
-}
-function switchVariant(i) {
-  const variants = window._lastVariants || [];
-  if (!variants[i]) return;
-  document.querySelectorAll('.variant-btn').forEach((b, j) => b.classList.toggle('active', j === i));
-  document.getElementById('result-text').innerHTML = variants[i].replace(/\n/g,'<br>');
-}
+
 initAuth();
 </script>
 </body>
