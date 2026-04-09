@@ -712,17 +712,32 @@ async function tryDemo() {
   }
   const resultEl = document.getElementById('demo-result');
   resultEl.style.display = 'block';
-  resultEl.innerHTML = `
-    <div class="demo-result-label">✨ Prawie gotowe!</div>
-    <div style="font-size:14px;color:var(--gray-600);line-height:1.6;margin-bottom:12px;">
-      Twoja odpowiedź jest gotowa — ale żeby ją zobaczyć, musisz mieć darmowe konto. Zajmuje to 30 sekund! 🚀
-    </div>
-    <button onclick="showScreen('screen-register')" style="width:100%;padding:12px;background:linear-gradient(135deg,var(--blue),var(--violet));color:white;border:none;border-radius:10px;font-family:var(--font);font-size:14px;font-weight:700;cursor:pointer;">
-      Utwórz darmowe konto i zobacz odpowiedź →
-    </button>
-    <div style="margin-top:8px;text-align:center;font-size:13px;color:var(--gray-400);">
-      Masz już konto? <button class="link-btn" onclick="showScreen('screen-login')">Zaloguj się</button>
-    </div>`;
+  resultEl.innerHTML = '<div class="demo-result-label">✨ Generowanie...</div><div style="color:var(--gray-400);font-size:13px;">AI przygotowuje odpowiedź...</div>';
+  try {
+    const resp = await fetch('/api/reply', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ conversation: msg, tone: demoTone }) });
+    const data = await resp.json();
+    if (data.error) throw new Error(data.error);
+    const fullReply = data.reply;
+    const words = fullReply.split(' ');
+    const preview = words.slice(0, 6).join(' ') + '...';
+    const blurred = words.slice(6).join(' ');
+    resultEl.innerHTML = `
+      <div class="demo-result-label">✨ Twoja odpowiedź</div>
+      <div style="font-size:15px;line-height:1.75;color:var(--gray-800);margin-bottom:10px;">
+        ${preview}
+        <span style="filter:blur(5px);user-select:none;color:var(--gray-800);font-size:15px;">${blurred}</span>
+      </div>
+      <div style="background:linear-gradient(to top, white 60%, transparent);margin-top:-30px;padding-top:30px;padding-bottom:4px;"></div>
+      <div style="text-align:center;padding-top:4px;">
+        <div style="font-size:13px;font-weight:700;color:var(--gray-800);margin-bottom:8px;">🔒 Zaloguj się żeby zobaczyć całą odpowiedź</div>
+        <button onclick="showScreen('screen-register')" style="width:100%;padding:11px;background:linear-gradient(135deg,var(--blue),var(--violet));color:white;border:none;border-radius:10px;font-family:var(--font);font-size:14px;font-weight:700;cursor:pointer;margin-bottom:6px;">
+          Utwórz darmowe konto →
+        </button>
+        <button class="link-btn" onclick="showScreen('screen-login')" style="font-size:13px;">Masz już konto? Zaloguj się</button>
+      </div>`;
+  } catch(e) {
+    resultEl.innerHTML = `<div style="color:#DC2626;font-size:13px;">Błąd: ${e.message}</div>`;
+  }
 }
 
 async function generateReply() {
