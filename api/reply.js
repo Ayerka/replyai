@@ -5,59 +5,66 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  const { conversation, context, tone, app, image, personType } = req.body;
+  const { conversation, context, tone, app, image, personType, history } = req.body;
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) return res.status(500).json({ error: 'Brak klucza API' });
 
-  const appContext = app ? `Rozmowa odbywa się na: ${app}.` : '';
+  const appContext = app ? `Platforma: ${app}.` : '';
+  const personContext = {
+    szef: 'Piszesz do szefa — profesjonalnie, ale po ludzku.',
+    wykładowca: 'Piszesz do wykładowcy — uprzejmie i rzeczowo.',
+    rodzina: 'Piszesz do rodziny — ciepło i bezpośrednio.',
+    partner: 'Piszesz do partnera/partnerki — autentycznie i emocjonalnie.',
+    znajomy: 'Piszesz do znajomego — swobodnie i naturalnie.',
+    klient: 'Piszesz do klienta — profesjonalnie i pomocnie.',
+    rekruter: 'Piszesz do rekrutera — profesjonalnie, konkretnie.',
+    były: 'Piszesz do byłego/byłej — spokojnie, z dystansem.',
+  }[personType] || '';
 
-  const personContext = personType ? {
-    szef: 'Ta osoba to szef lub przełożony — zachowaj profesjonalizm ale bądź asertywny.',
-    wykładowca: 'Ta osoba to wykładowca lub nauczyciel — bądź uprzejmy i rzeczowy.',
-    rodzina: 'Ta osoba to członek rodziny — możesz być bardziej bezpośredni i ciepły.',
-    partner: 'Ta osoba to partner lub partnerka — bądź autentyczny i emocjonalny.',
-    znajomy: 'Ta osoba to znajomy — możesz być swobodny i naturalny.',
-    klient: 'Ta osoba to klient — bądź profesjonalny i pomocny.',
-    rekruter: 'Ta osoba to rekruter — bądź profesjonalny, konkretny i zaprezentuj się dobrze.',
-    były: 'Ta osoba to były partner lub była partnerka — zachowaj spokój i dystans emocjonalny.',
-    inne: ''
-  }[personType] || '' : '';
+  const toneMap = {
+    profesjonalny: 'profesjonalnie ale naturalnie, bez korporacyjnego sztywniactwa',
+    przyjazny: 'ciepło i przyjaźnie, jak do dobrego znajomego',
+    asertywny: 'asertywnie — jasno i spokojnie wyrażasz swoje zdanie',
+    empatyczny: 'empatycznie — pokazujesz że rozumiesz drugą osobę',
+    perswazyjny: 'perswazyjnie — przekonujesz do swojego punktu widzenia',
+    sarkatyczny: 'z inteligentnym sarkazmem, nie złośliwie',
+    przepraszający: 'przepraszająco — szczerze, bez przesady',
+    stanowczy: 'stanowczo — twardo trzymasz swoje stanowisko',
+    akademicki: 'akademicko — precyzyjnie, merytorycznie',
+    flirtujący: 'flirtująco — lekko, z humorem i zainteresowaniem',
+    genz: 'w stylu Gen Z — naturalnie, luzacko, z emojis (💀🔥✨😭), używasz: lol, omg, ngl, fr, no cap, slay, lowkey. Piszesz jak na insta do znajomej',
+  };
 
-  const toneInstructions = {
-    profesjonalny: 'Pisz profesjonalnie ale naturalnie — jak prawdziwy człowiek, nie korporacyjny robot.',
-    przyjazny: 'Pisz ciepło i przyjaźnie — jak do dobrego znajomego.',
-    asertywny: 'Pisz asertywnie — jasno wyrażaj swoje zdanie, bez agresji.',
-    empatyczny: 'Pisz empatycznie — pokaż że rozumiesz uczucia drugiej osoby.',
-    perswazyjny: 'Pisz perswazyjnie — przekonaj rozmówcę do swojego punktu widzenia.',
-    sarkatyczny: 'Pisz z lekką dozą sarkazmu — inteligentnie, nie złośliwie.',
-    przepraszający: 'Pisz przepraszająco — szczerze i bez nadmiernego biczowania się.',
-    stanowczy: 'Pisz stanowczo — twardo trzymaj swoje stanowisko.',
-    akademicki: 'Pisz akademicko — używaj precyzyjnego języka, odwołuj się do logiki.',
-    flirtujący: 'Pisz flirtująco — lekko, z humorem i zainteresowaniem.',
-    genz: 'Pisz w stylu Gen Z — używaj skrótów (lol, omg, ngl, fr fr, no cap), emojis (💀😭🔥✨), piszesz jakbyś pisała do znajomej na insta. Naturalnie, luźno, z humorem.'
-  }[tone] || 'Pisz naturalnie i autentycznie.';
+  const systemPrompt = `Jesteś ekspertem od komunikacji. Piszesz po polsku. ${appContext} ${personContext}
 
-  const systemPrompt = `Jesteś ekspertem od komunikacji interpersonalnej. Piszesz w języku polskim.
-${appContext}
-${personContext}
-Styl odpowiedzi: ${toneInstructions}
-${context ? 'Kontekst sytuacji: ' + context : ''}
+Twój styl: ${toneMap[tone] || 'naturalnie i autentycznie'}.
+${context ? 'Kontekst: ' + context : ''}
 
-WAŻNE ZASADY NATURALNOŚCI:
-- Pisz jak prawdziwy człowiek, nie jak AI
-- Unikaj formalnych zwrotów jak "Rozumiem Twoje obawy" czy "Dziękuję za wiadomość"
-- Nie zaczynaj od "Oczywiście", "Jasne", "Świetnie" ani podobnych
-- Pisz krótko i na temat — tak jak ludzie piszą SMS-y i wiadomości
-- Dopasuj długość do kontekstu — jeśli ktoś napisał jedno zdanie, odpowiedz jednym zdaniem
-- Odpowiadasz TYLKO gotową wiadomością do wysłania, bez wyjaśnień i komentarzy`;
+ZASADY — BARDZO WAŻNE:
+1. Piszesz jak PRAWDZIWY CZŁOWIEK, nie jak chatbot
+2. NIE zaczynaj od: "Oczywiście", "Jasne", "Rozumiem", "Dziękuję za wiadomość", "Świetnie"
+3. Bądź KRÓTKI — ludzie piszą krótko na telefonie. Maks 2-3 zdania chyba że sytuacja wymaga więcej
+4. Używaj prostego języka — nie "pragnę poinformować" tylko "chcę powiedzieć"
+5. Pisz TYLKO gotową wiadomość — zero komentarzy, zero wyjaśnień przed ani po
+6. Dopasuj długość do tego co napisała druga osoba`;
+
+  const messages = [{ role: 'system', content: systemPrompt }];
+
+  if (history && history.length > 0) {
+    history.forEach(msg => {
+      messages.push({ role: msg.role, content: msg.content });
+    });
+  }
 
   const userContent = [];
   if (image) {
     userContent.push({ type: 'image_url', image_url: { url: `data:image/jpeg;base64,${image}` } });
-    userContent.push({ type: 'text', text: `Przeanalizuj tę rozmowę ze screenshota i napisz odpowiedź.` });
+    userContent.push({ type: 'text', text: 'Przeanalizuj tę rozmowę i napisz odpowiedź.' });
   } else {
-    userContent.push({ type: 'text', text: `Rozmowa:\n${conversation}` });
+    userContent.push({ type: 'text', text: `Napisz odpowiedź na tę wiadomość:\n${conversation}` });
   }
+
+  messages.push({ role: 'user', content: userContent });
 
   try {
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -65,17 +72,14 @@ WAŻNE ZASADY NATURALNOŚCI:
       headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${apiKey}` },
       body: JSON.stringify({
         model: image ? 'gpt-4o' : 'gpt-4o-mini',
-        max_tokens: 500,
-        temperature: 0.9,
-        messages: [
-          { role: 'system', content: systemPrompt },
-          { role: 'user', content: userContent }
-        ]
+        max_tokens: 300,
+        temperature: 1.0,
+        messages
       })
     });
     const data = await response.json();
     if (data.error) return res.status(500).json({ error: data.error.message });
-    const reply = data.choices?.[0]?.message?.content || '';
+    const reply = data.choices?.[0]?.message?.content?.trim() || '';
     return res.status(200).json({ reply });
   } catch (err) {
     return res.status(500).json({ error: err.message });
