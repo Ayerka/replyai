@@ -1290,16 +1290,16 @@ function showNotif(msg) {
   n.textContent = msg; n.classList.add('show');
   setTimeout(() => n.classList.remove('show'), 2500);
 }
-
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
-if (id === 'screen-account') { loadHistory(); updateUsageUI(); applyUnlimitedFeatures(); }}
-
-function scrollToSection(id) {
-  const el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior: 'smooth' });
+  if (id === 'screen-account') { loadHistory(); updateUsageUI(); applyUnlimitedFeatures(); }
+  const widget = document.getElementById('support-widget');
+  if (widget) {
+    const hideOn = ['screen-main', 'screen-account', 'screen-pro'];
+    widget.style.display = hideOn.includes(id) ? 'none' : 'flex';
+  }
 }
 let customInstructions = '';
 
