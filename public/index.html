@@ -376,7 +376,7 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
         <button class="btn-hero-main" onclick="showScreen('screen-register')">Zacznij za darmo →</button>
         <button class="btn-hero-ghost" onclick="showScreen('screen-login')">Mam już konto</button>
       </div>
-      <div class="hero-note">10 odpowiedzi dziennie za darmo • Bez karty kredytowej</div>
+      <div class="hero-note">10 odpowiedzi za darmo • Bez karty kredytowej</div>
       <div class="platforms-row">
         <span style="font-size:13px;color:var(--gray-400);font-weight:500;">Działa na:</span>
         <div class="platform-chip">📸 Instagram</div>
@@ -530,7 +530,7 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
           <div class="pricing-price">0 <span>zł</span></div>
           <div class="pricing-period">na zawsze</div>
           <ul class="pricing-features">
-            <li>10 odpowiedzi dziennie</li>
+            <li>10 odpowiedzi miesięcznie</li>
             <li>Wszystkie tony i style</li>
             <li>Wszystkie platformy</li>
             <li>Historia rozmów</li>
@@ -586,7 +586,7 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
         </div>
         <div class="faq-item">
           <div class="faq-question" onclick="toggleFaq(this)">💬 Ile odpowiedzi mogę dostać za darmo? <span class="faq-arrow">▼</span></div>
-          <div class="faq-answer">Na darmowym planie masz 10 odpowiedzi dziennie — bez karty kredytowej. Limit resetuje się każdego dnia o północy.</div>
+          <div class="faq-answer">Na darmowym planie masz 10 odpowiedzi miesięcznie — bez karty kredytowej.</div>
         </div>
         <div class="faq-item">
           <div class="faq-question" onclick="toggleFaq(this)">🌐 Na jakich platformach działa? <span class="faq-arrow">▼</span></div>
@@ -645,7 +645,7 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
     <div class="auth-card">
       <div class="brand-logo"><div class="brand-icon">💬</div><div class="brand-name">Co<span>odpisać</span>.pl</div></div>
       <div class="auth-title">Utwórz konto</div>
-      <div class="auth-sub">10 odpowiedzi dziennie za darmo 🎉</div>
+      <div class="auth-sub">10 odpowiedzi za darmo 🎉</div>
       <div class="auth-error" id="register-error"></div>
       <div class="auth-success" id="register-success"></div>
       <div class="field"><label>E-mail</label><input type="email" id="register-email" placeholder="ty@example.com" /></div>
@@ -820,7 +820,7 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
         <div>
           <div class="account-info-name" id="account-name-display">Użytkownik</div>
           <div class="account-info-email" id="account-email-display"></div>
-          <div class="account-plan-badge">✨ Plan darmowy — 10 odpowiedzi/dzień</div>
+          <div class="account-plan-badge">✨ Plan darmowy — 10 odpowiedzi/miesiąc</div>
         </div>
       </div>
       <div class="account-section">
@@ -970,16 +970,16 @@ async function changePassword() {
 async function logout() { await sb.auth.signOut(); }
 
 async function loadUsageCount() {
-  const today = new Date().toISOString().split('T')[0];
-  const { data } = await sb.from('usage').select('count').eq('user_id', currentUser.id).eq('date', today).maybeSingle();
+  const month = new Date().toISOString().slice(0, 7);
+  const { data } = await sb.from('usage').select('count').eq('user_id', currentUser.id).eq('date', month).maybeSingle();
   usedCount = data?.count || 0;
 }
 
 async function incrementUsage() {
-  const today = new Date().toISOString().split('T')[0];
-  const { data } = await sb.from('usage').select('id,count').eq('user_id', currentUser.id).eq('date', today).maybeSingle();
+  const month = new Date().toISOString().slice(0, 7);
+  const { data } = await sb.from('usage').select('id,count').eq('user_id', currentUser.id).eq('date', month).maybeSingle();
   if (data) await sb.from('usage').update({ count: data.count + 1 }).eq('id', data.id);
-  else await sb.from('usage').insert({ user_id: currentUser.id, date: today, count: 1 });
+  else await sb.from('usage').insert({ user_id: currentUser.id, date: month, count: 1 });
   usedCount++;
 }
 
@@ -990,7 +990,7 @@ function updateUsageUI() {
   document.getElementById('usage-bar').className = 'usage-bar-fill ' + (pct >= 90 ? 'high' : pct >= 60 ? 'med' : 'low');
   document.getElementById('usage-dot').className = 'usage-dot ' + (pct >= 90 ? 'danger' : pct >= 60 ? 'warn' : '');
   document.getElementById('usage-text').textContent = usedCount + ' / ' + DAILY_LIMIT;
-  document.getElementById('usage-info').textContent = 'Pozostało ' + remaining + ' z ' + DAILY_LIMIT + ' odpowiedzi';
+  document.getElementById('usage-info').textContent = 'Pozostało ' + remaining + ' z ' + DAILY_LIMIT + ' w tym miesiącu';
   const statToday = document.getElementById('stat-today');
   const statRemaining = document.getElementById('stat-remaining');
   if (statToday) statToday.textContent = usedCount;
