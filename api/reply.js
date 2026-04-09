@@ -1,4 +1,4 @@
-xexport default async function handler(req, res) {
+export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -50,6 +50,10 @@ xexport default async function handler(req, res) {
 
   const replyCount = Math.min(parseInt(count) || 1, 4);
 
+  const variantInstruction = replyCount > 1
+    ? `Wygeneruj DOKŁADNIE ${replyCount} różne warianty odpowiedzi. Każdy wariant zacznij od nowej linii i poprzedź go tekstem "Wariant 1:", "Wariant 2:" itd. Każdy wariant powinien być inny w stylu lub podejściu. Po etykiecie "Wariant X:" napisz tylko samą wiadomość.`
+    : 'Napisz TYLKO gotową wiadomość — zero komentarzy, zero etykiet.';
+
   const systemPrompt = `Jesteś ekspertem od komunikacji. Piszesz po polsku. ${appContext} ${personContext}
 ${toneInstruction}
 ${contextDetails ? contextDetails : ''}
@@ -59,7 +63,7 @@ ZASADY:
 2. NIE zaczynaj od: "Oczywiście", "Jasne", "Rozumiem", "Dziękuję", "Świetnie"
 3. Bądź KRÓTKI — maks 2-3 zdania chyba że sytuacja wymaga więcej
 4. Używaj prostego języka
-5. ${replyCount > 1 ? `Wygeneruj DOKŁADNIE ${replyCount} różne warianty odpowiedzi. Oddziel je znacznikiem ---WARIANT--- między każdym wariantem. Każdy wariant powinien być inny w stylu lub podejściu.` : 'Napisz TYLKO gotową wiadomość — zero komentarzy'}`;
+5. ${variantInstruction}`;
 
   const messages = [{ role: 'system', content: systemPrompt }];
 
@@ -83,21 +87,27 @@ ZASADY:
       headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${apiKey}` },
       body: JSON.stringify({
         model: image ? 'gpt-4o' : 'gpt-4o-mini',
-        max_tokens: replyCount > 1 ? 600 : 300,
+        max_tokens: replyCount > 1 ? 800 : 300,
         temperature: 1.0,
         messages
       })
     });
+
     const data = await response.json();
     if (data.error) return res.status(500).json({ error: data.error.message });
+
     const fullReply = data.choices?.[0]?.message?.content?.trim() || '';
 
     if (replyCount > 1) {
-      const variants = fullReply.split('---WARIANT---').map(v => v.trim()).filter(Boolean);
-      return res.status(200).json({ reply: variants[0], variants });
+      const variants = fullReply
+        .split(/Wariant \d+:/i)
+        .map(v => v.trim())
+        .filter(Boolean);
+      return res.status(200).json({ reply: variants[0] || fullReply, variants: variants.length > 1 ? variants : [fullReply] });
     }
 
     return res.status(200).json({ reply: fullReply, variants: [fullReply] });
+
   } catch (err) {
     return res.status(500).json({ error: err.message });
   }
