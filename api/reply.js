@@ -5,8 +5,7 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  const { conversation, context, tone, customTone, app, image, personType, history, count, relationship, situation, feeling, goal } = req.body;
-  const apiKey = process.env.OPENAI_API_KEY;
+const { conversation, context, tone, customTone, app, image, personType, history, count, relationship, situation, feeling, goal, customInstructions } = req.body;  const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) return res.status(500).json({ error: 'Brak klucza API' });
 
   const appContext = app ? `Platforma: ${app}.` : '';
@@ -54,7 +53,7 @@ export default async function handler(req, res) {
     ? `Wygeneruj DOKŁADNIE ${replyCount} różne warianty odpowiedzi. Każdy wariant zacznij od nowej linii i poprzedź go tekstem "Wariant 1:", "Wariant 2:" itd. Każdy wariant powinien być inny w stylu lub podejściu. Po etykiecie "Wariant X:" napisz tylko samą wiadomość.`
     : 'Napisz TYLKO gotową wiadomość — zero komentarzy, zero etykiet.';
 
-  const systemPrompt = `Jesteś ekspertem od komunikacji. Piszesz po polsku. ${appContext} ${personContext}
+  const systemPrompt = `${customInstructions ? `DODATKOWE INSTRUKCJE (zawsze stosuj): ${customInstructions}\n` : ''}Jesteś ekspertem od komunikacji. Piszesz po polsku. ${appContext} ${personContext}
 ${toneInstruction}
 ${contextDetails ? contextDetails : ''}
 
