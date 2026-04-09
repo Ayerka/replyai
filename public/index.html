@@ -528,8 +528,7 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
         <div class="brand-icon" style="width:32px;height:32px;font-size:14px;">💬</div>
         <div class="footer-brand-name">Co<span>odpisać</span>.pl</div>
       </div>
-      <div class="footer-links"><a>Polityka prywatności</a><a>Regulamin</a><a href="mailto:kontakt@coodpisac.pl">Kontakt</a></div>
-      <div class="footer-copy">© 2026 Coodpisać.pl</div>
+<div class="footer-links"><a onclick="showScreen('screen-privacy')">Polityka prywatności</a><a onclick="showScreen('screen-terms')">Regulamin</a><a href="mailto:kontakt@coodpisac.pl">Kontakt</a></div>      <div class="footer-copy">© 2026 Coodpisać.pl</div>
     </div>
   </div>
 </div><!-- LOGIN -->
@@ -1369,5 +1368,62 @@ async function buyPro(plan) {
 
 initAuth();
 </script>
+<!-- REGULAMIN -->
+<div id="screen-terms" class="screen">
+  <div style="min-height:100vh;background:var(--gray-50);">
+    <div style="background:var(--white);border-bottom:1px solid var(--gray-200);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;">
+      <div class="brand-logo" style="margin:0"><div class="brand-icon">💬</div><div class="brand-name">Co<span>odpisać</span>.pl</div></div>
+      <button class="btn-nav-ghost" onclick="history.back()">← Wróć</button>
+    </div>
+    <div style="max-width:760px;margin:0 auto;padding:3rem 2rem;font-size:15px;line-height:1.8;color:var(--gray-800);">
+      <h1 style="font-family:var(--serif);font-size:36px;margin-bottom:0.5rem;">Regulamin serwisu</h1>
+      <p style="color:var(--gray-400);margin-bottom:2rem;">Ostatnia aktualizacja: 10 kwietnia 2026</p>
+      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§1. Postanowienia ogólne</h2>
+      <p>Niniejszy regulamin określa zasady korzystania z serwisu internetowego <strong>Coodpisać.pl</strong>. Właścicielem i operatorem Serwisu jest Michelle Mayer, prowadząca jednoosobową działalność gospodarczą pod nazwą <strong>[NAZWA FIRMY]</strong>, z siedzibą pod adresem <strong>[ADRES]</strong>, NIP: <strong>[NIP]</strong>. Kontakt: <strong>[EMAIL]</strong>. Korzystanie z Serwisu oznacza akceptację niniejszego Regulaminu.</p>
+      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§2. Rejestracja i konto</h2>
+      <p>Korzystanie z pełnej funkcjonalności Serwisu wymaga założenia konta. Rejestracja wymaga podania adresu e-mail oraz hasła. Użytkownik zobowiązany jest do podania prawdziwych danych i ponosi odpowiedzialność za bezpieczeństwo swojego hasła. Jeden Użytkownik może posiadać tylko jedno konto.</p>
+      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§3. Plany i płatności</h2>
+      <p>Serwis oferuje plan Darmowy (10 odpowiedzi miesięcznie, bezpłatnie), Starter (100 odpowiedzi, 9 zł/mies.), Pro (500 odpowiedzi, 19 zł/mies.) oraz Unlimited (nieograniczone odpowiedzi, 39 zł/mies.). Subskrypcje odnawiają się automatycznie co miesiąc. Anulowanie możliwe jest w dowolnym momencie z poziomu panelu konta — dostęp wygasa z końcem opłaconego okresu. Operator nie zwraca opłat za niewykorzystane odpowiedzi.</p>
+      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§4. Zasady korzystania</h2>
+      <p>Zabrania się wykorzystywania Serwisu do generowania treści nielegalnych, obraźliwych lub naruszających prawa osób trzecich, podszywania się pod inne osoby, rozsyłania spamu oraz prób obejścia limitów konta. Operator zastrzega sobie prawo do usunięcia konta naruszającego powyższe zasady.</p>
+      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§5. Odpowiedzialność</h2>
+      <p>Serwis korzysta z zewnętrznych modeli AI. Operator nie gwarantuje, że wygenerowane odpowiedzi będą zawsze trafne lub odpowiednie. Użytkownik korzysta z wygenerowanych odpowiedzi na własną odpowiedzialność. Operator nie ponosi odpowiedzialności za przerwy w działaniu Serwisu wynikające z awarii technicznych lub siły wyższej.</p>
+      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§6. Reklamacje</h2>
+      <p>Reklamacje należy kierować na adres e-mail: <strong>[EMAIL]</strong>. Operator rozpatruje reklamacje w terminie 14 dni roboczych.</p>
+      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§7. Postanowienia końcowe</h2>
+      <p>Regulamin podlega prawu polskiemu. Operator zastrzega sobie prawo do zmiany Regulaminu z 14-dniowym wyprzedzeniem informując Użytkowników drogą e-mailową. W sprawach nieuregulowanych zastosowanie mają przepisy Kodeksu cywilnego.</p>
+    </div>
+  </div>
+</div>
+
+<!-- POLITYKA PRYWATNOŚCI -->
+<div id="screen-privacy" class="screen">
+  <div style="min-height:100vh;background:var(--gray-50);">
+    <div style="background:var(--white);border-bottom:1px solid var(--gray-200);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;">
+      <div class="brand-logo" style="margin:0"><div class="brand-icon">💬</div><div class="brand-name">Co<span>odpisać</span>.pl</div></div>
+      <button class="btn-nav-ghost" onclick="history.back()">← Wróć</button>
+    </div>
+    <div style="max-width:760px;margin:0 auto;padding:3rem 2rem;font-size:15px;line-height:1.8;color:var(--gray-800);">
+      <h1 style="font-family:var(--serif);font-size:36px;margin-bottom:0.5rem;">Polityka Prywatności</h1>
+      <p style="color:var(--gray-400);margin-bottom:2rem;">Ostatnia aktualizacja: 10 kwietnia 2026</p>
+      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§1. Administrator danych</h2>
+      <p>Administratorem Twoich danych osobowych jest Michelle Mayer, prowadząca jednoosobową działalność gospodarczą pod nazwą <strong>[NAZWA FIRMY]</strong>, z siedzibą pod adresem <strong>[ADRES]</strong>, NIP: <strong>[NIP]</strong>. Kontakt: <strong>[EMAIL]</strong>.</p>
+      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§2. Jakie dane zbieramy</h2>
+      <p>Zbieramy dane podane przy rejestracji (adres e-mail, hasło w postaci zaszyfrowanej), dane generowane podczas korzystania (historia rozmów, wybrane ustawienia, plan subskrypcji) oraz dane techniczne (adres IP, typ przeglądarki, pliki cookies).</p>
+      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§3. Cel przetwarzania</h2>
+      <p>Dane przetwarzamy w celu świadczenia usług Serwisu (generowanie odpowiedzi), zarządzania kontem, obsługi płatności, rozpatrywania reklamacji oraz zapewnienia bezpieczeństwa Serwisu — na podstawie wykonania umowy lub prawnie uzasadnionego interesu Administratora.</p>
+      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§4. Komu przekazujemy dane</h2>
+      <p>Dane przekazujemy wyłącznie zaufanym dostawcom usług: Supabase (baza danych), OpenAI (generowanie odpowiedzi — treści nie są używane do trenowania AI), Vercel (hosting) oraz operatorowi płatności. Nie sprzedajemy danych osobom trzecim.</p>
+      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§5. Twoje prawa</h2>
+      <p>Masz prawo do dostępu, sprostowania, usunięcia, ograniczenia przetwarzania i przenoszenia swoich danych. Możesz również cofnąć zgodę na marketing i wnieść sprzeciw wobec przetwarzania. Aby skorzystać z tych praw, skontaktuj się z nami pod adresem <strong>[EMAIL]</strong>. Przysługuje Ci prawo do skargi do Prezesa UODO (uodo.gov.pl).</p>
+      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§6. Jak długo przechowujemy dane</h2>
+      <p>Dane konta przechowujemy przez czas istnienia konta. Historia rozmów jest usuwana wraz z kontem. Dane rozliczeniowe przechowujemy przez 5 lat zgodnie z wymogami podatkowymi.</p>
+      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§7. Bezpieczeństwo</h2>
+      <p>Stosujemy szyfrowanie połączenia (HTTPS), szyfrowanie haseł oraz kontrolę dostępu do danych. Regularnie aktualizujemy zabezpieczenia Serwisu.</p>
+      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§8. Zmiany Polityki</h2>
+      <p>O zmianach Polityki Prywatności poinformujemy drogą e-mailową z co najmniej 14-dniowym wyprzedzeniem.</p>
+    </div>
+  </div>
+</div>
 </body>
 </html>
