@@ -523,48 +523,64 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
     <div class="landing-section landing-section-center examples-section" id="pricing">
       <div class="section-eyebrow">Cennik</div>
       <div class="section-heading">Prosty, uczciwy cennik</div>
-      <div class="section-sub">Zacznij za darmo. Przejdź na płatny plan kiedy będziesz gotowa.</div>
-      <div class="pricing-grid" style="max-width:900px;margin:0 auto;">
-        <div class="pricing-card">
-          <div class="pricing-name">Darmowy</div>
-          <div class="pricing-price">0 <span>zł</span></div>
-          <div class="pricing-period">na zawsze</div>
-          <ul class="pricing-features">
-            <li>10 odpowiedzi miesięcznie</li>
-            <li>Wszystkie tony i style</li>
-            <li>Wszystkie platformy</li>
-            <li>Historia rozmów</li>
-          </ul>
-          <button class="btn-pricing btn-pricing-outline" onclick="showScreen('screen-register')">Zacznij za darmo</button>
-        </div>
-        <div class="pricing-card featured">
-          <div class="pricing-featured-badge">⭐ Najpopularniejszy</div>
-          <div class="pricing-name">Pro</div>
-          <div class="pricing-price">29 <span>zł</span></div>
-          <div class="pricing-period">miesięcznie • anuluj kiedy chcesz</div>
-          <ul class="pricing-features">
-            <li>Nieograniczone odpowiedzi</li>
-            <li>Wszystkie tony i style</li>
-            <li>Analiza tonu rozmówcy</li>
-            <li>Historia na wszystkich urządzeniach</li>
-            <li>Priorytetowy dostęp do AI</li>
-          </ul>
-          <button class="btn-pricing btn-pricing-filled" onclick="showScreen('screen-register')">Przejdź na Pro</button>
-        </div>
-        <div class="pricing-card">
-          <div class="pricing-name">Pro Roczny</div>
-          <div class="pricing-price">19 <span>zł</span></div>
-          <div class="pricing-period">miesięcznie • rozliczane rocznie</div>
-          <ul class="pricing-features">
-            <li>Wszystko z planu Pro</li>
-            <li>Oszczędzasz 35%</li>
-            <li>Priorytetowe wsparcie</li>
-            <li>Dostęp do nowych funkcji</li>
-          </ul>
-          <button class="btn-pricing btn-pricing-outline" onclick="showScreen('screen-register')">Wybierz roczny</button>
-        </div>
-      </div>
-    </div>
+      <div class="section-sub">Zacznij za darmo. Przejdź na płatny plan kiedy będziesz gotowy/a.</div>
+      <div class="pricing-grid" style="max-width:1200px;margin:0 auto;grid-template-columns:repeat(4,1fr);">
+  <div class="pricing-card">
+    <div class="pricing-name">Darmowy</div>
+    <div class="pricing-price">0 <span>zł</span></div>
+    <div class="pricing-period">na zawsze</div>
+    <ul class="pricing-features">
+      <li>10 odpowiedzi miesięcznie</li>
+      <li>1 wariant odpowiedzi</li>
+      <li>Wszystkie tony i style</li>
+      <li>Wszystkie platformy</li>
+      <li>Historia rozmów</li>
+    </ul>
+    <button class="btn-pricing btn-pricing-outline" onclick="showScreen('screen-register')">Zacznij za darmo</button>
+  </div>
+  <div class="pricing-card">
+    <div class="pricing-name">Starter</div>
+    <div class="pricing-price">9 <span>zł</span></div>
+    <div class="pricing-period">miesięcznie • anuluj kiedy chcesz</div>
+    <ul class="pricing-features">
+      <li>100 odpowiedzi miesięcznie</li>
+      <li>Do 2 wariantów naraz</li>
+      <li>Wszystkie tony i style</li>
+      <li>Historia rozmów 30 dni</li>
+      <li>Wsparcie email</li>
+    </ul>
+    <button class="btn-pricing btn-pricing-outline" onclick="showScreen('screen-register')">Wybierz Starter</button>
+  </div>
+  <div class="pricing-card featured">
+    <div class="pricing-featured-badge">⭐ Najpopularniejszy</div>
+    <div class="pricing-name">Pro</div>
+    <div class="pricing-price">19 <span>zł</span></div>
+    <div class="pricing-period">miesięcznie • anuluj kiedy chcesz</div>
+    <ul class="pricing-features">
+      <li>500 odpowiedzi miesięcznie</li>
+      <li>Do 4 wariantów naraz</li>
+      <li>Historia rozmów bez limitu</li>
+      <li>Analiza tonu rozmówcy</li>
+      <li>Kontynuacja rozmowy</li>
+      <li>Wsparcie priorytetowe</li>
+    </ul>
+    <button class="btn-pricing btn-pricing-filled" onclick="showScreen('screen-register')">Wybierz Pro</button>
+  </div>
+  <div class="pricing-card">
+    <div class="pricing-name">Unlimited</div>
+    <div class="pricing-price">39 <span>zł</span></div>
+    <div class="pricing-period">miesięcznie • anuluj kiedy chcesz</div>
+    <ul class="pricing-features">
+      <li>Nieograniczone odpowiedzi</li>
+      <li>Do 4 wariantów naraz</li>
+      <li>Historia rozmów bez limitu</li>
+      <li>Własne instrukcje AI</li>
+      <li>Eksport historii</li>
+      <li>Dedykowane wsparcie</li>
+    </ul>
+    <button class="btn-pricing btn-pricing-outline" onclick="showScreen('screen-register')">Wybierz Unlimited</button>
+  </div>
+</div>
 
     <!-- FAQ -->
     <div class="landing-section landing-section-center" id="faq">
@@ -848,9 +864,13 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
       <div class="account-section">
         <div class="account-section-header"><div class="account-section-icon">🚀</div><div class="account-section-title">Ulepsz plan</div></div>
         <div class="account-section-body">
-          <p style="font-size:14px;color:var(--gray-600);margin-bottom:1rem;line-height:1.6;">Przejdź na Pro — nieograniczone odpowiedzi, historia na wszystkich urządzeniach i ekskluzywne funkcje AI.</p>
-          <button class="btn-pro-main" onclick="showScreen('screen-pro')">🚀 Przejdź na Pro — 29 zł/mies.</button>
-        </div>
+  <p style="font-size:14px;color:var(--gray-600);margin-bottom:1rem;line-height:1.6;">Twój obecny plan: <strong id="current-plan-name">Darmowy</strong></p>
+  <div style="display:flex;flex-direction:column;gap:10px;">
+    <button class="btn-pro-main" style="padding:10px;font-size:14px;" onclick="buyPro('starter')">Starter — 9 zł/mies. (100 odpowiedzi)</button>
+    <button class="btn-pro-main" style="padding:10px;font-size:14px;" onclick="buyPro('pro')">Pro — 19 zł/mies. (500 odpowiedzi)</button>
+    <button class="btn-pro-main" style="padding:10px;font-size:14px;" onclick="buyPro('unlimited')">Unlimited — 39 zł/mies. (∞ odpowiedzi)</button>
+  </div>
+</div>
       </div>
       <div class="account-section">
         <div class="account-section-header"><div class="account-section-icon">⚙️</div><div class="account-section-title">Konto</div></div>
@@ -864,22 +884,28 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
 <div id="screen-pro" class="screen">
   <div style="min-height:100vh;background:linear-gradient(160deg,#EFF6FF 0%,#F5F3FF 60%,#EDE9FE 100%);display:flex;align-items:center;justify-content:center;padding:2rem;">
     <div class="pro-card">
-      <div class="pro-badge">⭐ Coodpisać Pro</div>
-      <div class="pro-title">Odpowiadaj bez ograniczeń</div>
-      <div class="pro-sub">Osiągnąłeś dzienny limit.<br>Przejdź na Pro i pisz ile chcesz.</div>
-      <div class="pro-price"><span class="price-currency">zł</span><span class="price-amount">29</span></div>
-      <div class="price-period">miesięcznie • anuluj kiedy chcesz</div>
-      <div class="pro-features">
-        <div class="pro-feature"><div class="check">✓</div>Nieograniczone odpowiedzi każdego dnia</div>
-        <div class="pro-feature"><div class="check">✓</div>Wszystkie style i tony odpowiedzi</div>
-        <div class="pro-feature"><div class="check">✓</div>Analiza tonu rozmówcy</div>
-        <div class="pro-feature"><div class="check">✓</div>Historia na wszystkich urządzeniach</div>
-        <div class="pro-feature"><div class="check">✓</div>Priorytetowy dostęp do AI</div>
-      </div>
-      <button class="btn-pro-main" onclick="buyPro()">Przejdź na Pro — 29 zł/mies.</button>
-      <button class="btn-back" onclick="showScreen('screen-main')">← Wróć do aplikacji</button>
+  <div class="pro-badge">🚀 Ulepsz plan</div>
+  <div class="pro-title">Potrzebujesz więcej?</div>
+  <div class="pro-sub">Wybierz plan dopasowany do Twoich potrzeb.</div>
+  <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:1.5rem;">
+    <div style="background:var(--gray-50);border-radius:14px;padding:1rem;border:1px solid var(--gray-200);">
+      <div style="font-size:15px;font-weight:700;color:var(--gray-800);margin-bottom:4px;">Starter — 9 zł/mies.</div>
+      <div style="font-size:13px;color:var(--gray-400);margin-bottom:10px;">100 odpowiedzi • 2 warianty • historia 30 dni</div>
+      <button class="btn-pro-main" style="padding:10px;font-size:14px;" onclick="buyPro('starter')">Wybierz Starter</button>
+    </div>
+    <div style="background:linear-gradient(135deg,var(--blue-light),var(--violet-light));border-radius:14px;padding:1rem;border:1.5px solid var(--violet-mid);">
+      <div style="font-size:15px;font-weight:700;color:var(--violet);margin-bottom:4px;">⭐ Pro — 19 zł/mies.</div>
+      <div style="font-size:13px;color:var(--gray-600);margin-bottom:10px;">500 odpowiedzi • 4 warianty • historia bez limitu • analiza tonu</div>
+      <button class="btn-pro-main" style="padding:10px;font-size:14px;" onclick="buyPro('pro')">Wybierz Pro</button>
+    </div>
+    <div style="background:var(--gray-50);border-radius:14px;padding:1rem;border:1px solid var(--gray-200);">
+      <div style="font-size:15px;font-weight:700;color:var(--gray-800);margin-bottom:4px;">Unlimited — 39 zł/mies.</div>
+      <div style="font-size:13px;color:var(--gray-400);margin-bottom:10px;">Nieograniczone odpowiedzi • wszystkie funkcje</div>
+      <button class="btn-pro-main" style="padding:10px;font-size:14px;" onclick="buyPro('unlimited')">Wybierz Unlimited</button>
     </div>
   </div>
+  <button class="btn-back" onclick="showScreen('screen-main')">← Wróć do aplikacji</button>
+</div>
 </div><script>
 const SUPABASE_URL = 'https://gwiscqnifinovlvznadw.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_sFTtmmIm8rdF-JvwMBjU_w_55qCsJUO';
@@ -1392,9 +1418,17 @@ function toggleFaq(el) {
   }
 }
 
-function buyPro() {
+function buyPro(plan) {
   showNotif('Przekierowanie do płatności...');
-  setTimeout(() => { showNotif('Konto Pro aktywowane! 🎉'); showScreen('screen-main'); }, 2000);
+  setTimeout(async () => {
+    await sb.from('profiles').upsert({ id: currentUser.id, plan: plan || 'pro' });
+    userPlan = plan || 'pro';
+    applyPlanRestrictions();
+    showNotif('Plan aktywowany! 🎉');
+    showScreen('screen-main');
+    updateUsageUI();
+  }, 1500);
+}
 }
 function switchVariant(i) {
   const variants = window._lastVariants || [];
