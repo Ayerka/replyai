@@ -528,7 +528,7 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
         <div class="brand-icon" style="width:32px;height:32px;font-size:14px;">💬</div>
         <div class="footer-brand-name">Co<span>odpisać</span>.pl</div>
       </div>
-<div class="footer-links"><a onclick="showScreen('screen-privacy')">Polityka prywatności</a><a onclick="showScreen('screen-terms')">Regulamin</a><a href="mailto:kontakt@coodpisac.pl">Kontakt</a></div>      <div class="footer-copy">© 2026 Coodpisać.pl</div>
+<div class="footer-links"><a onclick="showScreen('screen-privacy')">Polityka prywatności</a><a onclick="showScreen('screen-terms')">Regulamin</a><a href="mailto:<a onclick="showScreen('screen-contact')">Kontakt</a>@coodpisac.pl">Kontakt</a></div>      <div class="footer-copy">© 2026 Coodpisać.pl</div>
     </div>
   </div>
 </div><!-- LOGIN -->
@@ -765,6 +765,29 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
         </div>
       </div>
       <div class="account-section">
+        <div class="account-section">
+  <div class="account-section-header"><div class="account-section-icon">🎁</div><div class="account-section-title">Zaproś znajomych</div></div>
+  <div class="account-section-body">
+    <p style="font-size:14px;color:var(--gray-600);margin-bottom:1rem;line-height:1.6;">Za każdego znajomego który zarejestruje się z Twojego linku — oboje dostajecie <strong>+10 dodatkowych odpowiedzi</strong>!</p>
+    <div style="background:var(--violet-light);border:1px solid var(--violet-mid);border-radius:12px;padding:1rem;margin-bottom:1rem;">
+      <div style="font-size:12px;font-weight:700;color:var(--violet);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.06em;">Twój link polecający</div>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <input id="referral-link" readonly style="flex:1;padding:9px 12px;border:1.5px solid var(--violet-mid);border-radius:8px;font-size:13px;background:var(--white);color:var(--gray-800);outline:none;" value="Ładowanie..." />
+        <button onclick="copyReferralLink()" style="padding:9px 16px;background:linear-gradient(135deg,var(--blue),var(--violet));color:white;border:none;border-radius:8px;font-family:var(--font);font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;">Kopiuj</button>
+      </div>
+    </div>
+    <div style="display:flex;gap:12px;">
+      <div style="flex:1;background:var(--gray-50);border-radius:10px;padding:0.75rem;text-align:center;">
+        <div style="font-size:22px;font-weight:800;color:var(--violet);" id="referral-count">0</div>
+        <div style="font-size:12px;color:var(--gray-400);">zaproszonych</div>
+      </div>
+      <div style="flex:1;background:var(--gray-50);border-radius:10px;padding:0.75rem;text-align:center;">
+        <div style="font-size:22px;font-weight:800;color:var(--violet);" id="bonus-count">0</div>
+        <div style="font-size:12px;color:var(--gray-400);">bonus odpowiedzi</div>
+      </div>
+    </div>
+  </div>
+</div>
         <div class="account-section-header"><div class="account-section-icon">⚙️</div><div class="account-section-title">Konto</div></div>
         <div class="account-section-body"><button class="btn-danger" onclick="logout()">Wyloguj się</button></div>
       </div>
@@ -825,7 +848,49 @@ let demoTone = 'profesjonalny';
 let chatHistory = [];
 let selectedCount = 1;
 let contextData = {};
-
+  
+async function sendContactForm() {
+  const name = document.getElementById('contact-name').value.trim();
+  const email = document.getElementById('contact-email').value.trim();
+  const subject = document.getElementById('contact-subject').value;
+  const message = document.getElementById('contact-message').value.trim();
+  const errEl = document.getElementById('contact-error');
+  const sucEl = document.getElementById('contact-success');
+  const btn = document.getElementById('contact-btn');
+  errEl.style.display = 'none'; sucEl.style.display = 'none';
+  if (!name || !email || !subject || !message) {
+    errEl.textContent = 'Wypełnij wszystkie pola.';
+    errEl.style.display = 'block';
+    return;
+  }
+  if (!email.includes('@')) {
+    errEl.textContent = 'Podaj prawidłowy adres e-mail.';
+    errEl.style.display = 'block';
+    return;
+  }
+  btn.disabled = true; btn.textContent = 'Wysyłanie...';
+  await new Promise(r => setTimeout(r, 1000));
+  btn.disabled = false; btn.textContent = 'Wyślij wiadomość';
+  sucEl.style.display = 'block';
+  document.getElementById('contact-name').value = '';
+  document.getElementById('contact-email').value = '';
+  document.getElementById('contact-subject').value = '';
+  document.getElementById('contact-message').value = '';
+}
+  function initCookieBanner() {
+  if (!localStorage.getItem('cookies_accepted')) {
+    document.getElementById('cookie-banner').style.display = 'flex';
+  }
+}
+function acceptCookies() {
+  localStorage.setItem('cookies_accepted', 'all');
+  document.getElementById('cookie-banner').style.display = 'none';
+}
+function rejectCookies() {
+  localStorage.setItem('cookies_accepted', 'essential');
+  document.getElementById('cookie-banner').style.display = 'none';
+}
+initCookieBanner();
 async function initAuth() {
   const { data: { session } } = await sb.auth.getSession();
   if (session) { currentUser = session.user; await onLogin(); }
@@ -845,6 +910,7 @@ async function onLogin() {
   document.getElementById('account-email-display').textContent = email;
   document.getElementById('account-name-display').textContent = email.split('@')[0];
   await loadUserPlan();
+  await checkReferral();
   await loadUsageCount();
   await loadHistory();
   updateUsageUI();
@@ -1294,8 +1360,7 @@ function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
-  if (id === 'screen-account') { loadHistory(); updateUsageUI(); applyUnlimitedFeatures(); }
-  const widget = document.getElementById('support-widget');
+if (id === 'screen-account') { loadHistory(); updateUsageUI(); applyUnlimitedFeatures(); loadReferralData(); }  const widget = document.getElementById('support-widget');
   if (widget) {
     const hideOn = ['screen-main', 'screen-account', 'screen-pro'];
     widget.style.display = hideOn.includes(id) ? 'none' : 'flex';
@@ -1343,6 +1408,37 @@ function applyUnlimitedFeatures() {
   if (instructionsSection) instructionsSection.style.display = isUnlimited ? 'block' : 'none';
   if (exportBtn) exportBtn.style.display = isUnlimited ? 'inline-block' : 'none';
   if (isUnlimited) loadCustomInstructions();
+} async function loadReferralData() {
+  const { data } = await sb.from('profiles').select('referral_code, bonus_responses').eq('id', currentUser.id).maybeSingle();
+  if (!data) return;
+  const code = data.referral_code || '';
+  const bonus = data.bonus_responses || 0;
+  const link = `${window.location.origin}?ref=${code}`;
+  const linkEl = document.getElementById('referral-link');
+  if (linkEl) linkEl.value = link;
+  const bonusEl = document.getElementById('bonus-count');
+  if (bonusEl) bonusEl.textContent = bonus;
+  const { count } = await sb.from('profiles').select('*', { count: 'exact', head: true }).eq('referred_by', code);
+  const refEl = document.getElementById('referral-count');
+  if (refEl) refEl.textContent = count || 0;
+}
+
+function copyReferralLink() {
+  const link = document.getElementById('referral-link').value;
+  navigator.clipboard.writeText(link).then(() => showNotif('Link skopiowany! 🎁'));
+}
+
+async function checkReferral() {
+  const params = new URLSearchParams(window.location.search);
+  const ref = params.get('ref');
+  if (!ref || !currentUser) return;
+  const { data: profile } = await sb.from('profiles').select('referred_by').eq('id', currentUser.id).maybeSingle();
+  if (profile?.referred_by) return;
+  const { data: referrer } = await sb.from('profiles').select('id, bonus_responses').eq('referral_code', ref).maybeSingle();
+  if (!referrer || referrer.id === currentUser.id) return;
+  await sb.from('profiles').update({ referred_by: ref, bonus_responses: 10 }).eq('id', currentUser.id);
+  await sb.from('profiles').update({ bonus_responses: (referrer.bonus_responses || 0) + 10 }).eq('id', referrer.id);
+  showNotif('🎁 Dostałaś 10 bonus odpowiedzi za polecenie!');
 }
 function toggleFaq(el) {
   const answer = el.nextElementSibling;
@@ -1500,6 +1596,53 @@ function initDraggable() {
 
 document.addEventListener('DOMContentLoaded', initDraggable);
 </script>
+  <!-- KONTAKT -->
+<div id="screen-contact" class="screen">
+  <div style="min-height:100vh;background:var(--gray-50);">
+    <div style="background:var(--white);border-bottom:1px solid var(--gray-200);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;">
+      <div class="brand-logo" style="margin:0"><div class="brand-icon">💬</div><div class="brand-name">Co<span>odpisać</span>.pl</div></div>
+      <button class="btn-nav-ghost" onclick="showScreen('screen-landing')">← Wróć</button>
+    </div>
+    <div style="max-width:560px;margin:0 auto;padding:3rem 2rem;">
+      <h1 style="font-family:var(--serif);font-size:36px;margin-bottom:0.5rem;color:var(--gray-800);">Kontakt</h1>
+      <p style="color:var(--gray-400);margin-bottom:2rem;font-size:15px;line-height:1.6;">Masz pytanie, problem lub sugestię? Napisz do nas — odpowiemy w ciągu 24 godzin.</p>
+      <div style="background:var(--white);border-radius:20px;border:1px solid var(--gray-200);padding:2rem;">
+        <div class="field">
+          <label>Imię</label>
+          <input type="text" id="contact-name" placeholder="Twoje imię" />
+        </div>
+        <div class="field">
+          <label>E-mail</label>
+          <input type="email" id="contact-email" placeholder="twoj@email.com" />
+        </div>
+        <div class="field">
+          <label>Temat</label>
+          <select id="contact-subject" class="select-input">
+            <option value="">Wybierz temat</option>
+            <option value="problem">🔧 Problem techniczny</option>
+            <option value="billing">💳 Płatności i subskrypcja</option>
+            <option value="feature">💡 Sugestia funkcji</option>
+            <option value="account">👤 Problem z kontem</option>
+            <option value="privacy">🔒 Prywatność i dane</option>
+            <option value="other">✏️ Inne</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Wiadomość</label>
+          <textarea id="contact-message" style="min-height:140px;" placeholder="Opisz swoje pytanie lub problem..."></textarea>
+        </div>
+        <div id="contact-success" style="display:none;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:10px;padding:12px 16px;font-size:13px;color:#16A34A;margin-bottom:1rem;">
+          ✓ Wiadomość wysłana! Odpiszemy w ciągu 24 godzin.
+        </div>
+        <div id="contact-error" style="display:none;background:#FEF2F2;border:1px solid #FECACA;border-radius:10px;padding:12px 16px;font-size:13px;color:#DC2626;margin-bottom:1rem;"></div>
+        <button class="btn-primary" onclick="sendContactForm()" id="contact-btn">Wyślij wiadomość</button>
+      </div>
+      <div style="margin-top:1.5rem;text-align:center;font-size:13px;color:var(--gray-400);">
+        Możesz też napisać bezpośrednio na <a href="mailto:[EMAIL]" style="color:var(--violet);font-weight:600;">[EMAIL]</a>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- REGULAMIN -->
 <div id="screen-terms" class="screen">
   <div style="min-height:100vh;background:var(--gray-50);">
@@ -1577,6 +1720,17 @@ document.addEventListener('DOMContentLoaded', initDraggable);
     </div>
   </div>
   <button onclick="toggleSupportChat()" style="width:54px;height:54px;background:linear-gradient(135deg,var(--blue),var(--violet));border:none;border-radius:50%;color:white;font-size:22px;cursor:pointer;box-shadow:0 4px 20px rgba(124,58,237,0.4);display:flex;align-items:center;justify-content:center;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">💬</button>
+</div>
+<!-- COOKIE BANNER -->
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:var(--gray-800);color:white;padding:1rem 2rem;z-index:9998;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
+  <p style="font-size:13px;color:rgba(255,255,255,0.8);line-height:1.6;margin:0;max-width:600px;">
+    🍪 Używamy plików cookies, aby zapewnić prawidłowe działanie serwisu i analizować ruch. Korzystając z serwisu, akceptujesz naszą 
+    <button onclick="showScreen('screen-privacy')" style="background:none;border:none;color:var(--violet-mid);font-size:13px;cursor:pointer;font-weight:600;padding:0;">Politykę Prywatności</button>.
+  </p>
+  <div style="display:flex;gap:10px;flex-shrink:0;">
+    <button onclick="acceptCookies()" style="padding:9px 20px;background:linear-gradient(135deg,var(--blue),var(--violet));color:white;border:none;border-radius:8px;font-family:var(--font);font-size:13px;font-weight:700;cursor:pointer;">Akceptuję</button>
+    <button onclick="rejectCookies()" style="padding:9px 20px;background:none;border:1.5px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.7);border-radius:8px;font-family:var(--font);font-size:13px;cursor:pointer;">Tylko niezbędne</button>
+  </div>
 </div>
 </body>
 </html>
