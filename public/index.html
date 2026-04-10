@@ -976,17 +976,24 @@ async function onLogin() {
 }
 
 async function loadUserPlan() {
-  const { data } = await sb.from('profiles').select('plan, custom_instructions').eq('id', currentUser.id).maybeSingle();
+  const { data } = await sb.from('profiles').select('plan, custom_instructions, bonus_responses').eq('id', currentUser.id).maybeSingle();
   if (!data) {
     await sb.from('profiles').insert({ id: currentUser.id, plan: 'free' });
     userPlan = 'free';
   } else {
     userPlan = data.plan || 'free';
     customInstructions = data.custom_instructions || '';
+    const bonusResponses = data.bonus_responses || 0;
+    if (bonusResponses > 0) {
+      PLAN_LIMITS[userPlan] = {
+        ...PLAN_LIMITS[userPlan],
+        responses: PLAN_LIMITS[userPlan].responses + bonusResponses
+      };
+    }
   }
   const planLabel = PLAN_LIMITS[userPlan]?.label || 'Darmowy';
   const badge = document.getElementById('account-plan-badge');
-  if (badge) badge.textContent = '✨ Plan ' + planLabel;
+  if (badge) badge.textContent = '✨ Plan ' + planLabel + (data?.bonus_responses > 0 ? ' +' + data.bonus_responses + ' bonus' : '');
   const currentPlanName = document.getElementById('current-plan-name');
   if (currentPlanName) currentPlanName.textContent = planLabel;
 }
