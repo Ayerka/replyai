@@ -984,12 +984,13 @@ async function loadUserPlan() {
     userPlan = data.plan || 'free';
     customInstructions = data.custom_instructions || '';
     const bonusResponses = data.bonus_responses || 0;
-    if (bonusResponses > 0) {
-      PLAN_LIMITS[userPlan] = {
-        ...PLAN_LIMITS[userPlan],
-        responses: PLAN_LIMITS[userPlan].responses + bonusResponses
-      };
-    }
+if (bonusResponses > 0) {
+  const baseLimit = { free: 10, starter: 100, pro: 500, unlimited: 999999 }[userPlan] || 10;
+  PLAN_LIMITS[userPlan] = {
+    ...PLAN_LIMITS[userPlan],
+    responses: baseLimit + bonusResponses
+  };
+}
   }
   const planLabel = PLAN_LIMITS[userPlan]?.label || 'Darmowy';
   const badge = document.getElementById('account-plan-badge');
