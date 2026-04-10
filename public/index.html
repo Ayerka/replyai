@@ -1040,9 +1040,12 @@ async function doRegister() {
   if (pass.length < 6) { errEl.textContent = 'Hasło musi mieć min. 6 znaków.'; errEl.style.display = 'block'; return; }
   btn.disabled = true; btn.textContent = 'Rejestracja...';
   const params = new URLSearchParams(window.location.search);
-  const ref = params.get('ref');
-  if (ref) localStorage.setItem('pending_ref', ref);
-  const { error } = await sb.auth.signUp({ email, password: pass });
+  const ref = params.get('ref') || '';
+  const { error } = await sb.auth.signUp({
+    email,
+    password: pass,
+    options: { data: { referral_code: ref } }
+  });
   btn.disabled = false; btn.textContent = 'Zarejestruj się za darmo';
   if (error) { errEl.textContent = error.message; errEl.style.display = 'block'; }
   else { sucEl.textContent = 'Konto utworzone! Możesz się teraz zalogować.'; sucEl.style.display = 'block'; setTimeout(() => showScreen('screen-login'), 2000); }
