@@ -507,12 +507,12 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
       <div class="section-heading">Często zadawane pytania</div>
       <div class="section-sub" style="margin-bottom:2rem;">Masz pytanie? Pewnie już tu jest odpowiedź.</div>
       <div class="faq-list">
-        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">🤔 Czy to tylko do randkowania? <span class="faq-arrow">▼</span></div><div class="faq-answer">Nie! Coodpisać działa do każdego rodzaju wiadomości — praca, rodzina, znajomi, klienci, szef. Masz do wyboru 11 różnych tonów odpowiedzi dopasowanych do każdej sytuacji.</div></div>
-        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">📱 Czy mogę wgrać screenshot rozmowy? <span class="faq-arrow">▼</span></div><div class="faq-answer">Tak! Możesz wgrać zdjęcie rozmowy (PNG, JPG do 5MB) i AI automatycznie ją przeanalizuje i zaproponuje odpowiedź.</div></div>
-        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">🔒 Czy moje wiadomości są bezpieczne? <span class="faq-arrow">▼</span></div><div class="faq-answer">Twoja prywatność jest dla nas priorytetem. Wiadomości nie są sprzedawane ani używane do trenowania modeli AI.</div></div>
-        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">💬 Ile odpowiedzi mogę dostać za darmo? <span class="faq-arrow">▼</span></div><div class="faq-answer">Na darmowym planie masz 10 odpowiedzi miesięcznie — bez karty kredytowej. Limit resetuje się co miesiąc.</div></div>
-        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">🌐 Na jakich platformach działa? <span class="faq-arrow">▼</span></div><div class="faq-answer">Coodpisać działa z każdą platformą — Instagram, WhatsApp, SMS, E-mail, Tinder/Hinge, LinkedIn, Facebook, TikTok i innymi.</div></div>
-        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">💰 Czy mogę anulować subskrypcję? <span class="faq-arrow">▼</span></div><div class="faq-answer">Oczywiście — anuluj kiedy chcesz, bez żadnych ukrytych opłat ani okresu wypowiedzenia.</div></div>
+        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">🤔 Czy to tylko do randkowania? <span class="faq-arrow">▼</span></div><div class="faq-answer">Nie! Coodpisać działa do każdego rodzaju wiadomości — praca, rodzina, znajomi, klienci, szef.</div></div>
+        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">📱 Czy mogę wgrać screenshot rozmowy? <span class="faq-arrow">▼</span></div><div class="faq-answer">Tak! Możesz wgrać zdjęcie rozmowy (PNG, JPG do 5MB) i AI automatycznie ją przeanalizuje.</div></div>
+        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">🔒 Czy moje wiadomości są bezpieczne? <span class="faq-arrow">▼</span></div><div class="faq-answer">Tak. Wiadomości nie są sprzedawane ani używane do trenowania AI.</div></div>
+        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">💬 Ile odpowiedzi mogę dostać za darmo? <span class="faq-arrow">▼</span></div><div class="faq-answer">Na darmowym planie masz 10 odpowiedzi miesięcznie — bez karty kredytowej.</div></div>
+        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">🌐 Na jakich platformach działa? <span class="faq-arrow">▼</span></div><div class="faq-answer">Instagram, WhatsApp, SMS, E-mail, Tinder/Hinge, LinkedIn, Facebook, TikTok i innych.</div></div>
+        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">💰 Czy mogę anulować subskrypcję? <span class="faq-arrow">▼</span></div><div class="faq-answer">Tak — anuluj kiedy chcesz, bez ukrytych opłat.</div></div>
       </div>
     </div>
 
@@ -528,7 +528,12 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
         <div class="brand-icon" style="width:32px;height:32px;font-size:14px;">💬</div>
         <div class="footer-brand-name">Co<span>odpisać</span>.pl</div>
       </div>
-<div class="footer-links"><a onclick="showScreen('screen-privacy')">Polityka prywatności</a><a onclick="showScreen('screen-terms')">Regulamin</a><a href="mailto:<a onclick="showScreen('screen-contact')">Kontakt</a>@coodpisac.pl">Kontakt</a></div>      <div class="footer-copy">© 2026 Coodpisać.pl</div>
+      <div class="footer-links">
+        <a onclick="showScreen('screen-privacy')">Polityka prywatności</a>
+        <a onclick="showScreen('screen-terms')">Regulamin</a>
+        <a onclick="showScreen('screen-contact')">Kontakt</a>
+      </div>
+      <div class="footer-copy">© 2026 Coodpisać.pl</div>
     </div>
   </div>
 </div><!-- LOGIN -->
@@ -685,11 +690,11 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
           <button class="tone-btn" data-tone="custom" onclick="selectTone(this)">✏️ Własny</button>
         </div>
         <div class="custom-tone-wrap">
-          <textarea class="custom-tone-input" id="custom-tone-input" placeholder="Opisz własny styl... np. 'krótko i z humorem'" style="display:none;" rows="2"></textarea>
+          <textarea class="custom-tone-input" id="custom-tone-input" placeholder="Opisz własny styl..." style="display:none;" rows="2"></textarea>
         </div>
       </div>
       <div>
-        <div class="section-title">Dzienny limit</div>
+        <div class="section-title">Limit miesięczny</div>
         <div class="usage-bar-bg"><div class="usage-bar-fill low" id="usage-bar" style="width:0%"></div></div>
         <div class="usage-info" id="usage-info">Pozostało 10 z 10 w tym miesiącu</div>
       </div>
@@ -734,14 +739,14 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
           </div>
         </div>
       </div>
-     <div class="account-section" id="custom-instructions-section" style="display:none">
-  <div class="account-section-header"><div class="account-section-icon">🤖</div><div class="account-section-title">Własne instrukcje AI</div></div>
-  <div class="account-section-body">
-    <p style="font-size:13px;color:var(--gray-400);margin-bottom:12px;line-height:1.6;">Instrukcje które AI zawsze będzie stosować. Dostępne tylko w planie Unlimited.</p>
-    <div class="account-field"><label>Twoje instrukcje</label><textarea id="custom-instructions" style="min-height:100px;resize:vertical;" placeholder="Np. Zawsze pisz krótko. Używaj angielskiego. Unikaj emojis."></textarea></div>
-    <button class="btn-account-save" onclick="saveCustomInstructions()">Zapisz instrukcje</button>
-  </div>
-</div>
+      <div class="account-section" id="custom-instructions-section" style="display:none">
+        <div class="account-section-header"><div class="account-section-icon">🤖</div><div class="account-section-title">Własne instrukcje AI</div></div>
+        <div class="account-section-body">
+          <p style="font-size:13px;color:var(--gray-400);margin-bottom:12px;line-height:1.6;">Instrukcje które AI zawsze będzie stosować. Dostępne tylko w planie Unlimited.</p>
+          <div class="account-field"><label>Twoje instrukcje</label><textarea id="custom-instructions" style="min-height:100px;resize:vertical;" placeholder="Np. Zawsze pisz krótko. Używaj angielskiego. Unikaj emojis."></textarea></div>
+          <button class="btn-account-save" onclick="saveCustomInstructions()">Zapisz instrukcje</button>
+        </div>
+      </div>
       <div class="account-section">
         <div class="account-section-header"><div class="account-section-icon">🔒</div><div class="account-section-title">Zmień hasło</div></div>
         <div class="account-section-body">
@@ -751,7 +756,12 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
         </div>
       </div>
       <div class="account-section">
-<div class="account-section-header"><div class="account-section-icon">💬</div><div class="account-section-title">Historia rozmów</div><button id="export-btn" onclick="exportHistory()" style="display:none;margin-left:auto;padding:6px 14px;border-radius:8px;border:1.5px solid var(--violet-mid);background:var(--violet-light);color:var(--violet);font-family:var(--font);font-size:12px;font-weight:700;cursor:pointer;">⬇ Eksportuj CSV</button></div>        <div class="account-section-body"><div id="account-history-list"><div class="history-empty">Ładowanie...</div></div></div>
+        <div class="account-section-header">
+          <div class="account-section-icon">💬</div>
+          <div class="account-section-title">Historia rozmów</div>
+          <button id="export-btn" onclick="exportHistory()" style="display:none;margin-left:auto;padding:6px 14px;border-radius:8px;border:1.5px solid var(--violet-mid);background:var(--violet-light);color:var(--violet);font-family:var(--font);font-size:12px;font-weight:700;cursor:pointer;">⬇ Eksportuj CSV</button>
+        </div>
+        <div class="account-section-body"><div id="account-history-list"><div class="history-empty">Ładowanie...</div></div></div>
       </div>
       <div class="account-section">
         <div class="account-section-header"><div class="account-section-icon">🚀</div><div class="account-section-title">Ulepsz plan</div></div>
@@ -765,29 +775,29 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
         </div>
       </div>
       <div class="account-section">
-        <div class="account-section">
-  <div class="account-section-header"><div class="account-section-icon">🎁</div><div class="account-section-title">Zaproś znajomych</div></div>
-  <div class="account-section-body">
-    <p style="font-size:14px;color:var(--gray-600);margin-bottom:1rem;line-height:1.6;">Za każdego znajomego który zarejestruje się z Twojego linku — oboje dostajecie <strong>+10 dodatkowych odpowiedzi</strong>!</p>
-    <div style="background:var(--violet-light);border:1px solid var(--violet-mid);border-radius:12px;padding:1rem;margin-bottom:1rem;">
-      <div style="font-size:12px;font-weight:700;color:var(--violet);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.06em;">Twój link polecający</div>
-      <div style="display:flex;gap:8px;align-items:center;">
-        <input id="referral-link" readonly style="flex:1;padding:9px 12px;border:1.5px solid var(--violet-mid);border-radius:8px;font-size:13px;background:var(--white);color:var(--gray-800);outline:none;" value="Ładowanie..." />
-        <button onclick="copyReferralLink()" style="padding:9px 16px;background:linear-gradient(135deg,var(--blue),var(--violet));color:white;border:none;border-radius:8px;font-family:var(--font);font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;">Kopiuj</button>
+        <div class="account-section-header"><div class="account-section-icon">🎁</div><div class="account-section-title">Zaproś znajomych</div></div>
+        <div class="account-section-body">
+          <p style="font-size:14px;color:var(--gray-600);margin-bottom:1rem;line-height:1.6;">Za każdego znajomego który zarejestruje się z Twojego linku — oboje dostajecie <strong>+10 dodatkowych odpowiedzi</strong>!</p>
+          <div style="background:var(--violet-light);border:1px solid var(--violet-mid);border-radius:12px;padding:1rem;margin-bottom:1rem;">
+            <div style="font-size:12px;font-weight:700;color:var(--violet);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.06em;">Twój link polecający</div>
+            <div style="display:flex;gap:8px;align-items:center;">
+              <input id="referral-link" readonly style="flex:1;padding:9px 12px;border:1.5px solid var(--violet-mid);border-radius:8px;font-size:13px;background:var(--white);color:var(--gray-800);outline:none;" value="Ładowanie..." />
+              <button onclick="copyReferralLink()" style="padding:9px 16px;background:linear-gradient(135deg,var(--blue),var(--violet));color:white;border:none;border-radius:8px;font-family:var(--font);font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;">Kopiuj</button>
+            </div>
+          </div>
+          <div style="display:flex;gap:12px;">
+            <div style="flex:1;background:var(--gray-50);border-radius:10px;padding:0.75rem;text-align:center;">
+              <div style="font-size:22px;font-weight:800;color:var(--violet);" id="referral-count">0</div>
+              <div style="font-size:12px;color:var(--gray-400);">zaproszonych</div>
+            </div>
+            <div style="flex:1;background:var(--gray-50);border-radius:10px;padding:0.75rem;text-align:center;">
+              <div style="font-size:22px;font-weight:800;color:var(--violet);" id="bonus-count">0</div>
+              <div style="font-size:12px;color:var(--gray-400);">bonus odpowiedzi</div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div style="display:flex;gap:12px;">
-      <div style="flex:1;background:var(--gray-50);border-radius:10px;padding:0.75rem;text-align:center;">
-        <div style="font-size:22px;font-weight:800;color:var(--violet);" id="referral-count">0</div>
-        <div style="font-size:12px;color:var(--gray-400);">zaproszonych</div>
-      </div>
-      <div style="flex:1;background:var(--gray-50);border-radius:10px;padding:0.75rem;text-align:center;">
-        <div style="font-size:22px;font-weight:800;color:var(--violet);" id="bonus-count">0</div>
-        <div style="font-size:12px;color:var(--gray-400);">bonus odpowiedzi</div>
-      </div>
-    </div>
-  </div>
-</div>
+      <div class="account-section">
         <div class="account-section-header"><div class="account-section-icon">⚙️</div><div class="account-section-title">Konto</div></div>
         <div class="account-section-body"><button class="btn-danger" onclick="logout()">Wyloguj się</button></div>
       </div>
@@ -822,12 +832,101 @@ textarea:focus { border-color: var(--violet); background: var(--white); box-shad
       <button class="btn-back" onclick="showScreen('screen-main')">← Wróć do aplikacji</button>
     </div>
   </div>
+</div>
+
+<!-- KONTAKT -->
+<div id="screen-contact" class="screen">
+  <div style="min-height:100vh;background:var(--gray-50);">
+    <div style="background:var(--white);border-bottom:1px solid var(--gray-200);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;">
+      <div class="brand-logo" style="margin:0"><div class="brand-icon">💬</div><div class="brand-name">Co<span>odpisać</span>.pl</div></div>
+      <button class="btn-nav-ghost" onclick="showScreen('screen-landing')">← Wróć</button>
+    </div>
+    <div style="max-width:560px;margin:0 auto;padding:3rem 2rem;">
+      <h1 style="font-family:var(--serif);font-size:36px;margin-bottom:0.5rem;color:var(--gray-800);">Kontakt</h1>
+      <p style="color:var(--gray-400);margin-bottom:2rem;font-size:15px;line-height:1.6;">Masz pytanie, problem lub sugestię? Napisz do nas — odpowiemy w ciągu 24 godzin.</p>
+      <div style="background:var(--white);border-radius:20px;border:1px solid var(--gray-200);padding:2rem;">
+        <div class="field"><label>Imię</label><input type="text" id="contact-name" placeholder="Twoje imię" /></div>
+        <div class="field"><label>E-mail</label><input type="email" id="contact-email" placeholder="twoj@email.com" /></div>
+        <div class="field">
+          <label>Temat</label>
+          <select id="contact-subject" class="select-input">
+            <option value="">Wybierz temat</option>
+            <option value="problem">🔧 Problem techniczny</option>
+            <option value="billing">💳 Płatności i subskrypcja</option>
+            <option value="feature">💡 Sugestia funkcji</option>
+            <option value="account">👤 Problem z kontem</option>
+            <option value="privacy">🔒 Prywatność i dane</option>
+            <option value="other">✏️ Inne</option>
+          </select>
+        </div>
+        <div class="field"><label>Wiadomość</label><textarea id="contact-message" style="min-height:140px;" placeholder="Opisz swoje pytanie lub problem..."></textarea></div>
+        <div id="contact-success" style="display:none;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:10px;padding:12px 16px;font-size:13px;color:#16A34A;margin-bottom:1rem;">✓ Wiadomość wysłana! Odpiszemy w ciągu 24 godzin.</div>
+        <div id="contact-error" style="display:none;background:#FEF2F2;border:1px solid #FECACA;border-radius:10px;padding:12px 16px;font-size:13px;color:#DC2626;margin-bottom:1rem;"></div>
+        <button class="btn-primary" onclick="sendContactForm()" id="contact-btn">Wyślij wiadomość</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REGULAMIN -->
+<div id="screen-terms" class="screen">
+  <div style="min-height:100vh;background:var(--gray-50);">
+    <div style="background:var(--white);border-bottom:1px solid var(--gray-200);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;">
+      <div class="brand-logo" style="margin:0"><div class="brand-icon">💬</div><div class="brand-name">Co<span>odpisać</span>.pl</div></div>
+      <button class="btn-nav-ghost" onclick="showScreen('screen-landing')">← Wróć</button>
+    </div>
+    <div style="max-width:760px;margin:0 auto;padding:3rem 2rem;font-size:15px;line-height:1.8;color:var(--gray-800);">
+      <h1 style="font-family:var(--serif);font-size:36px;margin-bottom:0.5rem;">Regulamin serwisu</h1>
+      <p style="color:var(--gray-400);margin-bottom:2rem;">Ostatnia aktualizacja: 10 kwietnia 2026</p>
+      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§1. Postanowienia ogólne</h2>
+      <p>Niniejszy regulamin określa zasady korzystania z serwisu <strong>Coodpisać.pl</strong>. Właścicielem jest Michelle Mayer, prowadząca działalność pod nazwą <strong>[NAZWA FIRMY]</strong>, adres: <strong>[ADRES]</strong>, NIP: <strong>[NIP]</strong>, kontakt: <strong>[EMAIL]</strong>.</p>
+      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§2. Rejestracja i konto</h2>
+      <p>Korzystanie z pełnej funkcjonalności wymaga założenia konta poprzez podanie adresu e-mail i hasła. Użytkownik zobowiązuje się do podania prawdziwych danych. Jeden użytkownik może posiadać tylko jedno konto.</p>
+      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§3. Plany i płatności</h2>
+      <p>Serwis oferuje plan Darmowy (10 odpowiedzi/mies., 0 zł), Starter (100 odpowiedzi/mies., 9 zł), Pro (500 odpowiedzi/mies., 19 zł) oraz Unlimited (∞ odpowiedzi, 39 zł). Subskrypcje odnawiają się automatycznie. Anulowanie możliwe jest w dowolnym momencie.</p>
+      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§4. Zasady korzystania</h2>
+      <p>Zabrania się generowania treści nielegalnych, podszywania się pod inne osoby oraz prób obejścia limitów. Operator może usunąć konto naruszające regulamin.</p>
+      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§5. Odpowiedzialność</h2>
+      <p>Serwis korzysta z zewnętrznych modeli AI. Operator nie gwarantuje trafności odpowiedzi. Użytkownik korzysta z nich na własną odpowiedzialność.</p>
+      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§6. Reklamacje</h2>
+      <p>Reklamacje kieruj na: <strong>[EMAIL]</strong>. Rozpatrujemy je w ciągu 14 dni roboczych.</p>
+      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§7. Postanowienia końcowe</h2>
+      <p>Regulamin podlega prawu polskiemu. Operator zastrzega prawo do zmian z 14-dniowym wyprzedzeniem.</p>
+    </div>
+  </div>
+</div>
+
+<!-- POLITYKA PRYWATNOŚCI -->
+<div id="screen-privacy" class="screen">
+  <div style="min-height:100vh;background:var(--gray-50);">
+    <div style="background:var(--white);border-bottom:1px solid var(--gray-200);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;">
+      <div class="brand-logo" style="margin:0"><div class="brand-icon">💬</div><div class="brand-name">Co<span>odpisać</span>.pl</div></div>
+      <button class="btn-nav-ghost" onclick="showScreen('screen-landing')">← Wróć</button>
+    </div>
+    <div style="max-width:760px;margin:0 auto;padding:3rem 2rem;font-size:15px;line-height:1.8;color:var(--gray-800);">
+      <h1 style="font-family:var(--serif);font-size:36px;margin-bottom:0.5rem;">Polityka Prywatności</h1>
+      <p style="color:var(--gray-400);margin-bottom:2rem;">Ostatnia aktualizacja: 10 kwietnia 2026</p>
+      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§1. Administrator danych</h2>
+      <p>Administratorem danych jest Michelle Mayer, działalność pod nazwą <strong>[NAZWA FIRMY]</strong>, adres: <strong>[ADRES]</strong>, NIP: <strong>[NIP]</strong>, kontakt: <strong>[EMAIL]</strong>.</p>
+      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§2. Jakie dane zbieramy</h2>
+      <p>Zbieramy adres e-mail, zaszyfrowane hasło, historię rozmów, wybrany plan oraz dane techniczne (adres IP, typ przeglądarki, pliki cookies).</p>
+      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§3. Cel przetwarzania</h2>
+      <p>Dane przetwarzamy w celu świadczenia usług, zarządzania kontem, obsługi płatności i zapewnienia bezpieczeństwa — na podstawie wykonania umowy lub prawnie uzasadnionego interesu.</p>
+      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§4. Komu przekazujemy dane</h2>
+      <p>Dane przekazujemy dostawcom: Supabase (baza danych), OpenAI (generowanie odpowiedzi — treści nie są używane do trenowania AI), Vercel (hosting). Nie sprzedajemy danych.</p>
+      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§5. Twoje prawa</h2>
+      <p>Masz prawo do dostępu, sprostowania, usunięcia i przenoszenia danych. Kontakt: <strong>[EMAIL]</strong>. Możesz też złożyć skargę do Prezesa UODO (uodo.gov.pl).</p>
+      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§6. Bezpieczeństwo</h2>
+      <p>Stosujemy szyfrowanie HTTPS, bcrypt dla haseł oraz kontrolę dostępu do danych (Row Level Security).</p>
+      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§7. Zmiany polityki</h2>
+      <p>O zmianach informujemy e-mailem z 14-dniowym wyprzedzeniem.</p>
+    </div>
+  </div>
 </div><script>
 const SUPABASE_URL = 'https://gwiscqnifinovlvznadw.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_sFTtmmIm8rdF-JvwMBjU_w_55qCsJUO';
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-const DAILY_LIMIT = 10;
 const PLAN_LIMITS = {
   free:      { responses: 10,     variants: 1, label: 'Darmowy' },
   starter:   { responses: 100,    variants: 2, label: 'Starter' },
@@ -848,49 +947,8 @@ let demoTone = 'profesjonalny';
 let chatHistory = [];
 let selectedCount = 1;
 let contextData = {};
-  
-async function sendContactForm() {
-  const name = document.getElementById('contact-name').value.trim();
-  const email = document.getElementById('contact-email').value.trim();
-  const subject = document.getElementById('contact-subject').value;
-  const message = document.getElementById('contact-message').value.trim();
-  const errEl = document.getElementById('contact-error');
-  const sucEl = document.getElementById('contact-success');
-  const btn = document.getElementById('contact-btn');
-  errEl.style.display = 'none'; sucEl.style.display = 'none';
-  if (!name || !email || !subject || !message) {
-    errEl.textContent = 'Wypełnij wszystkie pola.';
-    errEl.style.display = 'block';
-    return;
-  }
-  if (!email.includes('@')) {
-    errEl.textContent = 'Podaj prawidłowy adres e-mail.';
-    errEl.style.display = 'block';
-    return;
-  }
-  btn.disabled = true; btn.textContent = 'Wysyłanie...';
-  await new Promise(r => setTimeout(r, 1000));
-  btn.disabled = false; btn.textContent = 'Wyślij wiadomość';
-  sucEl.style.display = 'block';
-  document.getElementById('contact-name').value = '';
-  document.getElementById('contact-email').value = '';
-  document.getElementById('contact-subject').value = '';
-  document.getElementById('contact-message').value = '';
-}
-  function initCookieBanner() {
-  if (!localStorage.getItem('cookies_accepted')) {
-    document.getElementById('cookie-banner').style.display = 'flex';
-  }
-}
-function acceptCookies() {
-  localStorage.setItem('cookies_accepted', 'all');
-  document.getElementById('cookie-banner').style.display = 'none';
-}
-function rejectCookies() {
-  localStorage.setItem('cookies_accepted', 'essential');
-  document.getElementById('cookie-banner').style.display = 'none';
-}
-initCookieBanner();
+let customInstructions = '';
+
 async function initAuth() {
   const { data: { session } } = await sb.auth.getSession();
   if (session) { currentUser = session.user; await onLogin(); }
@@ -918,12 +976,13 @@ async function onLogin() {
 }
 
 async function loadUserPlan() {
-  const { data } = await sb.from('profiles').select('plan').eq('id', currentUser.id).maybeSingle();
+  const { data } = await sb.from('profiles').select('plan, custom_instructions').eq('id', currentUser.id).maybeSingle();
   if (!data) {
     await sb.from('profiles').insert({ id: currentUser.id, plan: 'free' });
     userPlan = 'free';
   } else {
     userPlan = data.plan || 'free';
+    customInstructions = data.custom_instructions || '';
   }
   const planLabel = PLAN_LIMITS[userPlan]?.label || 'Darmowy';
   const badge = document.getElementById('account-plan-badge');
@@ -938,7 +997,7 @@ function applyPlanRestrictions() {
     const count = parseInt(btn.dataset.count);
     if (count > limits.variants) {
       btn.disabled = true;
-      btn.title = `Dostępne w planie ${count <= 2 ? 'Starter' : 'Pro'}`;
+      btn.title = 'Dostępne w planie ' + (count <= 2 ? 'Starter' : 'Pro');
       btn.textContent = '🔒' + count;
     } else {
       btn.disabled = false;
@@ -1022,12 +1081,12 @@ function updateUsageUI() {
   document.getElementById('usage-bar').style.width = pct + '%';
   document.getElementById('usage-bar').className = 'usage-bar-fill ' + (pct >= 90 ? 'high' : pct >= 60 ? 'med' : 'low');
   document.getElementById('usage-dot').className = 'usage-dot ' + (pct >= 90 ? 'danger' : pct >= 60 ? 'warn' : '');
-  document.getElementById('usage-text').textContent = usedCount + ' / ' + limit;
-  document.getElementById('usage-info').textContent = 'Pozostało ' + remaining + ' z ' + limit + ' w tym miesiącu';
+  document.getElementById('usage-text').textContent = usedCount + ' / ' + (limit === 999999 ? '∞' : limit);
+  document.getElementById('usage-info').textContent = 'Pozostało ' + (limit === 999999 ? '∞' : remaining) + ' w tym miesiącu';
   const statToday = document.getElementById('stat-today');
   const statRemaining = document.getElementById('stat-remaining');
   if (statToday) statToday.textContent = usedCount;
-  if (statRemaining) statRemaining.textContent = remaining;
+  if (statRemaining) statRemaining.textContent = limit === 999999 ? '∞' : remaining;
 }async function loadHistory() {
   const { data } = await sb.from('conversations').select('*').eq('user_id', currentUser.id).order('created_at', { ascending: false }).limit(20);
   conversationHistory = data || [];
@@ -1091,6 +1150,83 @@ async function loadConversation(id) {
 async function saveConversation(conversation, context, tone, app, reply) {
   await sb.from('conversations').insert({ user_id: currentUser.id, conversation, context, tone, app, reply });
   await loadHistory();
+}
+
+async function loadCustomInstructions() {
+  const { data } = await sb.from('profiles').select('custom_instructions').eq('id', currentUser.id).maybeSingle();
+  customInstructions = data?.custom_instructions || '';
+  const el = document.getElementById('custom-instructions');
+  if (el) el.value = customInstructions;
+}
+
+async function saveCustomInstructions() {
+  const val = document.getElementById('custom-instructions').value.trim();
+  const { error } = await sb.from('profiles').update({ custom_instructions: val }).eq('id', currentUser.id);
+  if (error) showNotif('Błąd zapisu: ' + error.message);
+  else { customInstructions = val; showNotif('Instrukcje zapisane ✓'); }
+}
+
+function exportHistory() {
+  if (!conversationHistory.length) { showNotif('Brak historii do eksportu'); return; }
+  const headers = ['Data', 'Aplikacja', 'Ton', 'Rozmowa', 'Odpowiedź'];
+  const rows = conversationHistory.map(c => [
+    new Date(c.created_at).toLocaleDateString('pl-PL'),
+    c.app || '',
+    c.tone || '',
+    (c.conversation || '').replace(/"/g, '""'),
+    (c.reply || '').replace(/"/g, '""')
+  ]);
+  const csv = [headers, ...rows].map(r => r.map(v => `"${v}"`).join(',')).join('\n');
+  const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'coodpisac-historia.csv';
+  a.click(); URL.revokeObjectURL(url);
+  showNotif('Eksport gotowy! ✓');
+}
+
+function applyUnlimitedFeatures() {
+  const isUnlimited = userPlan === 'unlimited';
+  const instructionsSection = document.getElementById('custom-instructions-section');
+  const exportBtn = document.getElementById('export-btn');
+  if (instructionsSection) instructionsSection.style.display = isUnlimited ? 'block' : 'none';
+  if (exportBtn) exportBtn.style.display = isUnlimited ? 'inline-block' : 'none';
+  if (isUnlimited) loadCustomInstructions();
+}
+
+async function loadReferralData() {
+  const { data } = await sb.from('profiles').select('referral_code, bonus_responses').eq('id', currentUser.id).maybeSingle();
+  if (!data) return;
+  const code = data.referral_code || '';
+  const bonus = data.bonus_responses || 0;
+  const link = `${window.location.origin}?ref=${code}`;
+  const linkEl = document.getElementById('referral-link');
+  if (linkEl) linkEl.value = link;
+  const bonusEl = document.getElementById('bonus-count');
+  if (bonusEl) bonusEl.textContent = bonus;
+  if (code) {
+    const { count } = await sb.from('profiles').select('*', { count: 'exact', head: true }).eq('referred_by', code);
+    const refEl = document.getElementById('referral-count');
+    if (refEl) refEl.textContent = count || 0;
+  }
+}
+
+function copyReferralLink() {
+  const link = document.getElementById('referral-link').value;
+  navigator.clipboard.writeText(link).then(() => showNotif('Link skopiowany! 🎁'));
+}
+
+async function checkReferral() {
+  const params = new URLSearchParams(window.location.search);
+  const ref = params.get('ref');
+  if (!ref || !currentUser) return;
+  const { data: profile } = await sb.from('profiles').select('referred_by').eq('id', currentUser.id).maybeSingle();
+  if (profile?.referred_by) return;
+  const { data: referrer } = await sb.from('profiles').select('id, bonus_responses').eq('referral_code', ref).maybeSingle();
+  if (!referrer || referrer.id === currentUser.id) return;
+  await sb.from('profiles').update({ referred_by: ref, bonus_responses: 10 }).eq('id', currentUser.id);
+  await sb.from('profiles').update({ bonus_responses: (referrer.bonus_responses || 0) + 10 }).eq('id', referrer.id);
+  showNotif('🎁 Dostałaś 10 bonus odpowiedzi za polecenie!');
 }
 
 function toggleAppSelector() {
@@ -1199,6 +1335,27 @@ function saveContext() {
   if (hasContext) showNotif('Kontekst zapisany ✓');
 }
 
+async function sendContactForm() {
+  const name = document.getElementById('contact-name').value.trim();
+  const email = document.getElementById('contact-email').value.trim();
+  const subject = document.getElementById('contact-subject').value;
+  const message = document.getElementById('contact-message').value.trim();
+  const errEl = document.getElementById('contact-error');
+  const sucEl = document.getElementById('contact-success');
+  const btn = document.getElementById('contact-btn');
+  errEl.style.display = 'none'; sucEl.style.display = 'none';
+  if (!name || !email || !subject || !message) { errEl.textContent = 'Wypełnij wszystkie pola.'; errEl.style.display = 'block'; return; }
+  if (!email.includes('@')) { errEl.textContent = 'Podaj prawidłowy adres e-mail.'; errEl.style.display = 'block'; return; }
+  btn.disabled = true; btn.textContent = 'Wysyłanie...';
+  await new Promise(r => setTimeout(r, 1000));
+  btn.disabled = false; btn.textContent = 'Wyślij wiadomość';
+  sucEl.style.display = 'block';
+  document.getElementById('contact-name').value = '';
+  document.getElementById('contact-email').value = '';
+  document.getElementById('contact-subject').value = '';
+  document.getElementById('contact-message').value = '';
+}
+
 async function tryDemo() {
   const msg = document.getElementById('demo-input').value.trim();
   if (!msg) {
@@ -1253,9 +1410,8 @@ async function tryDemo() {
   document.getElementById('result-area').innerHTML = `<div class="result-card" style="opacity:0.6;"><div class="result-header"><div class="result-label">✨ Generowanie...</div></div><div class="result-text" style="color:var(--gray-400);">AI analizuje rozmowę...</div></div>`;
   try {
     const body = {
-  conversation: convo,
-  context,
-  customInstructions: customInstructions || '',
+      conversation: convo,
+      context,
       tone: selectedTone,
       customTone: selectedTone === 'custom' ? customTone : '',
       app: selectedApp,
@@ -1266,6 +1422,7 @@ async function tryDemo() {
       situation: contextData.situation || '',
       feeling: contextData.feeling || '',
       goal: contextData.goal || '',
+      customInstructions: customInstructions || '',
     };
     if (uploadedImageBase64) body.image = uploadedImageBase64;
     const resp = await fetch('/api/reply', {
@@ -1356,90 +1513,24 @@ function showNotif(msg) {
   n.textContent = msg; n.classList.add('show');
   setTimeout(() => n.classList.remove('show'), 2500);
 }
+
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
-if (id === 'screen-account') { loadHistory(); updateUsageUI(); applyUnlimitedFeatures(); loadReferralData(); }  const widget = document.getElementById('support-widget');
+  if (id === 'screen-account') { loadHistory(); updateUsageUI(); applyUnlimitedFeatures(); loadReferralData(); }
+  const widget = document.getElementById('support-widget');
   if (widget) {
     const hideOn = ['screen-main', 'screen-account', 'screen-pro'];
     widget.style.display = hideOn.includes(id) ? 'none' : 'flex';
   }
 }
-let customInstructions = '';
 
-async function loadCustomInstructions() {
-  const { data } = await sb.from('profiles').select('custom_instructions').eq('id', currentUser.id).maybeSingle();
-  customInstructions = data?.custom_instructions || '';
-  const el = document.getElementById('custom-instructions');
-  if (el) el.value = customInstructions;
+function scrollToSection(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth' });
 }
 
-async function saveCustomInstructions() {
-  const val = document.getElementById('custom-instructions').value.trim();
-  const { error } = await sb.from('profiles').update({ custom_instructions: val }).eq('id', currentUser.id);
-  if (error) showNotif('Błąd zapisu: ' + error.message);
-  else { customInstructions = val; showNotif('Instrukcje zapisane ✓'); }
-}
-
-function exportHistory() {
-  if (!conversationHistory.length) { showNotif('Brak historii do eksportu'); return; }
-  const headers = ['Data', 'Aplikacja', 'Ton', 'Rozmowa', 'Odpowiedź'];
-  const rows = conversationHistory.map(c => [
-    new Date(c.created_at).toLocaleDateString('pl-PL'),
-    c.app || '',
-    c.tone || '',
-    (c.conversation || '').replace(/"/g, '""'),
-    (c.reply || '').replace(/"/g, '""')
-  ]);
-  const csv = [headers, ...rows].map(r => r.map(v => `"${v}"`).join(',')).join('\n');
-  const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url; a.download = 'coodpisac-historia.csv';
-  a.click(); URL.revokeObjectURL(url);
-  showNotif('Eksport gotowy! ✓');
-}
-
-function applyUnlimitedFeatures() {
-  const isUnlimited = userPlan === 'unlimited';
-  const instructionsSection = document.getElementById('custom-instructions-section');
-  const exportBtn = document.getElementById('export-btn');
-  if (instructionsSection) instructionsSection.style.display = isUnlimited ? 'block' : 'none';
-  if (exportBtn) exportBtn.style.display = isUnlimited ? 'inline-block' : 'none';
-  if (isUnlimited) loadCustomInstructions();
-} async function loadReferralData() {
-  const { data } = await sb.from('profiles').select('referral_code, bonus_responses').eq('id', currentUser.id).maybeSingle();
-  if (!data) return;
-  const code = data.referral_code || '';
-  const bonus = data.bonus_responses || 0;
-  const link = `${window.location.origin}?ref=${code}`;
-  const linkEl = document.getElementById('referral-link');
-  if (linkEl) linkEl.value = link;
-  const bonusEl = document.getElementById('bonus-count');
-  if (bonusEl) bonusEl.textContent = bonus;
-  const { count } = await sb.from('profiles').select('*', { count: 'exact', head: true }).eq('referred_by', code);
-  const refEl = document.getElementById('referral-count');
-  if (refEl) refEl.textContent = count || 0;
-}
-
-function copyReferralLink() {
-  const link = document.getElementById('referral-link').value;
-  navigator.clipboard.writeText(link).then(() => showNotif('Link skopiowany! 🎁'));
-}
-
-async function checkReferral() {
-  const params = new URLSearchParams(window.location.search);
-  const ref = params.get('ref');
-  if (!ref || !currentUser) return;
-  const { data: profile } = await sb.from('profiles').select('referred_by').eq('id', currentUser.id).maybeSingle();
-  if (profile?.referred_by) return;
-  const { data: referrer } = await sb.from('profiles').select('id, bonus_responses').eq('referral_code', ref).maybeSingle();
-  if (!referrer || referrer.id === currentUser.id) return;
-  await sb.from('profiles').update({ referred_by: ref, bonus_responses: 10 }).eq('id', currentUser.id);
-  await sb.from('profiles').update({ bonus_responses: (referrer.bonus_responses || 0) + 10 }).eq('id', referrer.id);
-  showNotif('🎁 Dostałaś 10 bonus odpowiedzi za polecenie!');
-}
 function toggleFaq(el) {
   const answer = el.nextElementSibling;
   const arrow = el.querySelector('.faq-arrow');
@@ -1462,8 +1553,20 @@ async function buyPro(plan) {
   }, 1500);
 }
 
-initAuth();
-// ===== CHAT SUPPORT =====
+function initCookieBanner() {
+  if (!localStorage.getItem('cookies_accepted')) {
+    document.getElementById('cookie-banner').style.display = 'flex';
+  }
+}
+function acceptCookies() {
+  localStorage.setItem('cookies_accepted', 'all');
+  document.getElementById('cookie-banner').style.display = 'none';
+}
+function rejectCookies() {
+  localStorage.setItem('cookies_accepted', 'essential');
+  document.getElementById('cookie-banner').style.display = 'none';
+}
+
 let supportHistory = [];
 let isDragging = false;
 let dragOffsetX = 0;
@@ -1519,14 +1622,7 @@ async function sendSupportMessage() {
       body: JSON.stringify({
         conversation: msg,
         tone: 'przyjazny',
-        customInstructions: `Jesteś asystentem pomocy serwisu Coodpisać.pl. Odpowiadasz TYLKO na pytania dotyczące serwisu. Znasz następujące informacje:
-- Coodpisać.pl to narzędzie AI do generowania odpowiedzi na wiadomości
-- Plany: Darmowy (10 odp/mies, 0zł), Starter (100 odp/mies, 9zł), Pro (500 odp/mies, 19zł), Unlimited (∞ odp, 39zł)
-- Funkcje: 11 tonów odpowiedzi, wybór platformy (Instagram/WhatsApp/Tinder itp), wgrywanie screenshotów, kontynuacja rozmowy, do 4 wariantów odpowiedzi (Pro+), własne instrukcje AI (Unlimited)
-- Rejestracja przez email i hasło
-- Limit miesięczny resetuje się co miesiąc
-- Kontakt: [EMAIL]
-Odpowiadaj krótko, przyjaźnie, po polsku. Jeśli pytanie nie dotyczy serwisu, powiedz że możesz pomóc tylko w sprawach związanych z Coodpisać.pl.`,
+        customInstructions: `Jesteś asystentem pomocy serwisu Coodpisać.pl. Odpowiadasz TYLKO na pytania dotyczące serwisu. Znasz następujące informacje: Coodpisać.pl to narzędzie AI do generowania odpowiedzi na wiadomości. Plany: Darmowy (10 odp/mies, 0zł), Starter (100 odp/mies, 9zł), Pro (500 odp/mies, 19zł), Unlimited (∞ odp, 39zł). Funkcje: 11 tonów, wybór platformy, screenshoty, kontynuacja rozmowy, do 4 wariantów (Pro+), własne instrukcje AI (Unlimited). Limit miesięczny resetuje się co miesiąc. Odpowiadaj krótko, przyjaźnie, po polsku.`,
         history: supportHistory.slice(-6)
       })
     });
@@ -1544,6 +1640,7 @@ Odpowiadaj krótko, przyjaźnie, po polsku. Jeśli pytanie nie dotyczy serwisu, 
 function initDraggable() {
   const widget = document.getElementById('support-widget');
   const header = document.getElementById('support-drag-handle');
+  if (!widget || !header) return;
 
   header.addEventListener('mousedown', (e) => {
     isDragging = true;
@@ -1594,112 +1691,22 @@ function initDraggable() {
   document.addEventListener('touchend', () => { isDragging = false; });
 }
 
-document.addEventListener('DOMContentLoaded', initDraggable);
-</script>
-  <!-- KONTAKT -->
-<div id="screen-contact" class="screen">
-  <div style="min-height:100vh;background:var(--gray-50);">
-    <div style="background:var(--white);border-bottom:1px solid var(--gray-200);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;">
-      <div class="brand-logo" style="margin:0"><div class="brand-icon">💬</div><div class="brand-name">Co<span>odpisać</span>.pl</div></div>
-      <button class="btn-nav-ghost" onclick="showScreen('screen-landing')">← Wróć</button>
-    </div>
-    <div style="max-width:560px;margin:0 auto;padding:3rem 2rem;">
-      <h1 style="font-family:var(--serif);font-size:36px;margin-bottom:0.5rem;color:var(--gray-800);">Kontakt</h1>
-      <p style="color:var(--gray-400);margin-bottom:2rem;font-size:15px;line-height:1.6;">Masz pytanie, problem lub sugestię? Napisz do nas — odpowiemy w ciągu 24 godzin.</p>
-      <div style="background:var(--white);border-radius:20px;border:1px solid var(--gray-200);padding:2rem;">
-        <div class="field">
-          <label>Imię</label>
-          <input type="text" id="contact-name" placeholder="Twoje imię" />
-        </div>
-        <div class="field">
-          <label>E-mail</label>
-          <input type="email" id="contact-email" placeholder="twoj@email.com" />
-        </div>
-        <div class="field">
-          <label>Temat</label>
-          <select id="contact-subject" class="select-input">
-            <option value="">Wybierz temat</option>
-            <option value="problem">🔧 Problem techniczny</option>
-            <option value="billing">💳 Płatności i subskrypcja</option>
-            <option value="feature">💡 Sugestia funkcji</option>
-            <option value="account">👤 Problem z kontem</option>
-            <option value="privacy">🔒 Prywatność i dane</option>
-            <option value="other">✏️ Inne</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>Wiadomość</label>
-          <textarea id="contact-message" style="min-height:140px;" placeholder="Opisz swoje pytanie lub problem..."></textarea>
-        </div>
-        <div id="contact-success" style="display:none;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:10px;padding:12px 16px;font-size:13px;color:#16A34A;margin-bottom:1rem;">
-          ✓ Wiadomość wysłana! Odpiszemy w ciągu 24 godzin.
-        </div>
-        <div id="contact-error" style="display:none;background:#FEF2F2;border:1px solid #FECACA;border-radius:10px;padding:12px 16px;font-size:13px;color:#DC2626;margin-bottom:1rem;"></div>
-        <button class="btn-primary" onclick="sendContactForm()" id="contact-btn">Wyślij wiadomość</button>
-      </div>
-      <div style="margin-top:1.5rem;text-align:center;font-size:13px;color:var(--gray-400);">
-        Możesz też napisać bezpośrednio na <a href="mailto:[EMAIL]" style="color:var(--violet);font-weight:600;">[EMAIL]</a>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- REGULAMIN -->
-<div id="screen-terms" class="screen">
-  <div style="min-height:100vh;background:var(--gray-50);">
-    <div style="background:var(--white);border-bottom:1px solid var(--gray-200);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;">
-      <div class="brand-logo" style="margin:0"><div class="brand-icon">💬</div><div class="brand-name">Co<span>odpisać</span>.pl</div></div>
-      <button class="btn-nav-ghost" onclick="history.back()">← Wróć</button>
-    </div>
-    <div style="max-width:760px;margin:0 auto;padding:3rem 2rem;font-size:15px;line-height:1.8;color:var(--gray-800);">
-      <h1 style="font-family:var(--serif);font-size:36px;margin-bottom:0.5rem;">Regulamin serwisu</h1>
-      <p style="color:var(--gray-400);margin-bottom:2rem;">Ostatnia aktualizacja: 10 kwietnia 2026</p>
-      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§1. Postanowienia ogólne</h2>
-      <p>Niniejszy regulamin określa zasady korzystania z serwisu internetowego <strong>Coodpisać.pl</strong>. Właścicielem i operatorem Serwisu jest Michelle Mayer, prowadząca jednoosobową działalność gospodarczą pod nazwą <strong>[NAZWA FIRMY]</strong>, z siedzibą pod adresem <strong>[ADRES]</strong>, NIP: <strong>[NIP]</strong>. Kontakt: <strong>[EMAIL]</strong>. Korzystanie z Serwisu oznacza akceptację niniejszego Regulaminu.</p>
-      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§2. Rejestracja i konto</h2>
-      <p>Korzystanie z pełnej funkcjonalności Serwisu wymaga założenia konta. Rejestracja wymaga podania adresu e-mail oraz hasła. Użytkownik zobowiązany jest do podania prawdziwych danych i ponosi odpowiedzialność za bezpieczeństwo swojego hasła. Jeden Użytkownik może posiadać tylko jedno konto.</p>
-      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§3. Plany i płatności</h2>
-      <p>Serwis oferuje plan Darmowy (10 odpowiedzi miesięcznie, bezpłatnie), Starter (100 odpowiedzi, 9 zł/mies.), Pro (500 odpowiedzi, 19 zł/mies.) oraz Unlimited (nieograniczone odpowiedzi, 39 zł/mies.). Subskrypcje odnawiają się automatycznie co miesiąc. Anulowanie możliwe jest w dowolnym momencie z poziomu panelu konta — dostęp wygasa z końcem opłaconego okresu. Operator nie zwraca opłat za niewykorzystane odpowiedzi.</p>
-      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§4. Zasady korzystania</h2>
-      <p>Zabrania się wykorzystywania Serwisu do generowania treści nielegalnych, obraźliwych lub naruszających prawa osób trzecich, podszywania się pod inne osoby, rozsyłania spamu oraz prób obejścia limitów konta. Operator zastrzega sobie prawo do usunięcia konta naruszającego powyższe zasady.</p>
-      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§5. Odpowiedzialność</h2>
-      <p>Serwis korzysta z zewnętrznych modeli AI. Operator nie gwarantuje, że wygenerowane odpowiedzi będą zawsze trafne lub odpowiednie. Użytkownik korzysta z wygenerowanych odpowiedzi na własną odpowiedzialność. Operator nie ponosi odpowiedzialności za przerwy w działaniu Serwisu wynikające z awarii technicznych lub siły wyższej.</p>
-      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§6. Reklamacje</h2>
-      <p>Reklamacje należy kierować na adres e-mail: <strong>[EMAIL]</strong>. Operator rozpatruje reklamacje w terminie 14 dni roboczych.</p>
-      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§7. Postanowienia końcowe</h2>
-      <p>Regulamin podlega prawu polskiemu. Operator zastrzega sobie prawo do zmiany Regulaminu z 14-dniowym wyprzedzeniem informując Użytkowników drogą e-mailową. W sprawach nieuregulowanych zastosowanie mają przepisy Kodeksu cywilnego.</p>
-    </div>
+initAuth();
+initCookieBanner();
+document.addEventListener('DOMContentLoaded', initDraggable);</script>
+
+<!-- COOKIE BANNER -->
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:var(--gray-800);color:white;padding:1rem 2rem;z-index:9998;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
+  <p style="font-size:13px;color:rgba(255,255,255,0.8);line-height:1.6;margin:0;max-width:600px;">
+    🍪 Używamy plików cookies, aby zapewnić prawidłowe działanie serwisu.
+    <button onclick="showScreen('screen-privacy')" style="background:none;border:none;color:var(--violet-mid);font-size:13px;cursor:pointer;font-weight:600;padding:0;">Polityka Prywatności</button>
+  </p>
+  <div style="display:flex;gap:10px;flex-shrink:0;">
+    <button onclick="acceptCookies()" style="padding:9px 20px;background:linear-gradient(135deg,var(--blue),var(--violet));color:white;border:none;border-radius:8px;font-family:var(--font);font-size:13px;font-weight:700;cursor:pointer;">Akceptuję</button>
+    <button onclick="rejectCookies()" style="padding:9px 20px;background:none;border:1.5px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.7);border-radius:8px;font-family:var(--font);font-size:13px;cursor:pointer;">Tylko niezbędne</button>
   </div>
 </div>
 
-<!-- POLITYKA PRYWATNOŚCI -->
-<div id="screen-privacy" class="screen">
-  <div style="min-height:100vh;background:var(--gray-50);">
-    <div style="background:var(--white);border-bottom:1px solid var(--gray-200);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;">
-      <div class="brand-logo" style="margin:0"><div class="brand-icon">💬</div><div class="brand-name">Co<span>odpisać</span>.pl</div></div>
-      <button class="btn-nav-ghost" onclick="history.back()">← Wróć</button>
-    </div>
-    <div style="max-width:760px;margin:0 auto;padding:3rem 2rem;font-size:15px;line-height:1.8;color:var(--gray-800);">
-      <h1 style="font-family:var(--serif);font-size:36px;margin-bottom:0.5rem;">Polityka Prywatności</h1>
-      <p style="color:var(--gray-400);margin-bottom:2rem;">Ostatnia aktualizacja: 10 kwietnia 2026</p>
-      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§1. Administrator danych</h2>
-      <p>Administratorem Twoich danych osobowych jest Michelle Mayer, prowadząca jednoosobową działalność gospodarczą pod nazwą <strong>[NAZWA FIRMY]</strong>, z siedzibą pod adresem <strong>[ADRES]</strong>, NIP: <strong>[NIP]</strong>. Kontakt: <strong>[EMAIL]</strong>.</p>
-      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§2. Jakie dane zbieramy</h2>
-      <p>Zbieramy dane podane przy rejestracji (adres e-mail, hasło w postaci zaszyfrowanej), dane generowane podczas korzystania (historia rozmów, wybrane ustawienia, plan subskrypcji) oraz dane techniczne (adres IP, typ przeglądarki, pliki cookies).</p>
-      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§3. Cel przetwarzania</h2>
-      <p>Dane przetwarzamy w celu świadczenia usług Serwisu (generowanie odpowiedzi), zarządzania kontem, obsługi płatności, rozpatrywania reklamacji oraz zapewnienia bezpieczeństwa Serwisu — na podstawie wykonania umowy lub prawnie uzasadnionego interesu Administratora.</p>
-      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§4. Komu przekazujemy dane</h2>
-      <p>Dane przekazujemy wyłącznie zaufanym dostawcom usług: Supabase (baza danych), OpenAI (generowanie odpowiedzi — treści nie są używane do trenowania AI), Vercel (hosting) oraz operatorowi płatności. Nie sprzedajemy danych osobom trzecim.</p>
-      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§5. Twoje prawa</h2>
-      <p>Masz prawo do dostępu, sprostowania, usunięcia, ograniczenia przetwarzania i przenoszenia swoich danych. Możesz również cofnąć zgodę na marketing i wnieść sprzeciw wobec przetwarzania. Aby skorzystać z tych praw, skontaktuj się z nami pod adresem <strong>[EMAIL]</strong>. Przysługuje Ci prawo do skargi do Prezesa UODO (uodo.gov.pl).</p>
-      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§6. Jak długo przechowujemy dane</h2>
-      <p>Dane konta przechowujemy przez czas istnienia konta. Historia rozmów jest usuwana wraz z kontem. Dane rozliczeniowe przechowujemy przez 5 lat zgodnie z wymogami podatkowymi.</p>
-      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§7. Bezpieczeństwo</h2>
-      <p>Stosujemy szyfrowanie połączenia (HTTPS), szyfrowanie haseł oraz kontrolę dostępu do danych. Regularnie aktualizujemy zabezpieczenia Serwisu.</p>
-      <h2 style="font-size:18px;font-weight:700;margin:2rem 0 0.75rem;">§8. Zmiany Polityki</h2>
-      <p>O zmianach Polityki Prywatności poinformujemy drogą e-mailową z co najmniej 14-dniowym wyprzedzeniem.</p>
-    </div>
-  </div>
-</div>
 <!-- SUPPORT CHAT WIDGET -->
 <div id="support-widget" style="position:fixed;bottom:1.5rem;right:1.5rem;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:10px;">
   <div id="support-chat" style="display:none;flex-direction:column;width:320px;height:420px;background:var(--white);border-radius:20px;border:1px solid var(--gray-200);box-shadow:0 8px 40px rgba(0,0,0,0.15);overflow:hidden;">
@@ -1721,16 +1728,6 @@ document.addEventListener('DOMContentLoaded', initDraggable);
   </div>
   <button onclick="toggleSupportChat()" style="width:54px;height:54px;background:linear-gradient(135deg,var(--blue),var(--violet));border:none;border-radius:50%;color:white;font-size:22px;cursor:pointer;box-shadow:0 4px 20px rgba(124,58,237,0.4);display:flex;align-items:center;justify-content:center;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">💬</button>
 </div>
-<!-- COOKIE BANNER -->
-<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:var(--gray-800);color:white;padding:1rem 2rem;z-index:9998;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
-  <p style="font-size:13px;color:rgba(255,255,255,0.8);line-height:1.6;margin:0;max-width:600px;">
-    🍪 Używamy plików cookies, aby zapewnić prawidłowe działanie serwisu i analizować ruch. Korzystając z serwisu, akceptujesz naszą 
-    <button onclick="showScreen('screen-privacy')" style="background:none;border:none;color:var(--violet-mid);font-size:13px;cursor:pointer;font-weight:600;padding:0;">Politykę Prywatności</button>.
-  </p>
-  <div style="display:flex;gap:10px;flex-shrink:0;">
-    <button onclick="acceptCookies()" style="padding:9px 20px;background:linear-gradient(135deg,var(--blue),var(--violet));color:white;border:none;border-radius:8px;font-family:var(--font);font-size:13px;font-weight:700;cursor:pointer;">Akceptuję</button>
-    <button onclick="rejectCookies()" style="padding:9px 20px;background:none;border:1.5px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.7);border-radius:8px;font-family:var(--font);font-size:13px;cursor:pointer;">Tylko niezbędne</button>
-  </div>
-</div>
+
 </body>
 </html>
