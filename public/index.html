@@ -1039,6 +1039,9 @@ async function doRegister() {
   errEl.style.display = 'none'; sucEl.style.display = 'none';
   if (pass.length < 6) { errEl.textContent = 'Hasło musi mieć min. 6 znaków.'; errEl.style.display = 'block'; return; }
   btn.disabled = true; btn.textContent = 'Rejestracja...';
+  const params = new URLSearchParams(window.location.search);
+  const ref = params.get('ref');
+  if (ref) localStorage.setItem('pending_ref', ref);
   const { error } = await sb.auth.signUp({ email, password: pass });
   btn.disabled = false; btn.textContent = 'Zarejestruj się za darmo';
   if (error) { errEl.textContent = error.message; errEl.style.display = 'block'; }
@@ -1224,15 +1227,16 @@ function copyReferralLink() {
 }
 
 async function checkReferral() {
-  const params = new URLSearchParams(window.location.search);
-  const ref = params.get('ref');
-  if (!ref || !currentUser) return;
+  if (!currentUser) return;
+  const ref = localStorage.getItem('pending_ref') || new URLSearchParams(window.location.search).get('ref');
+  if (!ref) return;
   const { data: profile } = await sb.from('profiles').select('referred_by').eq('id', currentUser.id).maybeSingle();
-  if (profile?.referred_by) return;
+  if (profile?.referred_by) { localStorage.removeItem('pending_ref'); return; }
   const { data: referrer } = await sb.from('profiles').select('id, bonus_responses').eq('referral_code', ref).maybeSingle();
-  if (!referrer || referrer.id === currentUser.id) return;
+  if (!referrer || referrer.id === currentUser.id) { localStorage.removeItem('pending_ref'); return; }
   await sb.from('profiles').update({ referred_by: ref, bonus_responses: 10 }).eq('id', currentUser.id);
   await sb.from('profiles').update({ bonus_responses: (referrer.bonus_responses || 0) + 10 }).eq('id', referrer.id);
+  localStorage.removeItem('pending_ref');
   showNotif('🎁 Dostałaś 10 bonus odpowiedzi za polecenie!');
 }
 
