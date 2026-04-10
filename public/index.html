@@ -1230,17 +1230,9 @@ function copyReferralLink() {
 }
 
 async function checkReferral() {
-  if (!currentUser) return;
-  const ref = localStorage.getItem('pending_ref') || new URLSearchParams(window.location.search).get('ref');
-  if (!ref) return;
-  const { data: profile } = await sb.from('profiles').select('referred_by').eq('id', currentUser.id).maybeSingle();
-  if (profile?.referred_by) { localStorage.removeItem('pending_ref'); return; }
-  const { data: referrer } = await sb.from('profiles').select('id, bonus_responses').eq('referral_code', ref).maybeSingle();
-  if (!referrer || referrer.id === currentUser.id) { localStorage.removeItem('pending_ref'); return; }
-  await sb.from('profiles').update({ referred_by: ref, bonus_responses: 10 }).eq('id', currentUser.id);
-  await sb.from('profiles').update({ bonus_responses: (referrer.bonus_responses || 0) + 10 }).eq('id', referrer.id);
-  localStorage.removeItem('pending_ref');
-  showNotif('🎁 Dostałaś 10 bonus odpowiedzi za polecenie!');
+  // Bonusy są teraz obsługiwane przez Supabase trigger przy rejestracji
+  // Ta funkcja nic nie robi — zostawiamy ją pustą żeby nie duplikować bonusów
+  return;
 }
 
 function toggleAppSelector() {
